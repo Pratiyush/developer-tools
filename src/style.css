@@ -480,7 +480,7 @@ select {
   font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--fg-faint);
+  color: var(--fg-muted);
   font-weight: 600;
   margin: var(--sp-8) 0 var(--sp-3);
 }
@@ -637,8 +637,9 @@ select {
 
 .dt-card__num {
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--fg-faint);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  font-weight: 600;
 }
 
 .dt-card__title {
