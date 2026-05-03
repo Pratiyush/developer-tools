@@ -407,10 +407,10 @@ select {
 }
 
 .dt-sidebar__group-h {
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--fg-faint);
+  color: var(--fg-muted);
   font-weight: 600;
   padding: var(--sp-3) var(--sp-2) var(--sp-1);
 }
@@ -444,8 +444,8 @@ select {
 .dt-sidebar__foot {
   margin-top: auto;
   padding: var(--sp-3) var(--sp-2);
-  font-size: var(--fs-xs);
-  color: var(--fg-faint);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
   border-top: var(--border-w) solid var(--line);
   line-height: 1.5;
 }
