@@ -967,11 +967,15 @@ select {
 }
 
 .dt-base64__switch-input {
+  /* Visually hidden but still in the layout flow at the label's origin so
+     keyboard focus and Playwright's .check() can find and activate it.
+     pointer-events stays default — removing it would break the click
+     forwarding from <label> to the underlying checkbox. */
   position: absolute;
   opacity: 0;
   width: 1px;
   height: 1px;
-  pointer-events: none;
+  margin: 0;
 }
 
 .dt-base64__switch-visual {
@@ -982,6 +986,9 @@ select {
   position: relative;
   transition: background var(--anim-fast);
   flex-shrink: 0;
+  /* Decorative — let clicks pass through to the wrapping <label> so the
+     native click→input forwarding (and Playwright's .check()) work. */
+  pointer-events: none;
 }
 
 .dt-base64__switch-visual::after {
@@ -1322,6 +1329,15 @@ select {
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
+}
+
+.dt-basicauth__heading {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg-strong);
 }
 
 .dt-basicauth__intro {

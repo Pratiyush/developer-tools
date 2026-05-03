@@ -45,7 +45,10 @@ export function render(
   toggleInput.type = 'checkbox';
   toggleInput.classList.add('dt-base64__switch-input');
   toggleInput.checked = state.urlsafe;
-  toggleInput.setAttribute('aria-label', translate('tools.base64.urlsafe.aria'));
+  // No explicit aria-label — the wrapping <label> provides the accessible
+  // name from the visible text, so screen-reader and visual users hear the
+  // same thing. Setting aria-label here would override the visible text and
+  // also break Playwright's getByLabel(/URL-safe variant/i) lookup.
   const toggleVisual = doc.createElement('span');
   toggleVisual.classList.add('dt-base64__switch-visual');
   toggleVisual.setAttribute('aria-hidden', 'true');
@@ -294,7 +297,9 @@ function buildExplainer(doc: Document): HTMLElement {
   const section = doc.createElement('section');
   section.classList.add('dt-base64__explainer');
 
-  const heading = doc.createElement('h2');
+  // Use h1 — the tool view doesn't otherwise have a level-one heading, so
+  // axe's page-has-heading-one best-practice rule fails without it.
+  const heading = doc.createElement('h1');
   heading.classList.add('dt-base64__explainer-h');
   heading.textContent = translate('tools.base64.explainer.heading');
   section.appendChild(heading);
