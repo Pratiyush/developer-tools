@@ -50,6 +50,20 @@ const es: Translations = {
   'error.parse.failed':
     'Eso no parece del todo correcto. Comprueba si hay caracteres sueltos o formato erróneo y vuelve a intentarlo.',
   'error.back.home': '← Volver al inicio',
+  'tools.base64.mode.aria': 'Codificar o decodificar',
+  'tools.base64.mode.encode': 'Codificar',
+  'tools.base64.mode.decode': 'Decodificar',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sin relleno)',
+  'tools.base64.urlsafe.aria': 'Usar alfabeto base64 URL-safe',
+  'tools.base64.input.label': 'Entrada',
+  'tools.base64.input.aria': 'Entrada del conversor base64',
+  'tools.base64.input.placeholder':
+    'Escribe o pega — UTF-8, emoji, segmentos JWT. Todo se reconvierte sin pérdida.',
+  'tools.base64.output.label': 'Salida',
+  'tools.base64.output.aria': 'Salida del conversor base64',
+  'tools.base64.swap': 'Intercambiar ⇄',
+  'tools.base64.copy': 'Copiar',
+  'tools.base64.lengths': '{in} caracteres entrada · {out} caracteres salida',
 };
 
 const fr: Translations = {
@@ -88,6 +102,20 @@ const fr: Translations = {
   'error.parse.failed':
     'Ça n’a pas l’air tout à fait juste. Vérifiez les caractères en trop ou le mauvais format et réessayez.',
   'error.back.home': '← Retour à l’accueil',
+  'tools.base64.mode.aria': 'Encoder ou décoder',
+  'tools.base64.mode.encode': 'Encoder',
+  'tools.base64.mode.decode': 'Décoder',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sans padding)',
+  'tools.base64.urlsafe.aria': 'Utiliser l’alphabet base64 URL-safe',
+  'tools.base64.input.label': 'Entrée',
+  'tools.base64.input.aria': 'Entrée du convertisseur base64',
+  'tools.base64.input.placeholder':
+    'Tapez ou collez — UTF-8, emoji, segments JWT. Tout fait l’aller-retour proprement.',
+  'tools.base64.output.label': 'Sortie',
+  'tools.base64.output.aria': 'Sortie du convertisseur base64',
+  'tools.base64.swap': 'Échanger ⇄',
+  'tools.base64.copy': 'Copier',
+  'tools.base64.lengths': '{in} caractères entrée · {out} caractères sortie',
 };
 
 const de: Translations = {
@@ -126,6 +154,20 @@ const de: Translations = {
   'error.parse.failed':
     'Das sieht nicht ganz richtig aus. Prüfe auf fremde Zeichen oder falsches Format und versuch es nochmal.',
   'error.back.home': '← Zurück zur Startseite',
+  'tools.base64.mode.aria': 'Kodieren oder Dekodieren',
+  'tools.base64.mode.encode': 'Kodieren',
+  'tools.base64.mode.decode': 'Dekodieren',
+  'tools.base64.urlsafe.label': 'URL-sichere Variante (-_, ohne Padding)',
+  'tools.base64.urlsafe.aria': 'URL-sicheres base64-Alphabet verwenden',
+  'tools.base64.input.label': 'Eingabe',
+  'tools.base64.input.aria': 'Base64-Konverter-Eingabe',
+  'tools.base64.input.placeholder':
+    'Tippen oder einfügen — UTF-8, Emoji, JWT-Segmente. Alles macht den Roundtrip sauber.',
+  'tools.base64.output.label': 'Ausgabe',
+  'tools.base64.output.aria': 'Base64-Konverter-Ausgabe',
+  'tools.base64.swap': 'Tauschen ⇄',
+  'tools.base64.copy': 'Kopieren',
+  'tools.base64.lengths': '{in} Zeichen Eingabe · {out} Zeichen Ausgabe',
 };
 
 const pt: Translations = {
@@ -164,6 +206,20 @@ const pt: Translations = {
   'error.parse.failed':
     'Isso não parece muito certo. Verifica caracteres soltos ou formato errado e tenta de novo.',
   'error.back.home': '← Voltar ao início',
+  'tools.base64.mode.aria': 'Codificar ou decodificar',
+  'tools.base64.mode.encode': 'Codificar',
+  'tools.base64.mode.decode': 'Decodificar',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sem padding)',
+  'tools.base64.urlsafe.aria': 'Usar alfabeto base64 URL-safe',
+  'tools.base64.input.label': 'Entrada',
+  'tools.base64.input.aria': 'Entrada do conversor base64',
+  'tools.base64.input.placeholder':
+    'Digite ou cole — UTF-8, emoji, segmentos JWT. Tudo faz round-trip limpo.',
+  'tools.base64.output.label': 'Saída',
+  'tools.base64.output.aria': 'Saída do conversor base64',
+  'tools.base64.swap': 'Trocar ⇄',
+  'tools.base64.copy': 'Copiar',
+  'tools.base64.lengths': '{in} caracteres entrada · {out} caracteres saída',
 };
 
 const it: Translations = {
@@ -202,6 +258,20 @@ const it: Translations = {
   'error.parse.failed':
     'Non sembra del tutto giusto. Controlla caratteri estranei o formato sbagliato e riprova.',
   'error.back.home': '← Torna alla home',
+  'tools.base64.mode.aria': 'Codifica o decodifica',
+  'tools.base64.mode.encode': 'Codifica',
+  'tools.base64.mode.decode': 'Decodifica',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, senza padding)',
+  'tools.base64.urlsafe.aria': 'Usa alfabeto base64 URL-safe',
+  'tools.base64.input.label': 'Input',
+  'tools.base64.input.aria': 'Input del convertitore base64',
+  'tools.base64.input.placeholder':
+    'Scrivi o incolla — UTF-8, emoji, segmenti JWT. Tutto torna integro.',
+  'tools.base64.output.label': 'Output',
+  'tools.base64.output.aria': 'Output del convertitore base64',
+  'tools.base64.swap': 'Scambia ⇄',
+  'tools.base64.copy': 'Copia',
+  'tools.base64.lengths': '{in} caratteri input · {out} caratteri output',
 };
 
 const nl: Translations = {
@@ -240,6 +310,20 @@ const nl: Translations = {
   'error.parse.failed':
     'Dat klopt niet helemaal. Controleer op vreemde tekens of verkeerd formaat en probeer opnieuw.',
   'error.back.home': '← Terug naar home',
+  'tools.base64.mode.aria': 'Coderen of decoderen',
+  'tools.base64.mode.encode': 'Coderen',
+  'tools.base64.mode.decode': 'Decoderen',
+  'tools.base64.urlsafe.label': 'URL-veilige variant (-_, geen padding)',
+  'tools.base64.urlsafe.aria': 'URL-veilig base64-alfabet gebruiken',
+  'tools.base64.input.label': 'Invoer',
+  'tools.base64.input.aria': 'Base64-converter-invoer',
+  'tools.base64.input.placeholder':
+    'Typ of plak — UTF-8, emoji, JWT-segmenten. Alles maakt schoon de round-trip.',
+  'tools.base64.output.label': 'Uitvoer',
+  'tools.base64.output.aria': 'Base64-converter-uitvoer',
+  'tools.base64.swap': 'Wisselen ⇄',
+  'tools.base64.copy': 'Kopiëren',
+  'tools.base64.lengths': '{in} tekens invoer · {out} tekens uitvoer',
 };
 
 const pl: Translations = {
@@ -278,6 +362,20 @@ const pl: Translations = {
   'error.parse.failed':
     'To nie wygląda zbyt prawidłowo. Sprawdź zbędne znaki lub zły format i spróbuj ponownie.',
   'error.back.home': '← Wróć do strony głównej',
+  'tools.base64.mode.aria': 'Koduj lub dekoduj',
+  'tools.base64.mode.encode': 'Koduj',
+  'tools.base64.mode.decode': 'Dekoduj',
+  'tools.base64.urlsafe.label': 'Wariant URL-safe (-_, bez paddingu)',
+  'tools.base64.urlsafe.aria': 'Użyj alfabetu base64 URL-safe',
+  'tools.base64.input.label': 'Wejście',
+  'tools.base64.input.aria': 'Wejście konwertera base64',
+  'tools.base64.input.placeholder':
+    'Wpisz lub wklej — UTF-8, emoji, segmenty JWT. Wszystko czysto wraca w obie strony.',
+  'tools.base64.output.label': 'Wyjście',
+  'tools.base64.output.aria': 'Wyjście konwertera base64',
+  'tools.base64.swap': 'Zamień ⇄',
+  'tools.base64.copy': 'Kopiuj',
+  'tools.base64.lengths': '{in} znaków wejście · {out} znaków wyjście',
 };
 
 const ru: Translations = {
@@ -316,6 +414,20 @@ const ru: Translations = {
   'error.parse.failed':
     'Это выглядит не совсем правильно. Проверьте лишние символы или неверный формат и попробуйте снова.',
   'error.back.home': '← Вернуться на главную',
+  'tools.base64.mode.aria': 'Кодировать или декодировать',
+  'tools.base64.mode.encode': 'Кодировать',
+  'tools.base64.mode.decode': 'Декодировать',
+  'tools.base64.urlsafe.label': 'URL-безопасный вариант (-_, без padding)',
+  'tools.base64.urlsafe.aria': 'Использовать URL-безопасный алфавит base64',
+  'tools.base64.input.label': 'Ввод',
+  'tools.base64.input.aria': 'Ввод конвертера base64',
+  'tools.base64.input.placeholder':
+    'Введите или вставьте — UTF-8, эмодзи, сегменты JWT. Всё чисто проходит туда и обратно.',
+  'tools.base64.output.label': 'Вывод',
+  'tools.base64.output.aria': 'Вывод конвертера base64',
+  'tools.base64.swap': 'Поменять ⇄',
+  'tools.base64.copy': 'Копировать',
+  'tools.base64.lengths': '{in} символов ввод · {out} символов вывод',
 };
 
 const tr: Translations = {
@@ -354,6 +466,20 @@ const tr: Translations = {
   'error.parse.failed':
     'Bu pek doğru görünmüyor. Garip karakter veya yanlış biçim var mı bak, yeniden dene.',
   'error.back.home': '← Ana sayfaya dön',
+  'tools.base64.mode.aria': 'Kodla veya çöz',
+  'tools.base64.mode.encode': 'Kodla',
+  'tools.base64.mode.decode': 'Çöz',
+  'tools.base64.urlsafe.label': 'URL-güvenli varyant (-_, padding yok)',
+  'tools.base64.urlsafe.aria': 'URL-güvenli base64 alfabesini kullan',
+  'tools.base64.input.label': 'Girdi',
+  'tools.base64.input.aria': 'Base64 dönüştürücü girdi',
+  'tools.base64.input.placeholder':
+    'Yaz veya yapıştır — UTF-8, emoji, JWT segmentleri. Hepsi temiz şekilde gidip geliyor.',
+  'tools.base64.output.label': 'Çıktı',
+  'tools.base64.output.aria': 'Base64 dönüştürücü çıktı',
+  'tools.base64.swap': 'Değiştir ⇄',
+  'tools.base64.copy': 'Kopyala',
+  'tools.base64.lengths': '{in} karakter girdi · {out} karakter çıktı',
 };
 
 const ja: Translations = {
@@ -392,6 +518,20 @@ const ja: Translations = {
   'error.parse.failed':
     '何かが違うようです。余分な文字や形式の誤りがないか確認して、もう一度試してください。',
   'error.back.home': '← ホームに戻る',
+  'tools.base64.mode.aria': 'エンコードまたはデコード',
+  'tools.base64.mode.encode': 'エンコード',
+  'tools.base64.mode.decode': 'デコード',
+  'tools.base64.urlsafe.label': 'URL安全バリアント (-_, パディングなし)',
+  'tools.base64.urlsafe.aria': 'URL安全な base64 アルファベットを使用',
+  'tools.base64.input.label': '入力',
+  'tools.base64.input.aria': 'Base64 コンバータ入力',
+  'tools.base64.input.placeholder':
+    '入力または貼り付け — UTF-8、絵文字、JWT セグメント。すべてクリーンに往復します。',
+  'tools.base64.output.label': '出力',
+  'tools.base64.output.aria': 'Base64 コンバータ出力',
+  'tools.base64.swap': '入れ替え ⇄',
+  'tools.base64.copy': 'コピー',
+  'tools.base64.lengths': '入力 {in} 文字 · 出力 {out} 文字',
 };
 
 const zh: Translations = {
@@ -427,6 +567,19 @@ const zh: Translations = {
   'error.copy.failed': '剪贴板拒绝了。八成是权限问题 — 检查一下浏览器设置，再试一次。',
   'error.parse.failed': '看起来不太对。检查一下多余的字符或错误格式，再试一次。',
   'error.back.home': '← 返回主页',
+  'tools.base64.mode.aria': '编码或解码',
+  'tools.base64.mode.encode': '编码',
+  'tools.base64.mode.decode': '解码',
+  'tools.base64.urlsafe.label': 'URL 安全变体 (-_, 无填充)',
+  'tools.base64.urlsafe.aria': '使用 URL 安全的 base64 字母表',
+  'tools.base64.input.label': '输入',
+  'tools.base64.input.aria': 'Base64 转换器输入',
+  'tools.base64.input.placeholder': '输入或粘贴 — UTF-8、表情符号、JWT 段。全都干净地往返。',
+  'tools.base64.output.label': '输出',
+  'tools.base64.output.aria': 'Base64 转换器输出',
+  'tools.base64.swap': '交换 ⇄',
+  'tools.base64.copy': '复制',
+  'tools.base64.lengths': '输入 {in} 字符 · 输出 {out} 字符',
 };
 
 const ko: Translations = {
@@ -464,6 +617,20 @@ const ko: Translations = {
   'error.parse.failed':
     '뭔가 어긋난 것 같습니다. 이상한 문자나 잘못된 형식을 확인하고 다시 시도하세요.',
   'error.back.home': '← 홈으로 돌아가기',
+  'tools.base64.mode.aria': '인코딩 또는 디코딩',
+  'tools.base64.mode.encode': '인코딩',
+  'tools.base64.mode.decode': '디코딩',
+  'tools.base64.urlsafe.label': 'URL 안전 변형 (-_, 패딩 없음)',
+  'tools.base64.urlsafe.aria': 'URL 안전 base64 알파벳 사용',
+  'tools.base64.input.label': '입력',
+  'tools.base64.input.aria': 'Base64 변환기 입력',
+  'tools.base64.input.placeholder':
+    '입력하거나 붙여넣으세요 — UTF-8, 이모지, JWT 세그먼트. 모두 깔끔하게 왕복합니다.',
+  'tools.base64.output.label': '출력',
+  'tools.base64.output.aria': 'Base64 변환기 출력',
+  'tools.base64.swap': '교환 ⇄',
+  'tools.base64.copy': '복사',
+  'tools.base64.lengths': '입력 {in}자 · 출력 {out}자',
 };
 
 const hi: Translations = {
@@ -502,6 +669,20 @@ const hi: Translations = {
   'error.parse.failed':
     'यह पूरी तरह सही नहीं लग रहा। फालतू वर्ण या गलत फॉर्मेट देखें और फिर कोशिश करें।',
   'error.back.home': '← होम पर वापस',
+  'tools.base64.mode.aria': 'एनकोड या डीकोड',
+  'tools.base64.mode.encode': 'एनकोड',
+  'tools.base64.mode.decode': 'डीकोड',
+  'tools.base64.urlsafe.label': 'URL-सुरक्षित प्रकार (-_, बिना पैडिंग)',
+  'tools.base64.urlsafe.aria': 'URL-सुरक्षित base64 वर्णमाला का उपयोग करें',
+  'tools.base64.input.label': 'इनपुट',
+  'tools.base64.input.aria': 'Base64 कनवर्टर इनपुट',
+  'tools.base64.input.placeholder':
+    'टाइप करें या पेस्ट करें — UTF-8, इमोजी, JWT सेगमेंट। सब साफ-सुथरे राउंड-ट्रिप करते हैं।',
+  'tools.base64.output.label': 'आउटपुट',
+  'tools.base64.output.aria': 'Base64 कनवर्टर आउटपुट',
+  'tools.base64.swap': 'स्वैप ⇄',
+  'tools.base64.copy': 'कॉपी',
+  'tools.base64.lengths': 'इनपुट {in} वर्ण · आउटपुट {out} वर्ण',
 };
 
 const ar: Translations = {
@@ -538,6 +719,20 @@ const ar: Translations = {
     'الحافظة رفضت. على الأرجح مسألة أذونات — تحقق من إعدادات المتصفح وحاول مرة أخرى.',
   'error.parse.failed': 'هذا لا يبدو صحيحًا تمامًا. تحقق من حروف زائدة أو تنسيق خاطئ وحاول مجددًا.',
   'error.back.home': '← العودة إلى الرئيسية',
+  'tools.base64.mode.aria': 'ترميز أو فك ترميز',
+  'tools.base64.mode.encode': 'ترميز',
+  'tools.base64.mode.decode': 'فك ترميز',
+  'tools.base64.urlsafe.label': 'المتغير الآمن للروابط (-_، بدون حشو)',
+  'tools.base64.urlsafe.aria': 'استخدم الأبجدية base64 الآمنة للروابط',
+  'tools.base64.input.label': 'الإدخال',
+  'tools.base64.input.aria': 'إدخال محول base64',
+  'tools.base64.input.placeholder':
+    'اكتب أو الصق — UTF-8، الإيموجي، أجزاء JWT. كلها تذهب وتعود نظيفة.',
+  'tools.base64.output.label': 'الإخراج',
+  'tools.base64.output.aria': 'إخراج محول base64',
+  'tools.base64.swap': 'تبديل ⇄',
+  'tools.base64.copy': 'نسخ',
+  'tools.base64.lengths': '{in} حرف إدخال · {out} حرف إخراج',
 };
 
 export const ALL_TRANSLATIONS: Record<string, Translations> = {

@@ -43,6 +43,22 @@ const en: Translations = {
   'error.parse.failed':
     "That doesn't look quite right. Check for stray characters or the wrong format and try again.",
   'error.back.home': '← Back to home',
+
+  // Day 1 — base64-string-converter
+  'tools.base64.mode.aria': 'Encode or decode',
+  'tools.base64.mode.encode': 'Encode',
+  'tools.base64.mode.decode': 'Decode',
+  'tools.base64.urlsafe.label': 'URL-safe variant (-_, no padding)',
+  'tools.base64.urlsafe.aria': 'Use URL-safe base64 alphabet',
+  'tools.base64.input.label': 'Input',
+  'tools.base64.input.aria': 'Base64 converter input',
+  'tools.base64.input.placeholder':
+    'Type or paste — UTF-8, emoji, JWT segments. All round-trip cleanly.',
+  'tools.base64.output.label': 'Output',
+  'tools.base64.output.aria': 'Base64 converter output',
+  'tools.base64.swap': 'Swap ⇄',
+  'tools.base64.copy': 'Copy',
+  'tools.base64.lengths': '{in} chars in · {out} chars out',
 };
 
 export default en;

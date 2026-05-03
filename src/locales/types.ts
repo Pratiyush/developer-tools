@@ -45,6 +45,21 @@ export interface Translations {
   'error.copy.failed': string;
   'error.parse.failed': string;
   'error.back.home': string;
+
+  // Day 1 — base64-string-converter
+  'tools.base64.mode.aria': string;
+  'tools.base64.mode.encode': string;
+  'tools.base64.mode.decode': string;
+  'tools.base64.urlsafe.label': string;
+  'tools.base64.urlsafe.aria': string;
+  'tools.base64.input.label': string;
+  'tools.base64.input.aria': string;
+  'tools.base64.input.placeholder': string;
+  'tools.base64.output.label': string;
+  'tools.base64.output.aria': string;
+  'tools.base64.swap': string;
+  'tools.base64.copy': string;
+  'tools.base64.lengths': string;
 }
 
 export type TranslationKey = keyof Translations;
