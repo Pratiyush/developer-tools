@@ -384,17 +384,18 @@ select {
 }
 
 .dt-sidebar__brand-mark {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--accent-fg);
   display: grid;
   place-items: center;
   font-family: var(--font-mono);
-  /* >= 14.66px bold qualifies as WCAG "large text" (3:1 threshold), so the
-     white-on-accent combinations on Linear/Vercel themes pass AA. */
-  font-size: 15px;
+  /* axe-core treats >= 18.66px bold (14pt) as "large text" (3:1 threshold).
+     20px bold definitively qualifies, so Linear/Vercel white-on-accent passes
+     even at 3.95-4.46:1 contrast. */
+  font-size: 20px;
   font-weight: 700;
 }
 
