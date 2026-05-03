@@ -1084,12 +1084,13 @@ select {
 }
 
 .dt-base64__copy {
-  /* axe "large text" threshold (3:1) is 14px bold or 18.66px regular —
-     14px @ 700 lets the accent/accent-fg combo pass on Linear/Vercel where
-     the contrast ratio sits between 3:1 and 4.5:1. */
-  font-size: var(--fs-base);
+  /* axe "large text" threshold (3:1) is 14pt = 18.66px bold or 18pt = 24px
+     regular. 20px @ 700 clears 14pt bold so accent/accent-fg passes on
+     Linear (3.95:1) and Vercel (3.34:1) themes — matches the precedent set
+     by the brand-mark fix. */
+  font-size: 20px;
   font-weight: 700;
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-2) var(--sp-5);
   background: var(--accent);
   color: var(--accent-fg);
   border: none;
@@ -1119,12 +1120,13 @@ select {
 
 /* ─── Paste button on the input pane (subtler than the primary copy CTA) ─── */
 .dt-base64__paste {
-  /* Match the copy button's 14px@700 so axe sees the same large-text class.
+  /* Match the copy button's 20px@700 so the two pills line up visually.
      Background uses surface tones rather than accent — paste is a secondary
-     action, so it stays understated next to the primary copy. */
-  font-size: var(--fs-base);
+     action, so it stays understated next to the primary copy CTA. The
+     surface/fg-strong combo always passes contrast in every theme. */
+  font-size: 20px;
   font-weight: 700;
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-2) var(--sp-5);
   background: var(--bg-surface-2);
   color: var(--fg-strong);
   border: var(--border-w) solid var(--line);
@@ -1283,13 +1285,15 @@ select {
 .dt-base64__explainer-cta {
   align-self: flex-start;
   margin-top: var(--sp-2);
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-3) var(--sp-5);
   background: var(--accent);
   color: var(--accent-fg);
   border-radius: var(--radius-pill);
-  /* 14px @ 700 → axe-large-text class so accent/accent-fg passes 3:1. */
+  /* 20px @ 700 clears the 14pt-bold large-text threshold so accent/accent-fg
+     passes the 3:1 ratio on Linear and Vercel themes (where the raw
+     accent/accent-fg combo sits at 3.95 and 3.34 respectively). */
   font-weight: 700;
-  font-size: var(--fs-base);
+  font-size: 20px;
   transition:
     filter var(--anim-fast),
     transform 80ms ease;
