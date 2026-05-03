@@ -1,0 +1,39 @@
+name: Guardrails
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  block-ai-attribution:
+    name: Block AI-attribution leaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan PR commits for AI-attribution lines
+        run: |
+          set -euo pipefail
+          RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+          if git log --format="%B%n%an%n%cn" "$RANGE" | grep -E -i "(co-authored-by:.*claude|claude\.ai|Generated with.*Anthropic)" ; then
+            echo "::error::A commit in this PR contains an AI-attribution line. Remove it and force-push."
+            exit 1
+          fi
+
+      - name: Scan PR title and body for AI-attribution lines
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          if printf '%s\n%s' "$TITLE" "$BODY" | grep -E -i "(co-authored-by:.*claude|claude\.ai|Generated with.*Anthropic)" ; then
+            echo "::error::PR title or body contains an AI-attribution line. Edit the PR and remove it."
+            exit 1
+          fi

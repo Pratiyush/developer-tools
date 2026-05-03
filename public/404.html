@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not found — Developer Tools</title>
+    <meta name="description" content="Page not found." />
+    <script>
+      // GitHub Pages serves this file on any unknown path under the project.
+      // SPAs use a deep-link redirect: stash the requested path in
+      // sessionStorage, then send the user to /developer-tools/ where the
+      // hash router takes over. The router reads the stash on first paint.
+      (function spaRedirect() {
+        try {
+          sessionStorage.setItem(
+            'dt.deep-redirect',
+            location.pathname + location.search + location.hash,
+          );
+        } catch (e) {
+          // Ignore: storage may be unavailable.
+        }
+        location.replace('/developer-tools/');
+      })();
+    </script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        padding: 4rem 1.5rem;
+        color: #18181b;
+      }
+      a {
+        color: #6366f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Not found</h1>
+    <p>This page doesn't exist. Sending you to the home page…</p>
+    <p>If nothing happens, <a href="/developer-tools/">click here</a>.</p>
+  </body>
+</html>

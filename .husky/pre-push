@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+echo "→ format:check"
+pnpm format:check
+echo "→ lint"
+pnpm lint
+echo "→ typecheck"
+pnpm typecheck
+echo "→ test"
+pnpm test
+echo "→ build"
+pnpm build
+echo "✓ all gates green"

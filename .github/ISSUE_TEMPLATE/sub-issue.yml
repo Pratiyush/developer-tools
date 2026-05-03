@@ -1,0 +1,61 @@
+name: Sub-issue — Tool task
+description: One shippable PR per sub-issue.
+title: '[Sub] <tool-slug>: <scope>'
+labels:
+  - sub-issue
+body:
+  - type: input
+    id: parent-epic
+    attributes:
+      label: Parent Epic #
+      description: Issue number of the parent Epic.
+      placeholder: '123'
+    validations:
+      required: true
+
+  - type: input
+    id: tool-slug
+    attributes:
+      label: Tool slug
+      placeholder: base64-string-converter
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: The single scope this sub-issue covers.
+      options:
+        - scaffold
+        - logic
+        - url-state
+        - ui
+        - unit tests
+        - integration tests
+        - docs
+        - accessibility
+        - performance
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Markdown checklist. The PR is mergeable only when every box is ticked.
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: estimated-diff-size
+    attributes:
+      label: Estimated diff size
+      description: S (under 100 LOC), M (100–400 LOC), L (over 400 LOC). Justify if L.
+      placeholder: S | M | L
+    validations:
+      required: true

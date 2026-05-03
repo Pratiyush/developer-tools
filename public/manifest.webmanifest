@@ -1,0 +1,12 @@
+{
+  "name": "Developer Tools",
+  "short_name": "Tools",
+  "description": "100 small developer utilities, in your browser. Local-only.",
+  "start_url": "/developer-tools/",
+  "scope": "/developer-tools/",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#000000",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }],
+  "categories": ["productivity", "developer", "utilities"]
+}

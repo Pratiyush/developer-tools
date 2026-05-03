@@ -1,0 +1,72 @@
+{
+  "name": "developer-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "100+ small developer utilities. TypeScript + Vite + GitHub Pages. Local-only — nothing leaves your browser.",
+  "homepage": "https://pratiyush.github.io/developer-tools",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pratiyush/developer-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pratiyush/developer-tools/issues"
+  },
+  "author": "Pratiyush Kumar <pratiyush1@gmail.com>",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
+    "lint:fix": "eslint . --fix --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "new-tool": "tsx scripts/new-tool.ts",
+    "sync-i18n": "tsx scripts/sync-translations.ts",
+    "seed-tolgee": "tsx scripts/seed-tolgee.ts",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix --no-warn-ignored --ignore-pattern eslint.config.js --ignore-pattern commitlint.config.ts --ignore-pattern playwright.config.ts",
+      "prettier --write"
+    ],
+    "*.{json,css,html,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.48.2",
+    "axe-core": "^4.10.0",
+    "@types/node": "^20.12.7",
+    "@vitest/coverage-v8": "^1.6.0",
+    "consola": "^3.2.3",
+    "eslint": "^9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.1.0",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^8.16.0",
+    "vite": "^5.2.10",
+    "vitest": "^1.6.0"
+  }
+}

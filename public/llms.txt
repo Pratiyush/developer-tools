@@ -1,0 +1,26 @@
+# Developer Tools
+
+> 100+ small developer utilities, in your browser. Local-only — nothing leaves your device. Each tool deep-links to a shareable URL. WCAG 2.1 AA verified per theme. Licensed AGPL-3.0-only.
+
+## Documentation
+
+- [README](https://github.com/Pratiyush/developer-tools/blob/main/README.md): Project overview, stack, scripts, layout
+- [CONTRIBUTING](https://github.com/Pratiyush/developer-tools/blob/main/CONTRIBUTING.md): How to contribute (note: AGPL inbound)
+- [PRIVACY](https://github.com/Pratiyush/developer-tools/blob/main/PRIVACY.md): Privacy policy (no server, no analytics today)
+- [SECURITY](https://github.com/Pratiyush/developer-tools/blob/main/SECURITY.md): Security policy and vulnerability reporting
+- [DISCLAIMER](https://github.com/Pratiyush/developer-tools/blob/main/DISCLAIMER.md): Use limitations and accuracy notes
+- [LICENSE](https://github.com/Pratiyush/developer-tools/blob/main/LICENSE): GNU AGPL-3.0-only
+
+## Architecture
+
+Vanilla TypeScript. No framework. Each tool ships as a self-contained module under `src/tools/<NN-category>/<NNN-slug>/` with: `index.ts` (registry entry), `logic.ts` (pure functions), `url-state.ts` (parse/serialize), `render.ts` (DOM mount). Tools never import sibling tools — ESLint enforces.
+
+Hybrid URL state: short, safe params in `?query`; sensitive payloads in `#hash` (never logged server-side, never in `Referer`).
+
+i18n via Tolgee, build-time pull. Runtime is fully static — zero API calls from the browser.
+
+## Optional
+
+- [Tool catalog](https://github.com/Pratiyush/developer-tools/blob/main/.specification/_index.md): ~250 candidate tool specs
+- [ADR log](https://github.com/Pratiyush/developer-tools/blob/main/memory/decisions.md): Architectural decisions
+- [Repository](https://github.com/Pratiyush/developer-tools)

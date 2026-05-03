@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Tools — 100 small utilities, in your browser</title>
+    <meta
+      name="description"
+      content="A workbench of 100 small developer utilities. Local-only — nothing leaves your browser."
+    />
+    <meta name="author" content="Pratiyush Kumar" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Icons + manifest -->
+    <link rel="icon" type="image/svg+xml" href="/developer-tools/favicon.svg" />
+    <link rel="manifest" href="/developer-tools/manifest.webmanifest" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pratiyush.github.io/developer-tools/" />
+    <meta property="og:title" content="Developer Tools — 100 small utilities" />
+    <meta
+      property="og:description"
+      content="100 small dev tools, in your browser. Local-only. Deep-linkable. AGPL-3.0."
+    />
+    <meta property="og:locale" content="en" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Developer Tools — 100 small utilities" />
+    <meta
+      name="twitter:description"
+      content="100 small dev tools, in your browser. Local-only. Deep-linkable."
+    />
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Developer Tools",
+        "url": "https://pratiyush.github.io/developer-tools/",
+        "description": "100 small developer utilities, in your browser. Local-only — nothing leaves your device.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Pratiyush Kumar" },
+        "license": "https://www.gnu.org/licenses/agpl-3.0"
+      }
+    </script>
+
+    <script>
+      // Apply persisted theme before paint to avoid flash.
+      (function applyEarlyTheme() {
+        try {
+          var t = localStorage.getItem('dt.theme');
+          var allowed = ['clean', 'linear', 'vercel', 'paper', 'swiss', 'aurora', 'matrix'];
+          if (t && allowed.indexOf(t) !== -1) {
+            document.documentElement.setAttribute('data-theme', t);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'clean');
+          }
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'clean');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

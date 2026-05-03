@@ -1,0 +1,7 @@
+Contact: mailto:pratiyush1@gmail.com
+Contact: https://github.com/Pratiyush/developer-tools/security/advisories/new
+Expires: 2027-04-30T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://pratiyush.github.io/developer-tools/.well-known/security.txt
+Acknowledgments: https://github.com/Pratiyush/developer-tools/security/advisories
+Policy: https://github.com/Pratiyush/developer-tools/blob/main/SECURITY.md

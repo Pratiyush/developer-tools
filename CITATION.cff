@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: developer-tools
+message: 'If you use these tools in research or build on top of them, please cite as below.'
+type: software
+authors:
+  - given-names: Pratiyush
+    family-names: Kumar
+    email: pratiyush1@gmail.com
+repository-code: 'https://github.com/Pratiyush/developer-tools'
+url: 'https://pratiyush.github.io/developer-tools'
+abstract: 'A workbench of 100 small developer utilities. Local-only — every tool runs entirely in the browser. WCAG 2.1 AA verified. Licensed AGPL-3.0-only.'
+keywords:
+  - developer-tools
+  - typescript
+  - vite
+  - github-pages
+  - i18n
+  - tolgee
+  - wcag
+license: AGPL-3.0-only
+version: 0.1.0

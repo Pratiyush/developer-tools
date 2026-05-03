@@ -1,0 +1,8 @@
+# Each line is a file pattern followed by one or more owners.
+# Owners will be the default reviewers for matching pull requests.
+
+* @Pratiyush
+
+# Add per-area owners here when collaborators join, e.g.:
+# /src/tools/01-encoding/   @Pratiyush
+# /.github/                  @Pratiyush
