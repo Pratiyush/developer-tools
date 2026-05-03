@@ -384,15 +384,17 @@ select {
 }
 
 .dt-sidebar__brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: var(--accent-fg);
   display: grid;
   place-items: center;
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  /* >= 14.66px bold qualifies as WCAG "large text" (3:1 threshold), so the
+     white-on-accent combinations on Linear/Vercel themes pass AA. */
+  font-size: 15px;
   font-weight: 700;
 }
 
