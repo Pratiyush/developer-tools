@@ -1,5 +1,4 @@
 import { translate } from '../../../lib/i18n';
-import { button } from '../../../ui/primitives/button';
 import { copyButton, type CopyButtonHandle } from '../../../ui/primitives/copy-button';
 import { panel } from '../../../ui/primitives/panel';
 import { textarea } from '../../../ui/primitives/textarea';
@@ -21,79 +20,97 @@ export function render(
   let state: State = { ...initial };
   const disposers: (() => void)[] = [];
 
-  // Root container
+  // Root
   const root = doc.createElement('div');
   root.classList.add('dt-base64');
 
-  // Mode tabs (encode | decode)
+  // ─── Top control bar: segmented mode tabs + URL-safe toggle ────────────
+  const controls = doc.createElement('div');
+  controls.classList.add('dt-base64__controls');
+
   const tabs = doc.createElement('div');
-  tabs.classList.add('dt-base64__tabs');
+  tabs.classList.add('dt-base64__segmented');
   tabs.setAttribute('role', 'tablist');
   tabs.setAttribute('aria-label', translate('tools.base64.mode.aria'));
-
   const encodeTab = makeTab('encode', translate('tools.base64.mode.encode'));
   const decodeTab = makeTab('decode', translate('tools.base64.mode.decode'));
   tabs.append(encodeTab, decodeTab);
-  root.appendChild(tabs);
+  controls.appendChild(tabs);
 
-  // URL-safe toggle
+  // URL-safe toggle — custom switch styling
   const toggleWrap = doc.createElement('label');
-  toggleWrap.classList.add('dt-base64__toggle');
+  toggleWrap.classList.add('dt-base64__switch');
   const toggleInput = doc.createElement('input');
   toggleInput.type = 'checkbox';
+  toggleInput.classList.add('dt-base64__switch-input');
   toggleInput.checked = state.urlsafe;
   toggleInput.setAttribute('aria-label', translate('tools.base64.urlsafe.aria'));
+  const toggleVisual = doc.createElement('span');
+  toggleVisual.classList.add('dt-base64__switch-visual');
+  toggleVisual.setAttribute('aria-hidden', 'true');
   const toggleText = doc.createElement('span');
+  toggleText.classList.add('dt-base64__switch-label');
   toggleText.textContent = translate('tools.base64.urlsafe.label');
-  toggleWrap.append(toggleInput, toggleText);
-  root.appendChild(toggleWrap);
+  toggleWrap.append(toggleInput, toggleVisual, toggleText);
+  controls.appendChild(toggleWrap);
 
   toggleInput.addEventListener('change', () => {
     update({ urlsafe: toggleInput.checked });
   });
 
-  // Input panel
+  root.appendChild(controls);
+
+  // ─── Two-pane workspace: input ⇄ output ────────────────────────────────
+  const workspace = doc.createElement('div');
+  workspace.classList.add('dt-base64__workspace');
+
+  // Input pane
   const inputArea = textarea({
     value: state.input,
     placeholder: translate('tools.base64.input.placeholder'),
     ariaLabel: translate('tools.base64.input.aria'),
-    rows: 6,
+    rows: 10,
     onInput: (value) => {
       update({ input: value });
     },
   });
-  const inputBody = doc.createElement('div');
-  inputBody.appendChild(inputArea);
-  const inputPanel = panel({
+  inputArea.classList.add('dt-base64__textarea');
+
+  const inputPaneBody = doc.createElement('div');
+  inputPaneBody.classList.add('dt-base64__pane-body');
+  inputPaneBody.appendChild(inputArea);
+
+  const inputPane = panel({
     label: translate('tools.base64.input.label'),
-    body: inputBody,
-    className: 'dt-base64__panel',
+    body: inputPaneBody,
+    className: 'dt-base64__pane',
   });
-  root.appendChild(inputPanel);
+  workspace.appendChild(inputPane);
 
-  // Swap button (label already contains ⇄ — no separate icon needed)
-  const swap = button({
-    label: translate('tools.base64.swap'),
-    onClick: () => {
-      const decoded = computeOutput(state);
-      // Move output → input and flip mode.
-      const nextMode: Mode = state.mode === 'encode' ? 'decode' : 'encode';
-      update({ mode: nextMode, input: decoded });
-      // Sync DOM (textarea + tabs).
-      inputArea.value = decoded;
-      setActiveTab(nextMode);
-    },
-  });
+  // Swap button — circular icon between panes
+  const swap = doc.createElement('button');
+  swap.type = 'button';
   swap.classList.add('dt-base64__swap');
-  root.appendChild(swap);
+  swap.setAttribute('aria-label', translate('tools.base64.swap'));
+  swap.title = translate('tools.base64.swap');
+  swap.innerHTML = '<span aria-hidden="true">⇄</span>';
+  swap.addEventListener('click', () => {
+    const computed = computeOutput(state);
+    const nextMode: Mode = state.mode === 'encode' ? 'decode' : 'encode';
+    update({ mode: nextMode, input: computed });
+    inputArea.value = computed;
+    setActiveTab(nextMode);
+  });
+  workspace.appendChild(swap);
 
-  // Output panel
+  // Output pane (monospace — output is code)
   const outputArea = textarea({
     value: '',
     ariaLabel: translate('tools.base64.output.aria'),
-    rows: 6,
+    rows: 10,
     readonly: true,
   });
+  outputArea.classList.add('dt-base64__textarea', 'dt-base64__textarea--mono');
 
   const lengths = doc.createElement('span');
   lengths.classList.add('dt-base64__lengths');
@@ -102,23 +119,28 @@ export function render(
     text: () => outputArea.value,
     label: translate('tools.base64.copy'),
   });
+  copyHandle.el.classList.add('dt-base64__copy');
   disposers.push(() => {
     copyHandle.dispose();
   });
 
-  const outputBody = doc.createElement('div');
-  outputBody.appendChild(outputArea);
-  const outputFoot = doc.createElement('div');
-  outputFoot.classList.add('dt-base64__output-foot');
-  outputFoot.append(lengths, copyHandle.el);
-  outputBody.appendChild(outputFoot);
+  const outputPaneBody = doc.createElement('div');
+  outputPaneBody.classList.add('dt-base64__pane-body');
+  outputPaneBody.appendChild(outputArea);
 
-  const outputPanel = panel({
+  const outputFoot = doc.createElement('div');
+  outputFoot.classList.add('dt-base64__pane-foot');
+  outputFoot.append(lengths, copyHandle.el);
+  outputPaneBody.appendChild(outputFoot);
+
+  const outputPane = panel({
     label: translate('tools.base64.output.label'),
-    body: outputBody,
-    className: 'dt-base64__panel',
+    body: outputPaneBody,
+    className: 'dt-base64__pane',
   });
-  root.appendChild(outputPanel);
+  workspace.appendChild(outputPane);
+
+  root.appendChild(workspace);
 
   // Initial paint
   setActiveTab(state.mode);
