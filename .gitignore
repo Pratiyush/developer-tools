@@ -32,16 +32,19 @@ pnpm-debug.log*
 *.log
 
 # Claude / AI assistant artifacts (private to local dev — never push)
-# NOTE: the tracked `memory/` folder at the repo root IS intentional team docs.
-# Do NOT add `memory/` here. These patterns guard against private/scratch leaks.
-.claude/cache/
-.claude/local/
-.claude/sessions/
-.claude/projects/
-.claude/state/
+.claude/
 *.private.md
 *.scratch.md
 .scratch/
+
+# Long-form project memory for Claude (local-only)
+memory/
+
+# Tool specifications (local design notes, not part of the public artifact)
+.specification/
+
+# Design playground / Figma exports (local-only)
+design/
 
 # Marketing artifacts (LinkedIn drafts, social cards, 100-day plan — local only)
 marketing/
@@ -58,7 +61,3 @@ launch.json
 src/locales/_synced/
 playwright-report/
 test-results/
-
-# .claude harness config: keep settings.json + commands/, hide local-only files
-.claude/settings.local.json
-.claude/launch.json
