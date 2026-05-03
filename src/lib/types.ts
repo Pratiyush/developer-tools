@@ -39,5 +39,9 @@ export interface ToolModule<S> extends ToolMeta {
   render(host: HTMLElement, initial: S): { dispose(): void };
 }
 
-/** Read-only ordered list of all known tool modules. */
-export type ToolRegistry = readonly ToolModule<unknown>[];
+/**
+ * Read-only ordered list of all known tool modules. Uses `never` for the
+ * state generic so the empty registry type-checks under strict rules.
+ * Tool registrations widen this via the `as` assertion in the registry file.
+ */
+export type ToolRegistry = readonly ToolModule<never>[];
