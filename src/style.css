@@ -603,10 +603,10 @@ select {
 }
 
 .dt-panel__label {
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--fg-faint);
+  color: var(--fg-muted);
   font-weight: 600;
   margin-bottom: var(--sp-2);
   display: block;
