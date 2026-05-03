@@ -51,7 +51,7 @@ marketing/
 
 # Reference / exploration / out-of-scope folders (local-only, never push)
 .analysis/
-tools/
+/tools/
 .playwright-mcp/
 launch.json
 
