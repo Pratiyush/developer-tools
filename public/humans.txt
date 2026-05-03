@@ -1,0 +1,18 @@
+/* TEAM */
+Maintainer: Pratiyush Kumar
+Contact: pratiyush1 [at] gmail.com
+GitHub: @Pratiyush
+Location: India
+
+/* THANKS */
+- it-tools (Corentin L) — inspiration baseline
+- The TypeScript, Vite, and pnpm communities
+- Tolgee — translation management
+- Free Software Foundation — for the AGPL
+
+/* SITE */
+Last update: 2026-04-30
+Standards: HTML5, ES2022, WCAG 2.1 AA, RFC 9116
+Components: TypeScript, Vite, pnpm, Vitest, Playwright, axe-core, consola, Tolgee
+Software: VS Code, Claude Code
+License: AGPL-3.0-only

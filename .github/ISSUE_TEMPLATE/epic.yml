@@ -1,0 +1,82 @@
+name: Epic — Tool
+description: Top-level issue for one tool. Sub-issues will be linked.
+title: '[Epic] <tool-slug>'
+labels:
+  - epic
+  - tool
+body:
+  - type: input
+    id: tool-slug
+    attributes:
+      label: Tool slug
+      description: Kebab-case slug for the tool. Matches the directory and spec filename.
+      placeholder: base64-string-converter
+    validations:
+      required: true
+
+  - type: input
+    id: tool-number
+    attributes:
+      label: Tool number
+      description: Three-digit tool number (NNN) from the catalog.
+      placeholder: '001'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Pick the catalog category this tool belongs to.
+      options:
+        - 01-encoding
+        - 02-crypto-hashing
+        - 03-auth-secrets
+        - 04-data-formats
+        - 05-text-string
+        - 06-network-web
+        - 07-time-date
+        - 08-math-calc
+        - 09-graphics-media
+        - 10-validators-parsers
+        - 11-dev-utilities
+        - 12-device-system
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-link
+    attributes:
+      label: Spec link
+      description: Path to the tool's specification file.
+      placeholder: .specification/<slug>.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: sub-issue-plan
+    attributes:
+      label: Sub-issue plan
+      description: Markdown checklist of expected sub-issues. One shippable PR per sub-issue.
+      value: |
+        - [ ] scaffold — directory, route, empty component, smoke test
+        - [ ] logic — pure functions + unit tests
+        - [ ] url-state — deep-link encoding/decoding
+        - [ ] ui — inputs, outputs, copy/clear, error states
+        - [ ] integration tests — end-to-end happy path + edge cases
+        - [ ] accessibility — keyboard, ARIA, focus order
+        - [ ] docs — README entry, in-app help, examples
+    validations:
+      required: true
+
+  - type: textarea
+    id: ux-requirements
+    attributes:
+      label: UX requirements
+      description: Clicks-to-complete budget, deep-link rules, and accessibility expectations.
+      value: |
+        - Clicks-to-complete budget:
+        - Deep-link rules (which inputs round-trip via URL):
+        - Accessibility (keyboard paths, ARIA roles, focus management):
+    validations:
+      required: true

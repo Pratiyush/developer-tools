@@ -1,0 +1,58 @@
+name: Tool request
+description: Suggest a new tool for the catalog.
+title: '[Tool request] <tool-name>'
+labels:
+  - tool-request
+body:
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool name
+      placeholder: JWT debugger
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-it-does
+    attributes:
+      label: What it does
+      description: One paragraph describing the tool's job-to-be-done.
+    validations:
+      required: true
+
+  - type: input
+    id: library-or-api
+    attributes:
+      label: Library or browser API used
+      description: The primary client-side library or Web API this tool would rely on.
+      placeholder: SubtleCrypto / TextEncoder / Intl.DateTimeFormat
+    validations:
+      required: true
+
+  - type: textarea
+    id: client-side-rationale
+    attributes:
+      label: Why it can be done client-side
+      description: Explain why no server is required (no secrets, deterministic, offline-friendly, etc.).
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
+
+  - type: input
+    id: reference
+    attributes:
+      label: Reference
+      description: Link to a similar tool, spec, or RFC.
+      placeholder: https://...
+    validations:
+      required: false

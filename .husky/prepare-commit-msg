@@ -1,0 +1,7 @@
+#!/bin/sh
+# Strip AI co-author / attribution lines as a safety net.
+# The project rule is that commits are authored solely by Pratiyush.
+FILE="$1"
+# Remove any line mentioning Claude or Co-authored-by Claude (case-insensitive).
+sed -i.bak -E '/[Cc]laude/d; /[Cc]o-authored-by:.*[Cc]laude/d; /Generated with .*[Aa]nthropic/d' "$FILE" 2>/dev/null
+rm -f "${FILE}.bak"

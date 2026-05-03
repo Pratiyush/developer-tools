@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Tool spec catalog
+    url: https://github.com/Pratiyush/developer-tools/blob/main/.specification/_index.md
+    about: Browse the candidate tool catalog before requesting a new tool.

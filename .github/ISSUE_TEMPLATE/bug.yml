@@ -1,0 +1,56 @@
+name: Bug
+description: Report a defect in an existing tool.
+title: '[Bug] <tool-slug>: <short summary>'
+labels:
+  - bug
+body:
+  - type: input
+    id: tool-slug
+    attributes:
+      label: Tool slug
+      placeholder: base64-string-converter
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser + version
+      placeholder: Chrome 124 / Firefox 125 / Safari 17.4
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Numbered, minimal steps that reliably reproduce the bug.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: input
+    id: url-with-state
+    attributes:
+      label: URL with state
+      description: Optional. Paste the deep-link that reproduces the bug.
+      placeholder: https://pratiyush.github.io/developer-tools/...
+    validations:
+      required: false

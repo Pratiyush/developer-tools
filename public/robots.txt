@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pratiyush.github.io/developer-tools/sitemap.xml
