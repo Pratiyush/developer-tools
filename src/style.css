@@ -827,6 +827,79 @@ select {
   border-color: var(--accent);
 }
 
+/* ─── Paste button feedback ─── */
+
+.dt-paste {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  border: var(--border-w) solid var(--line);
+  background: var(--bg-surface);
+  color: var(--fg-muted);
+  transition:
+    background var(--anim-fast),
+    color var(--anim-fast);
+}
+
+.dt-paste:hover {
+  background: var(--bg-surface-hover);
+  color: var(--fg-strong);
+}
+
+.dt-paste--pasted {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ─── Topbar language switcher (flag + locale) ─── */
+
+.dt-language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--fg-default);
+  border: var(--border-w) solid transparent;
+  transition:
+    background var(--anim-fast),
+    border-color var(--anim-fast),
+    color var(--anim-fast);
+}
+
+.dt-language-switcher:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--line);
+  color: var(--fg-strong);
+}
+
+.dt-language-switcher:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.dt-language-switcher__flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dt-language-switcher__code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+.dt-language-switcher:hover .dt-language-switcher__code {
+  color: var(--fg-default);
+}
+
 /* ─── Day 1: base64-string-converter (Claude-style two-pane) ─── */
 
 .dt-base64 {
@@ -1041,6 +1114,46 @@ select {
   border: var(--border-w) solid var(--line-strong);
 }
 
+/* ─── Paste button on the input pane (subtler than the primary copy CTA) ─── */
+.dt-base64__paste {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bg-surface-2);
+  color: var(--fg-default);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  transition:
+    background var(--anim-fast),
+    border-color var(--anim-fast),
+    color var(--anim-fast),
+    transform 80ms ease;
+}
+
+.dt-base64__paste:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--line-strong);
+  color: var(--fg-strong);
+}
+
+.dt-base64__paste:active {
+  transform: scale(0.97);
+}
+
+.dt-base64__paste:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.dt-base64__paste.dt-paste--pasted {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ─── Swap button between panes ─── */
 .dt-base64__swap {
   align-self: center;
@@ -1085,5 +1198,228 @@ select {
   }
   .dt-base64__swap:hover {
     transform: rotate(270deg);
+  }
+}
+
+/* ─── Explainer / "how it works" block beneath the workspace ─── */
+.dt-base64__explainer {
+  margin-top: var(--sp-8);
+  padding: var(--sp-6) var(--sp-6);
+  background: var(--bg-surface);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.dt-base64__explainer-h {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg-strong);
+}
+
+.dt-base64__explainer-p {
+  margin: 0;
+  color: var(--fg-default);
+  line-height: var(--lh-base);
+  max-width: 72ch;
+}
+
+.dt-base64__explainer-p code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 0 4px;
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--fg-strong);
+}
+
+.dt-base64__explainer-eg-label {
+  margin: var(--sp-2) 0 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--fg-muted);
+}
+
+.dt-base64__explainer-eg {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  background: var(--bg-app);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--fg-strong);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.dt-base64__explainer-warn {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-surface-2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--fg-default);
+  line-height: var(--lh-base);
+  max-width: 72ch;
+}
+
+.dt-base64__explainer-cta {
+  align-self: flex-start;
+  margin-top: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  transition:
+    filter var(--anim-fast),
+    transform 80ms ease;
+}
+
+.dt-base64__explainer-cta:hover {
+  filter: brightness(1.1);
+  text-decoration: none;
+}
+
+.dt-base64__explainer-cta:active {
+  transform: scale(0.98);
+}
+
+/* ─── Day 2: base64-basic-auth ─── */
+
+.dt-basicauth {
+  display: grid;
+  gap: var(--sp-4);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-4) 0;
+}
+
+.dt-basicauth__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.dt-basicauth__intro {
+  margin: 0;
+  color: var(--fg-muted);
+  max-width: 72ch;
+  line-height: var(--lh-base);
+}
+
+.dt-basicauth__workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+.dt-basicauth__pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+}
+
+.dt-basicauth__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.dt-basicauth__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.dt-basicauth__field-label {
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+.dt-basicauth__field-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.dt-basicauth__field-row > input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+}
+
+.dt-basicauth__suffixwrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  flex-shrink: 0;
+}
+
+.dt-basicauth__reveal {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  padding: var(--sp-1) var(--sp-2);
+  border: var(--border-w) solid var(--line);
+  background: var(--bg-surface);
+  color: var(--fg-muted);
+  border-radius: var(--radius-sm);
+  transition:
+    background var(--anim-fast),
+    color var(--anim-fast);
+}
+
+.dt-basicauth__reveal:hover {
+  background: var(--bg-surface-hover);
+  color: var(--fg-strong);
+}
+
+.dt-basicauth__field-copy {
+  font-size: var(--fs-xs);
+  padding: var(--sp-1) var(--sp-2);
+}
+
+.dt-basicauth__header-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.dt-basicauth__foot-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.dt-basicauth__status {
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  line-height: var(--lh-base);
+  max-width: 60ch;
+}
+
+.dt-basicauth__status--err {
+  color: var(--accent);
+}
+
+@media (max-width: 880px) {
+  .dt-basicauth__workspace {
+    grid-template-columns: 1fr;
   }
 }

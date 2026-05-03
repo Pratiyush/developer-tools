@@ -1,6 +1,7 @@
-import { translate } from '../../lib/i18n';
+import { translate, getLocale } from '../../lib/i18n';
 import type { Theme } from '../../lib/theme';
 import { button, icon } from '../primitives';
+import { languageSwitcher } from './language-switcher';
 import { themeSwitcher } from './theme-switcher';
 
 export interface TopbarHandle {
@@ -30,6 +31,9 @@ export function topbar(opts: TopbarOptions): TopbarHandle {
 
   const right = document.createElement('div');
   right.classList.add('dt-topbar__right');
+
+  const langSwitcher = languageSwitcher(getLocale());
+  right.appendChild(langSwitcher.el);
 
   const switcher = themeSwitcher(opts.initialTheme);
   right.appendChild(switcher.el);
@@ -74,6 +78,7 @@ export function topbar(opts: TopbarOptions): TopbarHandle {
     el,
     setCrumb,
     dispose() {
+      langSwitcher.dispose();
       switcher.dispose();
     },
   };

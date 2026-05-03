@@ -16,5 +16,8 @@ export type { InputOptions } from './input';
 export { panel } from './panel';
 export type { PanelOptions } from './panel';
 
+export { pasteButton } from './paste-button';
+export type { PasteButtonHandle, PasteButtonOptions } from './paste-button';
+
 export { textarea } from './textarea';
 export type { TextareaOptions } from './textarea';

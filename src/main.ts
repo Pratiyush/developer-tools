@@ -1,35 +1,57 @@
 import './style.css';
-import { initI18n, translate } from './lib/i18n';
+import { initI18n, onLocaleChange, translate } from './lib/i18n';
 import { initTheme } from './lib/theme';
 import { TOOLS } from './tools/index';
 import { home } from './ui/home';
 import { illustration } from './ui/illustrations';
-import { layout } from './ui/layout';
+import { layout, type LayoutHandle } from './ui/layout';
 
 const REPO_URL = 'https://github.com/Pratiyush/developer-tools';
 const REDIRECT_KEY = 'dt.deep-redirect';
 
-const host = document.querySelector<HTMLElement>('#app');
-if (!host) {
+const hostMaybe = document.querySelector<HTMLElement>('#app');
+if (!hostMaybe) {
   throw new Error('Mount target #app not found');
 }
+const host: HTMLElement = hostMaybe;
 
 initI18n();
 const theme = initTheme();
 
-const ui = layout({
-  host,
-  initialTheme: theme,
-  tools: TOOLS,
-  repoUrl: REPO_URL,
-  onSelectTool: (id) => {
-    if (id) routeTo(id);
-    else routeTo(null);
-  },
+/** Active tool's dispose handle; cleared on every route change. Declared
+ *  before {@link buildLayout} so the function body can reference it without
+ *  hitting a temporal-dead-zone ReferenceError on initial mount. */
+let activeToolDispose: (() => void) | null = null;
+
+let ui: LayoutHandle = buildLayout();
+
+onLocaleChange(() => {
+  // Tear down the previous layout (also disposes tool/topbar/sidebar).
+  ui.dispose();
+  ui = buildLayout();
+  routeTo(readHash());
 });
 
-/** Active tool's dispose handle; cleared on every route change. */
-let activeToolDispose: (() => void) | null = null;
+/** Rebuilds the entire layout with the current locale's translations.
+ *  Used on first paint and again when the topbar language switcher fires —
+ *  every component captures its translations at construction time, so a
+ *  full re-mount is the simplest way to reflect a runtime locale change. */
+function buildLayout(): LayoutHandle {
+  if (activeToolDispose) {
+    activeToolDispose();
+    activeToolDispose = null;
+  }
+  return layout({
+    host,
+    initialTheme: theme,
+    tools: TOOLS,
+    repoUrl: REPO_URL,
+    onSelectTool: (id) => {
+      if (id) routeTo(id);
+      else routeTo(null);
+    },
+  });
+}
 
 function routeTo(id: string | null): void {
   // Tear down any previously mounted tool first.

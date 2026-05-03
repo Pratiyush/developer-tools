@@ -1,6 +1,7 @@
 import { translate } from '../../../lib/i18n';
 import { copyButton, type CopyButtonHandle } from '../../../ui/primitives/copy-button';
 import { panel } from '../../../ui/primitives/panel';
+import { pasteButton, type PasteButtonHandle } from '../../../ui/primitives/paste-button';
 import { textarea } from '../../../ui/primitives/textarea';
 import { base64ToText, isValidBase64, textToBase64 } from './logic';
 import { type Mode, type State } from './url-state';
@@ -60,32 +61,69 @@ export function render(
 
   root.appendChild(controls);
 
-  // ─── Two-pane workspace: input ⇄ output ────────────────────────────────
+  // ─── Two-pane workspace: source ⇄ result ───────────────────────────────
+  // The source pane (left) is editable — text in encode mode, base64 in decode.
+  // The result pane (right) is read-only and shows the converted form. The
+  // visible labels swap with the mode so the header tells the user what kind
+  // of content lives in each pane.
   const workspace = doc.createElement('div');
   workspace.classList.add('dt-base64__workspace');
 
-  // Input pane
-  const inputArea = textarea({
+  // Source (editable) pane
+  const sourceArea = textarea({
     value: state.input,
-    placeholder: translate('tools.base64.input.placeholder'),
-    ariaLabel: translate('tools.base64.input.aria'),
+    placeholder: placeholderFor(state.mode),
+    ariaLabel: translate('tools.base64.source.aria'),
     rows: 10,
     onInput: (value) => {
       update({ input: value });
     },
   });
-  inputArea.classList.add('dt-base64__textarea');
+  sourceArea.classList.add('dt-base64__textarea');
 
-  const inputPaneBody = doc.createElement('div');
-  inputPaneBody.classList.add('dt-base64__pane-body');
-  inputPaneBody.appendChild(inputArea);
+  const sourcePaneBody = doc.createElement('div');
+  sourcePaneBody.classList.add('dt-base64__pane-body');
+  sourcePaneBody.appendChild(sourceArea);
 
-  const inputPane = panel({
-    label: translate('tools.base64.input.label'),
-    body: inputPaneBody,
+  // Paste button on the source pane — symmetric with copy on the result pane
+  const pasteHandle: PasteButtonHandle = pasteButton({
+    label: translate('tools.base64.paste'),
+    pastedLabel: translate('tools.base64.pasted'),
+    onPaste: (text) => {
+      sourceArea.value = text;
+      update({ input: text });
+      sourceArea.focus();
+    },
+    onError: () => {
+      // Surface a transient hint via the textarea title — keeps us out of
+      // alert/popup territory and respects the funny-but-informative rule.
+      const previous = sourceArea.title;
+      sourceArea.title = translate('error.paste.failed');
+      setTimeout(() => {
+        sourceArea.title = previous;
+      }, 4000);
+    },
+  });
+  pasteHandle.el.classList.add('dt-base64__paste');
+  pasteHandle.el.setAttribute('aria-label', translate('tools.base64.paste.aria'));
+  disposers.push(() => {
+    pasteHandle.dispose();
+  });
+
+  const sourceFoot = doc.createElement('div');
+  sourceFoot.classList.add('dt-base64__pane-foot');
+  const sourceLengths = doc.createElement('span');
+  sourceLengths.classList.add('dt-base64__lengths');
+  sourceFoot.append(sourceLengths, pasteHandle.el);
+  sourcePaneBody.appendChild(sourceFoot);
+
+  const sourcePane = panel({
+    label: sourceLabel(state.mode),
+    body: sourcePaneBody,
     className: 'dt-base64__pane',
   });
-  workspace.appendChild(inputPane);
+  const sourceLabelEl = sourcePane.querySelector<HTMLDivElement>('.dt-panel__label');
+  workspace.appendChild(sourcePane);
 
   // Swap button — circular icon between panes
   const swap = doc.createElement('button');
@@ -98,25 +136,25 @@ export function render(
     const computed = computeOutput(state);
     const nextMode: Mode = state.mode === 'encode' ? 'decode' : 'encode';
     update({ mode: nextMode, input: computed });
-    inputArea.value = computed;
+    sourceArea.value = computed;
     setActiveTab(nextMode);
   });
   workspace.appendChild(swap);
 
-  // Output pane (monospace — output is code)
-  const outputArea = textarea({
+  // Result (read-only) pane — monospace because it's code-like content
+  const resultArea = textarea({
     value: '',
-    ariaLabel: translate('tools.base64.output.aria'),
+    ariaLabel: translate('tools.base64.result.aria'),
     rows: 10,
     readonly: true,
   });
-  outputArea.classList.add('dt-base64__textarea', 'dt-base64__textarea--mono');
+  resultArea.classList.add('dt-base64__textarea', 'dt-base64__textarea--mono');
 
-  const lengths = doc.createElement('span');
-  lengths.classList.add('dt-base64__lengths');
+  const resultLengths = doc.createElement('span');
+  resultLengths.classList.add('dt-base64__lengths');
 
   const copyHandle: CopyButtonHandle = copyButton({
-    text: () => outputArea.value,
+    text: () => resultArea.value,
     label: translate('tools.base64.copy'),
   });
   copyHandle.el.classList.add('dt-base64__copy');
@@ -124,23 +162,27 @@ export function render(
     copyHandle.dispose();
   });
 
-  const outputPaneBody = doc.createElement('div');
-  outputPaneBody.classList.add('dt-base64__pane-body');
-  outputPaneBody.appendChild(outputArea);
+  const resultPaneBody = doc.createElement('div');
+  resultPaneBody.classList.add('dt-base64__pane-body');
+  resultPaneBody.appendChild(resultArea);
 
-  const outputFoot = doc.createElement('div');
-  outputFoot.classList.add('dt-base64__pane-foot');
-  outputFoot.append(lengths, copyHandle.el);
-  outputPaneBody.appendChild(outputFoot);
+  const resultFoot = doc.createElement('div');
+  resultFoot.classList.add('dt-base64__pane-foot');
+  resultFoot.append(resultLengths, copyHandle.el);
+  resultPaneBody.appendChild(resultFoot);
 
-  const outputPane = panel({
-    label: translate('tools.base64.output.label'),
-    body: outputPaneBody,
+  const resultPane = panel({
+    label: resultLabel(state.mode),
+    body: resultPaneBody,
     className: 'dt-base64__pane',
   });
-  workspace.appendChild(outputPane);
+  const resultLabelEl = resultPane.querySelector<HTMLDivElement>('.dt-panel__label');
+  workspace.appendChild(resultPane);
 
   root.appendChild(workspace);
+
+  // ─── Explainer (how Base64 works, worked example, common uses) ────────
+  root.appendChild(buildExplainer(doc));
 
   // Initial paint
   setActiveTab(state.mode);
@@ -180,13 +222,19 @@ export function render(
 
   function update(patch: Partial<State>): void {
     const next: State = { ...state, ...patch };
+    const modeChanged = next.mode !== state.mode;
     state = next;
     setActiveTab(next.mode);
     if (toggleInput.checked !== next.urlsafe) {
       toggleInput.checked = next.urlsafe;
     }
-    if (inputArea.value !== next.input) {
-      inputArea.value = next.input;
+    if (sourceArea.value !== next.input) {
+      sourceArea.value = next.input;
+    }
+    if (modeChanged) {
+      if (sourceLabelEl) sourceLabelEl.textContent = sourceLabel(next.mode);
+      if (resultLabelEl) resultLabelEl.textContent = resultLabel(next.mode);
+      sourceArea.placeholder = placeholderFor(next.mode);
     }
     refreshOutput();
     options.onStateChange?.(next);
@@ -194,13 +242,11 @@ export function render(
 
   function refreshOutput(): void {
     const value = computeOutput(state);
-    outputArea.value = value;
+    resultArea.value = value;
     const inLen = state.input.length;
     const outLen = value.length;
-    lengths.textContent = translate('tools.base64.lengths', {
-      in: String(inLen),
-      out: String(outLen),
-    });
+    sourceLengths.textContent = translate('tools.base64.chars', { n: String(inLen) });
+    resultLengths.textContent = translate('tools.base64.chars', { n: String(outLen) });
   }
 }
 
@@ -220,4 +266,91 @@ function computeOutput(state: State): string {
   } catch {
     return '';
   }
+}
+
+function sourceLabel(mode: Mode): string {
+  return mode === 'encode'
+    ? translate('tools.base64.label.text')
+    : translate('tools.base64.label.base64');
+}
+
+function resultLabel(mode: Mode): string {
+  return mode === 'encode'
+    ? translate('tools.base64.label.base64')
+    : translate('tools.base64.label.text');
+}
+
+function placeholderFor(mode: Mode): string {
+  return mode === 'encode'
+    ? translate('tools.base64.placeholder.encode')
+    : translate('tools.base64.placeholder.decode');
+}
+
+/** Builds the explainer block — heading, prose paragraphs, a worked example
+ *  table, and a deep link to the Basic Auth helper. The example bytes/bits
+ *  are universal and stay in code (not i18n) so they render the same in
+ *  every locale. */
+function buildExplainer(doc: Document): HTMLElement {
+  const section = doc.createElement('section');
+  section.classList.add('dt-base64__explainer');
+
+  const heading = doc.createElement('h2');
+  heading.classList.add('dt-base64__explainer-h');
+  heading.textContent = translate('tools.base64.explainer.heading');
+  section.appendChild(heading);
+
+  section.appendChild(makeP(doc, translate('tools.base64.explainer.intro')));
+  section.appendChild(makeP(doc, translate('tools.base64.explainer.mechanic')));
+
+  const exampleLabel = doc.createElement('p');
+  exampleLabel.classList.add('dt-base64__explainer-eg-label');
+  exampleLabel.textContent = translate('tools.base64.explainer.example.label');
+  section.appendChild(exampleLabel);
+
+  // Worked example: "Cat" → 0x43 0x61 0x74 → 6-bit groups → Q2F0
+  const example = doc.createElement('pre');
+  example.classList.add('dt-base64__explainer-eg');
+  example.setAttribute('aria-label', 'Worked example: encoding "Cat" to Q2F0');
+  example.textContent = [
+    'input    C        a        t',
+    'bytes    01000011 01100001 01110100',
+    '6-bit    010000   110110   000101   110100',
+    'index    16       54       5        52',
+    'output   Q        2        F        0',
+  ].join('\n');
+  section.appendChild(example);
+
+  section.appendChild(makeP(doc, translate('tools.base64.explainer.uses')));
+
+  const warn = doc.createElement('p');
+  warn.classList.add('dt-base64__explainer-warn');
+  warn.textContent = translate('tools.base64.explainer.warning');
+  section.appendChild(warn);
+
+  const tryAuth = doc.createElement('a');
+  tryAuth.classList.add('dt-base64__explainer-cta');
+  tryAuth.href = '#/base64-basic-auth';
+  tryAuth.textContent = translate('tools.base64.explainer.tryauth');
+  section.appendChild(tryAuth);
+
+  return section;
+}
+
+function makeP(doc: Document, text: string): HTMLParagraphElement {
+  const p = doc.createElement('p');
+  p.classList.add('dt-base64__explainer-p');
+  // Inline `code` formatting — split on backticks and wrap odd indices.
+  const parts = text.split('`');
+  for (let i = 0; i < parts.length; i += 1) {
+    const part = parts[i];
+    if (part === undefined) continue;
+    if (i % 2 === 0) {
+      p.appendChild(doc.createTextNode(part));
+    } else {
+      const code = doc.createElement('code');
+      code.textContent = part;
+      p.appendChild(code);
+    }
+  }
+  return p;
 }
