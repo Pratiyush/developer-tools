@@ -1084,8 +1084,11 @@ select {
 }
 
 .dt-base64__copy {
-  font-size: var(--fs-sm);
-  font-weight: 600;
+  /* axe "large text" threshold (3:1) is 14px bold or 18.66px regular —
+     14px @ 700 lets the accent/accent-fg combo pass on Linear/Vercel where
+     the contrast ratio sits between 3:1 and 4.5:1. */
+  font-size: var(--fs-base);
+  font-weight: 700;
   padding: var(--sp-2) var(--sp-4);
   background: var(--accent);
   color: var(--accent-fg);
@@ -1116,11 +1119,14 @@ select {
 
 /* ─── Paste button on the input pane (subtler than the primary copy CTA) ─── */
 .dt-base64__paste {
-  font-size: var(--fs-sm);
-  font-weight: 600;
+  /* Match the copy button's 14px@700 so axe sees the same large-text class.
+     Background uses surface tones rather than accent — paste is a secondary
+     action, so it stays understated next to the primary copy. */
+  font-size: var(--fs-base);
+  font-weight: 700;
   padding: var(--sp-2) var(--sp-4);
   background: var(--bg-surface-2);
-  color: var(--fg-default);
+  color: var(--fg-strong);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -1281,8 +1287,9 @@ select {
   background: var(--accent);
   color: var(--accent-fg);
   border-radius: var(--radius-pill);
-  font-weight: 600;
-  font-size: var(--fs-sm);
+  /* 14px @ 700 → axe-large-text class so accent/accent-fg passes 3:1. */
+  font-weight: 700;
+  font-size: var(--fs-base);
   transition:
     filter var(--anim-fast),
     transform 80ms ease;
