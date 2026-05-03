@@ -33,6 +33,8 @@ const es: Translations = {
   'sidebar.foot.line2': 'Hecho por Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repositorio de GitHub',
+  'topbar.language.aria': 'Idioma',
+  'topbar.language.label': 'Idioma',
   'tool.placeholder.title': 'Herramienta aún no implementada',
   'tool.placeholder.body': 'Lógica de la herramienta disponible; capa de renderizado pendiente.',
   'footer.privacy': 'Privacidad',
@@ -47,9 +49,65 @@ const es: Translations = {
     'Algo se rompió. La causa no está del todo clara, ni siquiera para nosotros. Recargar suele ayudar.',
   'error.copy.failed':
     'El portapapeles dijo no. Probablemente sea cuestión de permisos — revisa la configuración de tu navegador y prueba otra vez.',
+  'error.paste.failed':
+    'El portapapeles guardó silencio. Los navegadores piden permiso para pegar — concédelo, o pega con ⌘/Ctrl-V en el campo.',
   'error.parse.failed':
     'Eso no parece del todo correcto. Comprueba si hay caracteres sueltos o formato erróneo y vuelve a intentarlo.',
   'error.back.home': '← Volver al inicio',
+  'tools.base64.mode.aria': 'Codificar o decodificar',
+  'tools.base64.mode.encode': 'Codificar',
+  'tools.base64.mode.decode': 'Decodificar',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sin relleno)',
+  'tools.base64.urlsafe.aria': 'Usar alfabeto base64 URL-safe',
+  'tools.base64.label.text': 'Texto',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Entrada del conversor base64',
+  'tools.base64.result.aria': 'Salida del conversor base64',
+  'tools.base64.placeholder.encode':
+    'Escribe o pega — UTF-8, emoji, segmentos JWT. Todo se reconvierte sin pérdida.',
+  'tools.base64.placeholder.decode':
+    'Pega una cadena base64 — segmentos JWT y variantes URL-safe se decodifican igual.',
+  'tools.base64.swap': 'Intercambiar ⇄',
+  'tools.base64.copy': 'Copiar',
+  'tools.base64.copied': 'Copiado',
+  'tools.base64.paste': 'Pegar',
+  'tools.base64.paste.aria': 'Pegar desde el portapapeles',
+  'tools.base64.pasted': 'Pegado',
+  'tools.base64.chars': '{n} caracteres',
+  'tools.base64.lengths': '{in} caracteres entrada · {out} caracteres salida',
+  'tools.base64.explainer.heading': 'Cómo funciona Base64',
+  'tools.base64.explainer.intro':
+    'Base64 empaqueta bytes arbitrarios en 64 caracteres ASCII imprimibles (A–Z, a–z, 0–9, + /). Existe para que los binarios sobrevivan canales de solo texto: campos JSON, URLs, cuerpos de correo y cabeceras HTTP.',
+  'tools.base64.explainer.mechanic':
+    'Toma 3 bytes (24 bits), parte en 4 grupos de 6 bits, busca cada grupo en el alfabeto y emite 4 caracteres ASCII. El `=` final completa la salida a un múltiplo de 4 cuando la entrada no encaja.',
+  'tools.base64.explainer.example.label': 'Ejemplo guiado — codificar "Cat"',
+  'tools.base64.explainer.uses':
+    'Lo verás en HTTP Basic Auth (`Authorization: Basic …`), segmentos de JWT, URIs `data:` en CSS/HTML y adjuntos de correo (MIME).',
+  'tools.base64.explainer.warning':
+    'No es cifrado. Cualquiera con la cadena codificada puede decodificarla. Trata base64 como un sobre de transporte, nunca como un secreto.',
+  'tools.base64.explainer.tryauth': 'Prueba el ayudante de Basic Auth →',
+  'tools.basicauth.mode.aria': 'Construir o leer cabecera',
+  'tools.basicauth.mode.encode': 'Construir',
+  'tools.basicauth.mode.decode': 'Leer',
+  'tools.basicauth.username.label': 'Usuario',
+  'tools.basicauth.username.aria': 'Usuario para Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Contraseña',
+  'tools.basicauth.password.aria': 'Contraseña para Basic auth',
+  'tools.basicauth.password.placeholder': 'ábrete sésamo',
+  'tools.basicauth.password.show': 'Mostrar',
+  'tools.basicauth.password.hide': 'Ocultar',
+  'tools.basicauth.header.label': 'Cabecera Authorization',
+  'tools.basicauth.header.aria': 'Valor de la cabecera HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Copiar cabecera',
+  'tools.basicauth.copy.username': 'Copiar usuario',
+  'tools.basicauth.copy.password': 'Copiar contraseña',
+  'tools.basicauth.paste.header': 'Pegar cabecera',
+  'tools.basicauth.invalid':
+    'Esa cabecera no se pudo leer. Asegúrate de que tenga la forma `Basic <base64>` y de que el contenido decodificado contenga `:` entre usuario y contraseña.',
+  'tools.basicauth.intro':
+    'Construye y lee la cabecera `Authorization: Basic <base64>` que usa la autenticación HTTP Basic. Todo en local — las credenciales nunca salen de tu navegador.',
 };
 
 const fr: Translations = {
@@ -71,6 +129,8 @@ const fr: Translations = {
   'sidebar.foot.line2': 'Réalisé par Pratiyush.',
   'topbar.theme.aria': 'Thème',
   'topbar.github.aria': 'Dépôt GitHub',
+  'topbar.language.aria': 'Langue',
+  'topbar.language.label': 'Langue',
   'tool.placeholder.title': 'Outil non encore implémenté',
   'tool.placeholder.body': 'Logique de l’outil disponible ; couche de rendu en attente.',
   'footer.privacy': 'Confidentialité',
@@ -85,9 +145,65 @@ const fr: Translations = {
     'Quelque chose a cassé. La cause n’est pas tout à fait claire, même pour nous. Recharger aide souvent.',
   'error.copy.failed':
     'Le presse-papiers a refusé. Sans doute une histoire de permissions — vérifiez votre navigateur et réessayez.',
+  'error.paste.failed':
+    'Le presse-papiers est resté muet. Les navigateurs gèrent le coller derrière une permission — accordez-la, ou collez avec ⌘/Ctrl-V dans le champ.',
   'error.parse.failed':
     'Ça n’a pas l’air tout à fait juste. Vérifiez les caractères en trop ou le mauvais format et réessayez.',
   'error.back.home': '← Retour à l’accueil',
+  'tools.base64.mode.aria': 'Encoder ou décoder',
+  'tools.base64.mode.encode': 'Encoder',
+  'tools.base64.mode.decode': 'Décoder',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sans padding)',
+  'tools.base64.urlsafe.aria': 'Utiliser l’alphabet base64 URL-safe',
+  'tools.base64.label.text': 'Texte',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Entrée du convertisseur base64',
+  'tools.base64.result.aria': 'Sortie du convertisseur base64',
+  'tools.base64.placeholder.encode':
+    'Tapez ou collez — UTF-8, emoji, segments JWT. Tout fait l’aller-retour proprement.',
+  'tools.base64.placeholder.decode':
+    'Collez une chaîne base64 — les segments JWT et les variantes URL-safe se décodent aussi.',
+  'tools.base64.swap': 'Échanger ⇄',
+  'tools.base64.copy': 'Copier',
+  'tools.base64.copied': 'Copié',
+  'tools.base64.paste': 'Coller',
+  'tools.base64.paste.aria': 'Coller depuis le presse-papiers',
+  'tools.base64.pasted': 'Collé',
+  'tools.base64.chars': '{n} caractères',
+  'tools.base64.lengths': '{in} caractères entrée · {out} caractères sortie',
+  'tools.base64.explainer.heading': 'Comment fonctionne Base64',
+  'tools.base64.explainer.intro':
+    'Base64 empaquette des octets arbitraires dans 64 caractères ASCII imprimables (A–Z, a–z, 0–9, + /). Il existe pour que les binaires survivent à des canaux purement texte : champs JSON, URLs, corps de mail, en-têtes HTTP.',
+  'tools.base64.explainer.mechanic':
+    'Prends 3 octets (24 bits), découpe en 4 groupes de 6 bits, cherche chaque groupe dans l’alphabet et émets 4 caractères ASCII. Le `=` final complète la sortie à un multiple de 4 quand l’entrée ne tombe pas juste.',
+  'tools.base64.explainer.example.label': 'Exemple détaillé — encoder « Cat »',
+  'tools.base64.explainer.uses':
+    'On le retrouve dans HTTP Basic Auth (`Authorization: Basic …`), les segments JWT, les URIs `data:` en CSS/HTML, et les pièces jointes mail (MIME).',
+  'tools.base64.explainer.warning':
+    'Ce n’est pas du chiffrement. Quiconque a la chaîne encodée peut la décoder. Considère base64 comme une enveloppe de transport, jamais comme un secret.',
+  'tools.base64.explainer.tryauth': 'Essayer l’aide Basic Auth →',
+  'tools.basicauth.mode.aria': 'Construire ou lire l’en-tête',
+  'tools.basicauth.mode.encode': 'Construire',
+  'tools.basicauth.mode.decode': 'Lire',
+  'tools.basicauth.username.label': 'Identifiant',
+  'tools.basicauth.username.aria': 'Identifiant pour Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Mot de passe',
+  'tools.basicauth.password.aria': 'Mot de passe pour Basic auth',
+  'tools.basicauth.password.placeholder': 'sésame ouvre-toi',
+  'tools.basicauth.password.show': 'Afficher',
+  'tools.basicauth.password.hide': 'Masquer',
+  'tools.basicauth.header.label': 'En-tête Authorization',
+  'tools.basicauth.header.aria': 'Valeur de l’en-tête HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Copier l’en-tête',
+  'tools.basicauth.copy.username': 'Copier l’identifiant',
+  'tools.basicauth.copy.password': 'Copier le mot de passe',
+  'tools.basicauth.paste.header': 'Coller l’en-tête',
+  'tools.basicauth.invalid':
+    'Cet en-tête n’a pas pu être lu. Vérifie qu’il a la forme `Basic <base64>` et que la charge décodée contient un `:` entre identifiant et mot de passe.',
+  'tools.basicauth.intro':
+    'Construit et lit l’en-tête `Authorization: Basic <base64>` utilisé par l’authentification HTTP Basic. Tout en local — les identifiants ne quittent jamais ton navigateur.',
 };
 
 const de: Translations = {
@@ -109,6 +225,8 @@ const de: Translations = {
   'sidebar.foot.line2': 'Erstellt von Pratiyush.',
   'topbar.theme.aria': 'Thema',
   'topbar.github.aria': 'GitHub-Repository',
+  'topbar.language.aria': 'Sprache',
+  'topbar.language.label': 'Sprache',
   'tool.placeholder.title': 'Tool noch nicht implementiert',
   'tool.placeholder.body': 'Tool-Logik verfügbar; Render-Schicht ausstehend.',
   'footer.privacy': 'Datenschutz',
@@ -123,9 +241,65 @@ const de: Translations = {
     'Etwas ist kaputtgegangen. Die Ursache ist uns selbst nicht ganz klar. Neu laden hilft meist.',
   'error.copy.failed':
     'Die Zwischenablage hat Nein gesagt. Wahrscheinlich Berechtigungen — schau im Browser nach und versuch es noch einmal.',
+  'error.paste.failed':
+    'Die Zwischenablage hat geschwiegen. Browser sperren das Einfügen hinter einer Berechtigung — erteile sie, oder füge mit ⌘/Strg-V direkt ein.',
   'error.parse.failed':
     'Das sieht nicht ganz richtig aus. Prüfe auf fremde Zeichen oder falsches Format und versuch es nochmal.',
   'error.back.home': '← Zurück zur Startseite',
+  'tools.base64.mode.aria': 'Kodieren oder Dekodieren',
+  'tools.base64.mode.encode': 'Kodieren',
+  'tools.base64.mode.decode': 'Dekodieren',
+  'tools.base64.urlsafe.label': 'URL-sichere Variante (-_, ohne Padding)',
+  'tools.base64.urlsafe.aria': 'URL-sicheres base64-Alphabet verwenden',
+  'tools.base64.label.text': 'Text',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64-Konverter-Eingabe',
+  'tools.base64.result.aria': 'Base64-Konverter-Ausgabe',
+  'tools.base64.placeholder.encode':
+    'Tippen oder einfügen — UTF-8, Emoji, JWT-Segmente. Alles macht den Roundtrip sauber.',
+  'tools.base64.placeholder.decode':
+    'Einen base64-String einfügen — JWT-Segmente und URL-sichere Varianten werden ebenso dekodiert.',
+  'tools.base64.swap': 'Tauschen ⇄',
+  'tools.base64.copy': 'Kopieren',
+  'tools.base64.copied': 'Kopiert',
+  'tools.base64.paste': 'Einfügen',
+  'tools.base64.paste.aria': 'Aus Zwischenablage einfügen',
+  'tools.base64.pasted': 'Eingefügt',
+  'tools.base64.chars': '{n} Zeichen',
+  'tools.base64.lengths': '{in} Zeichen Eingabe · {out} Zeichen Ausgabe',
+  'tools.base64.explainer.heading': 'So funktioniert Base64',
+  'tools.base64.explainer.intro':
+    'Base64 packt beliebige Bytes in 64 druckbare ASCII-Zeichen (A–Z, a–z, 0–9, + /). Es existiert, damit Binärdaten reine Textkanäle überleben: JSON-Felder, URLs, Mail-Bodies, HTTP-Header.',
+  'tools.base64.explainer.mechanic':
+    'Nimm 3 Bytes (24 Bit), zerlege sie in 4 Gruppen zu je 6 Bit, schlage jede Gruppe im Alphabet nach und gib 4 ASCII-Zeichen aus. Das abschließende `=` füllt die Ausgabe auf ein Vielfaches von 4 auf, wenn die Eingabe nicht passt.',
+  'tools.base64.explainer.example.label': 'Beispielrechnung — "Cat" kodieren',
+  'tools.base64.explainer.uses':
+    'Du siehst es in HTTP Basic Auth (`Authorization: Basic …`), JWT-Segmenten, `data:`-URIs in CSS/HTML und E-Mail-Anhängen (MIME).',
+  'tools.base64.explainer.warning':
+    'Keine Verschlüsselung. Wer den kodierten String hat, kann ihn zurückdekodieren. Behandle base64 als Transportumschlag, nie als Geheimnis.',
+  'tools.base64.explainer.tryauth': 'Probier den Basic-Auth-Helfer →',
+  'tools.basicauth.mode.aria': 'Header bauen oder lesen',
+  'tools.basicauth.mode.encode': 'Bauen',
+  'tools.basicauth.mode.decode': 'Lesen',
+  'tools.basicauth.username.label': 'Benutzername',
+  'tools.basicauth.username.aria': 'Benutzername für Basic Auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Passwort',
+  'tools.basicauth.password.aria': 'Passwort für Basic Auth',
+  'tools.basicauth.password.placeholder': 'Sesam öffne dich',
+  'tools.basicauth.password.show': 'Zeigen',
+  'tools.basicauth.password.hide': 'Verbergen',
+  'tools.basicauth.header.label': 'Authorization-Header',
+  'tools.basicauth.header.aria': 'Wert des HTTP-Authorization-Headers',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Header kopieren',
+  'tools.basicauth.copy.username': 'Benutzername kopieren',
+  'tools.basicauth.copy.password': 'Passwort kopieren',
+  'tools.basicauth.paste.header': 'Header einfügen',
+  'tools.basicauth.invalid':
+    'Dieser Header ließ sich nicht lesen. Stelle sicher, dass er `Basic <base64>` lautet und die dekodierte Nutzlast einen `:` zwischen Benutzer und Passwort enthält.',
+  'tools.basicauth.intro':
+    'Baut und liest den Header `Authorization: Basic <base64>`, den HTTP Basic Authentication verwendet. Alles lokal — die Anmeldedaten verlassen den Browser nie.',
 };
 
 const pt: Translations = {
@@ -147,6 +321,8 @@ const pt: Translations = {
   'sidebar.foot.line2': 'Feito por Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repositório do GitHub',
+  'topbar.language.aria': 'Idioma',
+  'topbar.language.label': 'Idioma',
   'tool.placeholder.title': 'Ferramenta ainda não implementada',
   'tool.placeholder.body': 'Lógica da ferramenta disponível; camada de renderização pendente.',
   'footer.privacy': 'Privacidade',
@@ -161,9 +337,65 @@ const pt: Translations = {
     'Algo quebrou. A causa não está totalmente clara, nem para nós. Recarregar costuma ajudar.',
   'error.copy.failed':
     'A área de transferência disse não. Provavelmente é uma questão de permissões — verifica o navegador e tenta de novo.',
+  'error.paste.failed':
+    'A área de transferência ficou em silêncio. Os navegadores travam o colar atrás de uma permissão — concede, ou cola com ⌘/Ctrl-V no campo.',
   'error.parse.failed':
     'Isso não parece muito certo. Verifica caracteres soltos ou formato errado e tenta de novo.',
   'error.back.home': '← Voltar ao início',
+  'tools.base64.mode.aria': 'Codificar ou decodificar',
+  'tools.base64.mode.encode': 'Codificar',
+  'tools.base64.mode.decode': 'Decodificar',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, sem padding)',
+  'tools.base64.urlsafe.aria': 'Usar alfabeto base64 URL-safe',
+  'tools.base64.label.text': 'Texto',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Entrada do conversor base64',
+  'tools.base64.result.aria': 'Saída do conversor base64',
+  'tools.base64.placeholder.encode':
+    'Digite ou cole — UTF-8, emoji, segmentos JWT. Tudo faz round-trip limpo.',
+  'tools.base64.placeholder.decode':
+    'Cola uma string base64 — segmentos JWT e variantes URL-safe também decodificam.',
+  'tools.base64.swap': 'Trocar ⇄',
+  'tools.base64.copy': 'Copiar',
+  'tools.base64.copied': 'Copiado',
+  'tools.base64.paste': 'Colar',
+  'tools.base64.paste.aria': 'Colar da área de transferência',
+  'tools.base64.pasted': 'Colado',
+  'tools.base64.chars': '{n} caracteres',
+  'tools.base64.lengths': '{in} caracteres entrada · {out} caracteres saída',
+  'tools.base64.explainer.heading': 'Como funciona o Base64',
+  'tools.base64.explainer.intro':
+    'Base64 empacota bytes arbitrários em 64 caracteres ASCII imprimíveis (A–Z, a–z, 0–9, + /). Existe para que binário sobreviva a canais somente texto: campos JSON, URLs, corpos de e-mail, cabeçalhos HTTP.',
+  'tools.base64.explainer.mechanic':
+    'Pega 3 bytes (24 bits), corta em 4 grupos de 6 bits, procura cada grupo no alfabeto e emite 4 caracteres ASCII. O `=` final completa a saída até um múltiplo de 4 quando a entrada não bate.',
+  'tools.base64.explainer.example.label': 'Exemplo passo a passo — codificar "Cat"',
+  'tools.base64.explainer.uses':
+    'Aparece no HTTP Basic Auth (`Authorization: Basic …`), em segmentos de JWT, URIs `data:` em CSS/HTML e em anexos de e-mail (MIME).',
+  'tools.base64.explainer.warning':
+    'Não é criptografia. Qualquer pessoa com a string codificada consegue decodificar de volta. Trate base64 como envelope de transporte, nunca como segredo.',
+  'tools.base64.explainer.tryauth': 'Experimenta o ajudante de Basic Auth →',
+  'tools.basicauth.mode.aria': 'Construir ou ler o cabeçalho',
+  'tools.basicauth.mode.encode': 'Construir',
+  'tools.basicauth.mode.decode': 'Ler',
+  'tools.basicauth.username.label': 'Usuário',
+  'tools.basicauth.username.aria': 'Usuário para Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Senha',
+  'tools.basicauth.password.aria': 'Senha para Basic auth',
+  'tools.basicauth.password.placeholder': 'abra-te sésamo',
+  'tools.basicauth.password.show': 'Mostrar',
+  'tools.basicauth.password.hide': 'Esconder',
+  'tools.basicauth.header.label': 'Cabeçalho Authorization',
+  'tools.basicauth.header.aria': 'Valor do cabeçalho HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Copiar cabeçalho',
+  'tools.basicauth.copy.username': 'Copiar usuário',
+  'tools.basicauth.copy.password': 'Copiar senha',
+  'tools.basicauth.paste.header': 'Colar cabeçalho',
+  'tools.basicauth.invalid':
+    'Esse cabeçalho não pôde ser lido. Confere se tem o formato `Basic <base64>` e se o conteúdo decodificado contém `:` entre usuário e senha.',
+  'tools.basicauth.intro':
+    'Constrói e lê o cabeçalho `Authorization: Basic <base64>` usado pela autenticação HTTP Basic. Tudo local — as credenciais nunca saem do seu navegador.',
 };
 
 const it: Translations = {
@@ -185,6 +417,8 @@ const it: Translations = {
   'sidebar.foot.line2': 'Realizzato da Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repository GitHub',
+  'topbar.language.aria': 'Lingua',
+  'topbar.language.label': 'Lingua',
   'tool.placeholder.title': 'Strumento non ancora implementato',
   'tool.placeholder.body': 'Logica dello strumento disponibile; livello di rendering in sospeso.',
   'footer.privacy': 'Privacy',
@@ -199,9 +433,65 @@ const it: Translations = {
     'Qualcosa si è rotto. La causa non è del tutto chiara, nemmeno per noi. Ricaricare di solito aiuta.',
   'error.copy.failed':
     'Gli appunti hanno detto no. Probabilmente è una questione di permessi — controlla il browser e riprova.',
+  'error.paste.failed':
+    'Gli appunti sono rimasti zitti. I browser nascondono l’incollare dietro un permesso — concedilo, o incolla con ⌘/Ctrl-V nel campo.',
   'error.parse.failed':
     'Non sembra del tutto giusto. Controlla caratteri estranei o formato sbagliato e riprova.',
   'error.back.home': '← Torna alla home',
+  'tools.base64.mode.aria': 'Codifica o decodifica',
+  'tools.base64.mode.encode': 'Codifica',
+  'tools.base64.mode.decode': 'Decodifica',
+  'tools.base64.urlsafe.label': 'Variante URL-safe (-_, senza padding)',
+  'tools.base64.urlsafe.aria': 'Usa alfabeto base64 URL-safe',
+  'tools.base64.label.text': 'Testo',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Input del convertitore base64',
+  'tools.base64.result.aria': 'Output del convertitore base64',
+  'tools.base64.placeholder.encode':
+    'Scrivi o incolla — UTF-8, emoji, segmenti JWT. Tutto torna integro.',
+  'tools.base64.placeholder.decode':
+    'Incolla una stringa base64 — segmenti JWT e varianti URL-safe si decodificano allo stesso modo.',
+  'tools.base64.swap': 'Scambia ⇄',
+  'tools.base64.copy': 'Copia',
+  'tools.base64.copied': 'Copiato',
+  'tools.base64.paste': 'Incolla',
+  'tools.base64.paste.aria': 'Incolla dagli appunti',
+  'tools.base64.pasted': 'Incollato',
+  'tools.base64.chars': '{n} caratteri',
+  'tools.base64.lengths': '{in} caratteri input · {out} caratteri output',
+  'tools.base64.explainer.heading': 'Come funziona Base64',
+  'tools.base64.explainer.intro':
+    'Base64 impacchetta byte arbitrari in 64 caratteri ASCII stampabili (A–Z, a–z, 0–9, + /). Esiste perché il binario sopravviva ai canali solo testo: campi JSON, URL, corpi email, header HTTP.',
+  'tools.base64.explainer.mechanic':
+    'Prendi 3 byte (24 bit), affettali in 4 gruppi da 6 bit, cerca ogni gruppo nell’alfabeto ed emetti 4 caratteri ASCII. Il `=` finale porta la lunghezza a un multiplo di 4 quando l’input non torna.',
+  'tools.base64.explainer.example.label': 'Esempio guidato — codificare "Cat"',
+  'tools.base64.explainer.uses':
+    'Lo vedi in HTTP Basic Auth (`Authorization: Basic …`), nei segmenti JWT, nelle URI `data:` in CSS/HTML e negli allegati email (MIME).',
+  'tools.base64.explainer.warning':
+    'Non è cifratura. Chiunque abbia la stringa codificata può decodificarla. Tratta base64 come una busta di trasporto, mai come un segreto.',
+  'tools.base64.explainer.tryauth': 'Prova l’aiutante Basic Auth →',
+  'tools.basicauth.mode.aria': 'Costruisci o leggi l’header',
+  'tools.basicauth.mode.encode': 'Costruisci',
+  'tools.basicauth.mode.decode': 'Leggi',
+  'tools.basicauth.username.label': 'Utente',
+  'tools.basicauth.username.aria': 'Utente per Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Password',
+  'tools.basicauth.password.aria': 'Password per Basic auth',
+  'tools.basicauth.password.placeholder': 'apriti sesamo',
+  'tools.basicauth.password.show': 'Mostra',
+  'tools.basicauth.password.hide': 'Nascondi',
+  'tools.basicauth.header.label': 'Header Authorization',
+  'tools.basicauth.header.aria': 'Valore dell’header HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Copia header',
+  'tools.basicauth.copy.username': 'Copia utente',
+  'tools.basicauth.copy.password': 'Copia password',
+  'tools.basicauth.paste.header': 'Incolla header',
+  'tools.basicauth.invalid':
+    'Questo header non è stato letto. Assicurati che abbia la forma `Basic <base64>` e che il payload decodificato contenga `:` tra utente e password.',
+  'tools.basicauth.intro':
+    'Costruisce e legge l’header `Authorization: Basic <base64>` usato dall’autenticazione HTTP Basic. Tutto in locale — le credenziali non lasciano mai il tuo browser.',
 };
 
 const nl: Translations = {
@@ -223,6 +513,8 @@ const nl: Translations = {
   'sidebar.foot.line2': 'Gemaakt door Pratiyush.',
   'topbar.theme.aria': 'Thema',
   'topbar.github.aria': 'GitHub-repository',
+  'topbar.language.aria': 'Taal',
+  'topbar.language.label': 'Taal',
   'tool.placeholder.title': 'Tool nog niet geïmplementeerd',
   'tool.placeholder.body': 'Tool-logica beschikbaar; rendering-laag in afwachting.',
   'footer.privacy': 'Privacy',
@@ -237,9 +529,65 @@ const nl: Translations = {
     'Er is iets stuk. De oorzaak is ons niet helemaal duidelijk. Opnieuw laden helpt meestal.',
   'error.copy.failed':
     'Het klembord zei nee. Waarschijnlijk rechten — kijk in je browser en probeer het nog eens.',
+  'error.paste.failed':
+    'Het klembord hield zich stil. Browsers schermen plakken af achter een rechtenpoortje — geef toestemming, of plak met ⌘/Ctrl-V in het veld.',
   'error.parse.failed':
     'Dat klopt niet helemaal. Controleer op vreemde tekens of verkeerd formaat en probeer opnieuw.',
   'error.back.home': '← Terug naar home',
+  'tools.base64.mode.aria': 'Coderen of decoderen',
+  'tools.base64.mode.encode': 'Coderen',
+  'tools.base64.mode.decode': 'Decoderen',
+  'tools.base64.urlsafe.label': 'URL-veilige variant (-_, geen padding)',
+  'tools.base64.urlsafe.aria': 'URL-veilig base64-alfabet gebruiken',
+  'tools.base64.label.text': 'Tekst',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64-converter-invoer',
+  'tools.base64.result.aria': 'Base64-converter-uitvoer',
+  'tools.base64.placeholder.encode':
+    'Typ of plak — UTF-8, emoji, JWT-segmenten. Alles maakt schoon de round-trip.',
+  'tools.base64.placeholder.decode':
+    'Plak een base64-string — JWT-segmenten en URL-veilige varianten decoderen ook.',
+  'tools.base64.swap': 'Wisselen ⇄',
+  'tools.base64.copy': 'Kopiëren',
+  'tools.base64.copied': 'Gekopieerd',
+  'tools.base64.paste': 'Plakken',
+  'tools.base64.paste.aria': 'Plakken vanuit klembord',
+  'tools.base64.pasted': 'Geplakt',
+  'tools.base64.chars': '{n} tekens',
+  'tools.base64.lengths': '{in} tekens invoer · {out} tekens uitvoer',
+  'tools.base64.explainer.heading': 'Hoe Base64 werkt',
+  'tools.base64.explainer.intro':
+    'Base64 verpakt willekeurige bytes in 64 afdrukbare ASCII-tekens (A–Z, a–z, 0–9, + /). Het bestaat opdat binair tekenkanalen overleeft: JSON-velden, URL’s, mail-bodies, HTTP-headers.',
+  'tools.base64.explainer.mechanic':
+    'Neem 3 bytes (24 bits), snijd in 4 groepen van 6 bits, zoek elke groep op in het alfabet, en geef 4 ASCII-tekens uit. Een afsluitende `=` vult de uitvoer aan tot een veelvoud van 4 als de invoer niet uitkomt.',
+  'tools.base64.explainer.example.label': 'Uitgewerkt voorbeeld — "Cat" coderen',
+  'tools.base64.explainer.uses':
+    'Je ziet het in HTTP Basic Auth (`Authorization: Basic …`), JWT-segmenten, `data:`-URI’s in CSS/HTML en mail-bijlagen (MIME).',
+  'tools.base64.explainer.warning':
+    'Geen versleuteling. Iedereen met de gecodeerde string kan hem terug decoderen. Behandel base64 als transportenvelop, nooit als geheim.',
+  'tools.base64.explainer.tryauth': 'Probeer de Basic-Auth-helper →',
+  'tools.basicauth.mode.aria': 'Header bouwen of lezen',
+  'tools.basicauth.mode.encode': 'Bouwen',
+  'tools.basicauth.mode.decode': 'Lezen',
+  'tools.basicauth.username.label': 'Gebruikersnaam',
+  'tools.basicauth.username.aria': 'Gebruikersnaam voor Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Wachtwoord',
+  'tools.basicauth.password.aria': 'Wachtwoord voor Basic auth',
+  'tools.basicauth.password.placeholder': 'sesam open u',
+  'tools.basicauth.password.show': 'Tonen',
+  'tools.basicauth.password.hide': 'Verbergen',
+  'tools.basicauth.header.label': 'Authorization-header',
+  'tools.basicauth.header.aria': 'Waarde van de HTTP Authorization-header',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Header kopiëren',
+  'tools.basicauth.copy.username': 'Gebruikersnaam kopiëren',
+  'tools.basicauth.copy.password': 'Wachtwoord kopiëren',
+  'tools.basicauth.paste.header': 'Header plakken',
+  'tools.basicauth.invalid':
+    'Die header kon niet gelezen worden. Zorg dat hij eruitziet als `Basic <base64>` en dat de gedecodeerde inhoud een `:` bevat tussen gebruikersnaam en wachtwoord.',
+  'tools.basicauth.intro':
+    'Bouwt en leest de `Authorization: Basic <base64>`-header die HTTP Basic Authentication gebruikt. Alles lokaal — gegevens verlaten je browser nooit.',
 };
 
 const pl: Translations = {
@@ -261,6 +609,8 @@ const pl: Translations = {
   'sidebar.foot.line2': 'Stworzone przez Pratiyusha.',
   'topbar.theme.aria': 'Motyw',
   'topbar.github.aria': 'Repozytorium GitHub',
+  'topbar.language.aria': 'Język',
+  'topbar.language.label': 'Język',
   'tool.placeholder.title': 'Narzędzie jeszcze nie zaimplementowane',
   'tool.placeholder.body': 'Logika narzędzia dostępna; warstwa renderowania oczekuje.',
   'footer.privacy': 'Prywatność',
@@ -275,9 +625,65 @@ const pl: Translations = {
     'Coś się zepsuło. Przyczyna nie jest do końca jasna, nawet dla nas. Przeładowanie zwykle pomaga.',
   'error.copy.failed':
     'Schowek powiedział nie. Pewnie uprawnienia — sprawdź przeglądarkę i spróbuj jeszcze raz.',
+  'error.paste.failed':
+    'Schowek milczy. Przeglądarki blokują wklejanie za uprawnieniem — udziel go albo wklej skrótem ⌘/Ctrl-V w polu.',
   'error.parse.failed':
     'To nie wygląda zbyt prawidłowo. Sprawdź zbędne znaki lub zły format i spróbuj ponownie.',
   'error.back.home': '← Wróć do strony głównej',
+  'tools.base64.mode.aria': 'Koduj lub dekoduj',
+  'tools.base64.mode.encode': 'Koduj',
+  'tools.base64.mode.decode': 'Dekoduj',
+  'tools.base64.urlsafe.label': 'Wariant URL-safe (-_, bez paddingu)',
+  'tools.base64.urlsafe.aria': 'Użyj alfabetu base64 URL-safe',
+  'tools.base64.label.text': 'Tekst',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Wejście konwertera base64',
+  'tools.base64.result.aria': 'Wyjście konwertera base64',
+  'tools.base64.placeholder.encode':
+    'Wpisz lub wklej — UTF-8, emoji, segmenty JWT. Wszystko czysto wraca w obie strony.',
+  'tools.base64.placeholder.decode':
+    'Wklej ciąg base64 — segmenty JWT i warianty URL-safe również się dekodują.',
+  'tools.base64.swap': 'Zamień ⇄',
+  'tools.base64.copy': 'Kopiuj',
+  'tools.base64.copied': 'Skopiowano',
+  'tools.base64.paste': 'Wklej',
+  'tools.base64.paste.aria': 'Wklej ze schowka',
+  'tools.base64.pasted': 'Wklejono',
+  'tools.base64.chars': '{n} znaków',
+  'tools.base64.lengths': '{in} znaków wejście · {out} znaków wyjście',
+  'tools.base64.explainer.heading': 'Jak działa Base64',
+  'tools.base64.explainer.intro':
+    'Base64 pakuje dowolne bajty w 64 drukowalne znaki ASCII (A–Z, a–z, 0–9, + /). Istnieje po to, by binarne dane przeżyły kanały tylko-tekstowe: pola JSON, URL-e, treści e-maili, nagłówki HTTP.',
+  'tools.base64.explainer.mechanic':
+    'Weź 3 bajty (24 bity), pokrój je na 4 grupy po 6 bitów, sprawdź każdą grupę w alfabecie i wyrzuć 4 znaki ASCII. Końcowe `=` uzupełnia wyjście do wielokrotności 4, gdy wejście się nie składa.',
+  'tools.base64.explainer.example.label': 'Przykład krok po kroku — kodowanie "Cat"',
+  'tools.base64.explainer.uses':
+    'Spotkasz go w HTTP Basic Auth (`Authorization: Basic …`), w segmentach JWT, w URI `data:` w CSS/HTML oraz w załącznikach e-mail (MIME).',
+  'tools.base64.explainer.warning':
+    'To nie szyfrowanie. Każdy z zakodowanym ciągiem może go zdekodować. Traktuj base64 jako kopertę transportową, nigdy jako sekret.',
+  'tools.base64.explainer.tryauth': 'Wypróbuj pomocnika Basic Auth →',
+  'tools.basicauth.mode.aria': 'Zbuduj lub odczytaj nagłówek',
+  'tools.basicauth.mode.encode': 'Zbuduj',
+  'tools.basicauth.mode.decode': 'Odczytaj',
+  'tools.basicauth.username.label': 'Użytkownik',
+  'tools.basicauth.username.aria': 'Użytkownik dla Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Hasło',
+  'tools.basicauth.password.aria': 'Hasło dla Basic auth',
+  'tools.basicauth.password.placeholder': 'sezamie otwórz się',
+  'tools.basicauth.password.show': 'Pokaż',
+  'tools.basicauth.password.hide': 'Ukryj',
+  'tools.basicauth.header.label': 'Nagłówek Authorization',
+  'tools.basicauth.header.aria': 'Wartość nagłówka HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Kopiuj nagłówek',
+  'tools.basicauth.copy.username': 'Kopiuj użytkownika',
+  'tools.basicauth.copy.password': 'Kopiuj hasło',
+  'tools.basicauth.paste.header': 'Wklej nagłówek',
+  'tools.basicauth.invalid':
+    'Tego nagłówka nie udało się odczytać. Upewnij się, że ma postać `Basic <base64>`, a zdekodowany ładunek zawiera `:` między użytkownikiem a hasłem.',
+  'tools.basicauth.intro':
+    'Buduje i odczytuje nagłówek `Authorization: Basic <base64>` używany przez uwierzytelnianie HTTP Basic. Wszystko lokalnie — dane nigdy nie opuszczają Twojej przeglądarki.',
 };
 
 const ru: Translations = {
@@ -299,6 +705,8 @@ const ru: Translations = {
   'sidebar.foot.line2': 'Сделано Pratiyush.',
   'topbar.theme.aria': 'Тема',
   'topbar.github.aria': 'Репозиторий GitHub',
+  'topbar.language.aria': 'Язык',
+  'topbar.language.label': 'Язык',
   'tool.placeholder.title': 'Инструмент ещё не реализован',
   'tool.placeholder.body': 'Логика инструмента доступна; слой отрисовки ожидает.',
   'footer.privacy': 'Конфиденциальность',
@@ -313,9 +721,65 @@ const ru: Translations = {
     'Что-то сломалось. Причина не до конца ясна даже нам. Обычно помогает перезагрузка.',
   'error.copy.failed':
     'Буфер обмена отказал. Скорее всего, разрешения — проверьте настройки браузера и попробуйте ещё раз.',
+  'error.paste.failed':
+    'Буфер обмена промолчал. Браузеры закрывают вставку за разрешением — выдайте его или вставьте вручную с ⌘/Ctrl-V.',
   'error.parse.failed':
     'Это выглядит не совсем правильно. Проверьте лишние символы или неверный формат и попробуйте снова.',
   'error.back.home': '← Вернуться на главную',
+  'tools.base64.mode.aria': 'Кодировать или декодировать',
+  'tools.base64.mode.encode': 'Кодировать',
+  'tools.base64.mode.decode': 'Декодировать',
+  'tools.base64.urlsafe.label': 'URL-безопасный вариант (-_, без padding)',
+  'tools.base64.urlsafe.aria': 'Использовать URL-безопасный алфавит base64',
+  'tools.base64.label.text': 'Текст',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Ввод конвертера base64',
+  'tools.base64.result.aria': 'Вывод конвертера base64',
+  'tools.base64.placeholder.encode':
+    'Введите или вставьте — UTF-8, эмодзи, сегменты JWT. Всё чисто проходит туда и обратно.',
+  'tools.base64.placeholder.decode':
+    'Вставьте строку base64 — сегменты JWT и URL-безопасные варианты тоже декодируются.',
+  'tools.base64.swap': 'Поменять ⇄',
+  'tools.base64.copy': 'Копировать',
+  'tools.base64.copied': 'Скопировано',
+  'tools.base64.paste': 'Вставить',
+  'tools.base64.paste.aria': 'Вставить из буфера обмена',
+  'tools.base64.pasted': 'Вставлено',
+  'tools.base64.chars': '{n} символов',
+  'tools.base64.lengths': '{in} символов ввод · {out} символов вывод',
+  'tools.base64.explainer.heading': 'Как работает Base64',
+  'tools.base64.explainer.intro':
+    'Base64 упаковывает произвольные байты в 64 печатаемых ASCII-символа (A–Z, a–z, 0–9, + /). Он существует, чтобы двоичные данные пережили каналы только для текста: поля JSON, URL, тела писем, HTTP-заголовки.',
+  'tools.base64.explainer.mechanic':
+    'Возьмите 3 байта (24 бита), разрежьте на 4 группы по 6 бит, найдите каждую группу в алфавите и выдайте 4 ASCII-символа. Завершающий `=` дополняет вывод до кратного 4, когда вход не выровнен.',
+  'tools.base64.explainer.example.label': 'Разбор примера — кодируем "Cat"',
+  'tools.base64.explainer.uses':
+    'Вы встретите его в HTTP Basic Auth (`Authorization: Basic …`), сегментах JWT, URI `data:` в CSS/HTML и в почтовых вложениях (MIME).',
+  'tools.base64.explainer.warning':
+    'Это не шифрование. Любой с закодированной строкой раскодирует её обратно. Считайте base64 транспортным конвертом, не секретом.',
+  'tools.base64.explainer.tryauth': 'Попробуйте помощник Basic Auth →',
+  'tools.basicauth.mode.aria': 'Собрать или прочитать заголовок',
+  'tools.basicauth.mode.encode': 'Собрать',
+  'tools.basicauth.mode.decode': 'Прочитать',
+  'tools.basicauth.username.label': 'Логин',
+  'tools.basicauth.username.aria': 'Логин для Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Пароль',
+  'tools.basicauth.password.aria': 'Пароль для Basic auth',
+  'tools.basicauth.password.placeholder': 'сезам откройся',
+  'tools.basicauth.password.show': 'Показать',
+  'tools.basicauth.password.hide': 'Скрыть',
+  'tools.basicauth.header.label': 'Заголовок Authorization',
+  'tools.basicauth.header.aria': 'Значение HTTP-заголовка Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Скопировать заголовок',
+  'tools.basicauth.copy.username': 'Скопировать логин',
+  'tools.basicauth.copy.password': 'Скопировать пароль',
+  'tools.basicauth.paste.header': 'Вставить заголовок',
+  'tools.basicauth.invalid':
+    'Этот заголовок не разобрался. Убедитесь, что он имеет вид `Basic <base64>` и в декодированной нагрузке есть `:` между логином и паролем.',
+  'tools.basicauth.intro':
+    'Собирает и разбирает заголовок `Authorization: Basic <base64>`, используемый HTTP Basic Authentication. Всё локально — учётные данные не покидают браузер.',
 };
 
 const tr: Translations = {
@@ -337,6 +801,8 @@ const tr: Translations = {
   'sidebar.foot.line2': 'Pratiyush tarafından yapıldı.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'GitHub deposu',
+  'topbar.language.aria': 'Dil',
+  'topbar.language.label': 'Dil',
   'tool.placeholder.title': 'Araç henüz uygulanmadı',
   'tool.placeholder.body': 'Araç mantığı mevcut; oluşturma katmanı bekliyor.',
   'footer.privacy': 'Gizlilik',
@@ -351,9 +817,65 @@ const tr: Translations = {
     'Bir şey kırıldı. Sebep tam olarak bize de net değil. Sayfayı yeniden yüklemek genelde işe yarar.',
   'error.copy.failed':
     'Pano hayır dedi. Muhtemelen izin meselesi — tarayıcı ayarlarını kontrol edip yeniden dene.',
+  'error.paste.failed':
+    'Pano sustu. Tarayıcılar yapıştırmayı izin arkasında tutar — izin ver, ya da alana ⌘/Ctrl-V ile doğrudan yapıştır.',
   'error.parse.failed':
     'Bu pek doğru görünmüyor. Garip karakter veya yanlış biçim var mı bak, yeniden dene.',
   'error.back.home': '← Ana sayfaya dön',
+  'tools.base64.mode.aria': 'Kodla veya çöz',
+  'tools.base64.mode.encode': 'Kodla',
+  'tools.base64.mode.decode': 'Çöz',
+  'tools.base64.urlsafe.label': 'URL-güvenli varyant (-_, padding yok)',
+  'tools.base64.urlsafe.aria': 'URL-güvenli base64 alfabesini kullan',
+  'tools.base64.label.text': 'Metin',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64 dönüştürücü girdi',
+  'tools.base64.result.aria': 'Base64 dönüştürücü çıktı',
+  'tools.base64.placeholder.encode':
+    'Yaz veya yapıştır — UTF-8, emoji, JWT segmentleri. Hepsi temiz şekilde gidip geliyor.',
+  'tools.base64.placeholder.decode':
+    'Bir base64 dizesi yapıştır — JWT segmentleri ve URL-güvenli varyantlar da çözülür.',
+  'tools.base64.swap': 'Değiştir ⇄',
+  'tools.base64.copy': 'Kopyala',
+  'tools.base64.copied': 'Kopyalandı',
+  'tools.base64.paste': 'Yapıştır',
+  'tools.base64.paste.aria': 'Panodan yapıştır',
+  'tools.base64.pasted': 'Yapıştırıldı',
+  'tools.base64.chars': '{n} karakter',
+  'tools.base64.lengths': '{in} karakter girdi · {out} karakter çıktı',
+  'tools.base64.explainer.heading': 'Base64 nasıl çalışır',
+  'tools.base64.explainer.intro':
+    'Base64 keyfi baytları 64 yazdırılabilir ASCII karaktere paketler (A–Z, a–z, 0–9, + /). İkilinin yalnızca metin kanallarında — JSON alanları, URL’ler, e-posta gövdeleri, HTTP başlıkları — sağ kalması için var.',
+  'tools.base64.explainer.mechanic':
+    '3 bayt (24 bit) al, 4 gruba (her biri 6 bit) böl, her grubu alfabede bul, 4 ASCII karakter yay. Sondaki `=`, girdi tutmadığında çıktıyı 4’ün katına tamamlar.',
+  'tools.base64.explainer.example.label': 'Adım adım örnek — "Cat" kodlama',
+  'tools.base64.explainer.uses':
+    'HTTP Basic Auth (`Authorization: Basic …`), JWT segmentleri, CSS/HTML’deki `data:` URI’leri ve e-posta eklerinde (MIME) görürsün.',
+  'tools.base64.explainer.warning':
+    'Şifreleme değildir. Kodlanmış diziye sahip olan herkes geri çözebilir. Base64’ü taşıma zarfı say, asla sır olarak kullanma.',
+  'tools.base64.explainer.tryauth': 'Basic Auth yardımcısını dene →',
+  'tools.basicauth.mode.aria': 'Başlık oluştur veya oku',
+  'tools.basicauth.mode.encode': 'Oluştur',
+  'tools.basicauth.mode.decode': 'Oku',
+  'tools.basicauth.username.label': 'Kullanıcı adı',
+  'tools.basicauth.username.aria': 'Basic auth için kullanıcı adı',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'Şifre',
+  'tools.basicauth.password.aria': 'Basic auth için şifre',
+  'tools.basicauth.password.placeholder': 'açıl susam açıl',
+  'tools.basicauth.password.show': 'Göster',
+  'tools.basicauth.password.hide': 'Gizle',
+  'tools.basicauth.header.label': 'Authorization başlığı',
+  'tools.basicauth.header.aria': 'HTTP Authorization başlığının değeri',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'Başlığı kopyala',
+  'tools.basicauth.copy.username': 'Kullanıcı adını kopyala',
+  'tools.basicauth.copy.password': 'Şifreyi kopyala',
+  'tools.basicauth.paste.header': 'Başlığı yapıştır',
+  'tools.basicauth.invalid':
+    'O başlık çözülemedi. `Basic <base64>` formatında olduğundan ve çözülmüş içerikte kullanıcı ile şifre arasında `:` bulunduğundan emin ol.',
+  'tools.basicauth.intro':
+    'HTTP Basic Authentication’ın kullandığı `Authorization: Basic <base64>` başlığını oluşturur ve okur. Hepsi cihazda — kimlik bilgileri tarayıcından çıkmaz.',
 };
 
 const ja: Translations = {
@@ -375,6 +897,8 @@ const ja: Translations = {
   'sidebar.foot.line2': 'Pratiyush が制作。',
   'topbar.theme.aria': 'テーマ',
   'topbar.github.aria': 'GitHub リポジトリ',
+  'topbar.language.aria': '言語',
+  'topbar.language.label': '言語',
   'tool.placeholder.title': 'ツールはまだ実装されていません',
   'tool.placeholder.body': 'ツールロジックは利用可能；レンダリング層は保留中。',
   'footer.privacy': 'プライバシー',
@@ -389,9 +913,65 @@ const ja: Translations = {
     '何かが壊れました。原因は私たちにもよく分かりません。再読み込みでだいたい直ります。',
   'error.copy.failed':
     'クリップボードに拒否されました。たぶん権限の問題です — ブラウザの設定を確認して、もう一度試してください。',
+  'error.paste.failed':
+    'クリップボードは黙秘しました。ブラウザは貼り付けを許可制にしています — 許可するか、入力欄に ⌘/Ctrl-V で直接貼ってください。',
   'error.parse.failed':
     '何かが違うようです。余分な文字や形式の誤りがないか確認して、もう一度試してください。',
   'error.back.home': '← ホームに戻る',
+  'tools.base64.mode.aria': 'エンコードまたはデコード',
+  'tools.base64.mode.encode': 'エンコード',
+  'tools.base64.mode.decode': 'デコード',
+  'tools.base64.urlsafe.label': 'URL安全バリアント (-_, パディングなし)',
+  'tools.base64.urlsafe.aria': 'URL安全な base64 アルファベットを使用',
+  'tools.base64.label.text': 'テキスト',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64 コンバータ入力',
+  'tools.base64.result.aria': 'Base64 コンバータ出力',
+  'tools.base64.placeholder.encode':
+    '入力または貼り付け — UTF-8、絵文字、JWT セグメント。すべてクリーンに往復します。',
+  'tools.base64.placeholder.decode':
+    'base64 文字列を貼り付け — JWT セグメントや URL 安全バリアントもデコードされます。',
+  'tools.base64.swap': '入れ替え ⇄',
+  'tools.base64.copy': 'コピー',
+  'tools.base64.copied': 'コピー済み',
+  'tools.base64.paste': '貼り付け',
+  'tools.base64.paste.aria': 'クリップボードから貼り付け',
+  'tools.base64.pasted': '貼り付け済み',
+  'tools.base64.chars': '{n} 文字',
+  'tools.base64.lengths': '入力 {in} 文字 · 出力 {out} 文字',
+  'tools.base64.explainer.heading': 'Base64 の仕組み',
+  'tools.base64.explainer.intro':
+    'Base64 は任意のバイト列を 64 個の印字可能な ASCII 文字（A–Z、a–z、0–9、+ /）に詰め込みます。バイナリがテキスト専用の経路 — JSON フィールド、URL、メール本文、HTTP ヘッダ — を生き延びるために存在します。',
+  'tools.base64.explainer.mechanic':
+    '3 バイト（24 ビット）を取り、6 ビットずつ 4 グループに切り分け、各グループをアルファベットで引き、4 文字の ASCII を出力します。末尾の `=` は入力が揃わないときに長さを 4 の倍数に揃えるパディングです。',
+  'tools.base64.explainer.example.label': '実例 — "Cat" をエンコード',
+  'tools.base64.explainer.uses':
+    'HTTP Basic Auth（`Authorization: Basic …`）、JWT のセグメント、CSS/HTML の `data:` URI、メール添付（MIME）で目にします。',
+  'tools.base64.explainer.warning':
+    '暗号ではありません。エンコード文字列を持つ人なら誰でもデコードできます。Base64 は輸送用の封筒として扱い、決して秘密として使わないこと。',
+  'tools.base64.explainer.tryauth': 'Basic Auth ヘルパーを試す →',
+  'tools.basicauth.mode.aria': 'ヘッダを作成または読む',
+  'tools.basicauth.mode.encode': '作成',
+  'tools.basicauth.mode.decode': '読み取り',
+  'tools.basicauth.username.label': 'ユーザー名',
+  'tools.basicauth.username.aria': 'Basic auth のユーザー名',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'パスワード',
+  'tools.basicauth.password.aria': 'Basic auth のパスワード',
+  'tools.basicauth.password.placeholder': '開けゴマ',
+  'tools.basicauth.password.show': '表示',
+  'tools.basicauth.password.hide': '非表示',
+  'tools.basicauth.header.label': 'Authorization ヘッダ',
+  'tools.basicauth.header.aria': 'HTTP Authorization ヘッダの値',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'ヘッダをコピー',
+  'tools.basicauth.copy.username': 'ユーザー名をコピー',
+  'tools.basicauth.copy.password': 'パスワードをコピー',
+  'tools.basicauth.paste.header': 'ヘッダを貼り付け',
+  'tools.basicauth.invalid':
+    'そのヘッダは解析できませんでした。形式が `Basic <base64>` で、デコード後のペイロードのユーザー名とパスワードの間に `:` があることを確認してください。',
+  'tools.basicauth.intro':
+    'HTTP Basic 認証で使う `Authorization: Basic <base64>` ヘッダを作成・読み取りします。すべて端末内で完結 — 資格情報はブラウザを離れません。',
 };
 
 const zh: Translations = {
@@ -413,6 +993,8 @@ const zh: Translations = {
   'sidebar.foot.line2': '由 Pratiyush 制作。',
   'topbar.theme.aria': '主题',
   'topbar.github.aria': 'GitHub 仓库',
+  'topbar.language.aria': '语言',
+  'topbar.language.label': '语言',
   'tool.placeholder.title': '工具尚未实现',
   'tool.placeholder.body': '工具逻辑可用；渲染层待实现。',
   'footer.privacy': '隐私',
@@ -425,8 +1007,62 @@ const zh: Translations = {
     '没有叫 "{id}" 的工具。可能改名了、退役了，或者链接走错了路。主页知道回家的路。',
   'error.unknown': '出了点问题。原因连我们也不太清楚。重新加载通常有用。',
   'error.copy.failed': '剪贴板拒绝了。八成是权限问题 — 检查一下浏览器设置，再试一次。',
+  'error.paste.failed':
+    '剪贴板没吭声。浏览器把粘贴藏在权限之后 — 先授权，或者直接用 ⌘/Ctrl-V 粘到输入框里。',
   'error.parse.failed': '看起来不太对。检查一下多余的字符或错误格式，再试一次。',
   'error.back.home': '← 返回主页',
+  'tools.base64.mode.aria': '编码或解码',
+  'tools.base64.mode.encode': '编码',
+  'tools.base64.mode.decode': '解码',
+  'tools.base64.urlsafe.label': 'URL 安全变体 (-_, 无填充)',
+  'tools.base64.urlsafe.aria': '使用 URL 安全的 base64 字母表',
+  'tools.base64.label.text': '文本',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64 转换器输入',
+  'tools.base64.result.aria': 'Base64 转换器输出',
+  'tools.base64.placeholder.encode': '输入或粘贴 — UTF-8、表情符号、JWT 段。全都干净地往返。',
+  'tools.base64.placeholder.decode': '粘贴一段 base64 字符串 — JWT 片段和 URL-safe 变体都能解码。',
+  'tools.base64.swap': '交换 ⇄',
+  'tools.base64.copy': '复制',
+  'tools.base64.copied': '已复制',
+  'tools.base64.paste': '粘贴',
+  'tools.base64.paste.aria': '从剪贴板粘贴',
+  'tools.base64.pasted': '已粘贴',
+  'tools.base64.chars': '{n} 字符',
+  'tools.base64.lengths': '输入 {in} 字符 · 输出 {out} 字符',
+  'tools.base64.explainer.heading': 'Base64 的原理',
+  'tools.base64.explainer.intro':
+    'Base64 把任意字节装进 64 个可打印 ASCII 字符（A–Z、a–z、0–9、+ /）。它的存在是为了让二进制能穿过只允许文本的通道：JSON 字段、URL、邮件正文、HTTP 头。',
+  'tools.base64.explainer.mechanic':
+    '拿 3 个字节（24 位），切成 4 组各 6 位，逐组在字母表里查表，输出 4 个 ASCII 字符。结尾的 `=` 是为了在输入不对齐时把输出补齐到 4 的倍数。',
+  'tools.base64.explainer.example.label': '走一遍：编码 "Cat"',
+  'tools.base64.explainer.uses':
+    '你会在 HTTP Basic Auth（`Authorization: Basic …`）、JWT 段、CSS/HTML 的 `data:` URI 和邮件附件（MIME）里看到它。',
+  'tools.base64.explainer.warning':
+    '它不是加密。任何拿到编码字符串的人都能把它解回来。把 base64 当成运输信封，永远别当作秘密。',
+  'tools.base64.explainer.tryauth': '试试 Basic Auth 助手 →',
+  'tools.basicauth.mode.aria': '生成或读取头',
+  'tools.basicauth.mode.encode': '生成',
+  'tools.basicauth.mode.decode': '读取',
+  'tools.basicauth.username.label': '用户名',
+  'tools.basicauth.username.aria': 'Basic auth 的用户名',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': '密码',
+  'tools.basicauth.password.aria': 'Basic auth 的密码',
+  'tools.basicauth.password.placeholder': '芝麻开门',
+  'tools.basicauth.password.show': '显示',
+  'tools.basicauth.password.hide': '隐藏',
+  'tools.basicauth.header.label': 'Authorization 头',
+  'tools.basicauth.header.aria': 'HTTP Authorization 头的值',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': '复制头',
+  'tools.basicauth.copy.username': '复制用户名',
+  'tools.basicauth.copy.password': '复制密码',
+  'tools.basicauth.paste.header': '粘贴头',
+  'tools.basicauth.invalid':
+    '没解析出这个头。请确认它形如 `Basic <base64>`，并且解码后的内容里用户名和密码之间有 `:`。',
+  'tools.basicauth.intro':
+    '生成并读取 HTTP Basic 认证使用的 `Authorization: Basic <base64>` 头。全程本地 — 凭据不会离开你的浏览器。',
 };
 
 const ko: Translations = {
@@ -448,6 +1084,8 @@ const ko: Translations = {
   'sidebar.foot.line2': 'Pratiyush 제작.',
   'topbar.theme.aria': '테마',
   'topbar.github.aria': 'GitHub 리포지토리',
+  'topbar.language.aria': '언어',
+  'topbar.language.label': '언어',
   'tool.placeholder.title': '도구가 아직 구현되지 않았습니다',
   'tool.placeholder.body': '도구 로직 사용 가능; 렌더링 계층 대기 중.',
   'footer.privacy': '개인정보 보호',
@@ -461,9 +1099,65 @@ const ko: Translations = {
   'error.unknown': '무언가 깨졌습니다. 원인은 우리도 잘 모릅니다. 새로 고침하면 보통 해결됩니다.',
   'error.copy.failed':
     '클립보드가 거부했습니다. 권한 문제일 가능성이 높습니다 — 브라우저 설정을 확인하고 다시 시도하세요.',
+  'error.paste.failed':
+    '클립보드가 입을 다물었습니다. 브라우저는 붙여넣기를 권한으로 막습니다 — 허용하거나, 입력란에 ⌘/Ctrl-V로 직접 붙여넣으세요.',
   'error.parse.failed':
     '뭔가 어긋난 것 같습니다. 이상한 문자나 잘못된 형식을 확인하고 다시 시도하세요.',
   'error.back.home': '← 홈으로 돌아가기',
+  'tools.base64.mode.aria': '인코딩 또는 디코딩',
+  'tools.base64.mode.encode': '인코딩',
+  'tools.base64.mode.decode': '디코딩',
+  'tools.base64.urlsafe.label': 'URL 안전 변형 (-_, 패딩 없음)',
+  'tools.base64.urlsafe.aria': 'URL 안전 base64 알파벳 사용',
+  'tools.base64.label.text': '텍스트',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64 변환기 입력',
+  'tools.base64.result.aria': 'Base64 변환기 출력',
+  'tools.base64.placeholder.encode':
+    '입력하거나 붙여넣으세요 — UTF-8, 이모지, JWT 세그먼트. 모두 깔끔하게 왕복합니다.',
+  'tools.base64.placeholder.decode':
+    'base64 문자열을 붙여넣으세요 — JWT 세그먼트와 URL 안전 변형 모두 디코딩됩니다.',
+  'tools.base64.swap': '교환 ⇄',
+  'tools.base64.copy': '복사',
+  'tools.base64.copied': '복사됨',
+  'tools.base64.paste': '붙여넣기',
+  'tools.base64.paste.aria': '클립보드에서 붙여넣기',
+  'tools.base64.pasted': '붙여넣음',
+  'tools.base64.chars': '{n}자',
+  'tools.base64.lengths': '입력 {in}자 · 출력 {out}자',
+  'tools.base64.explainer.heading': 'Base64 작동 방식',
+  'tools.base64.explainer.intro':
+    'Base64는 임의의 바이트를 64개의 인쇄 가능한 ASCII 문자(A–Z, a–z, 0–9, + /)로 포장합니다. 바이너리가 텍스트 전용 경로 — JSON 필드, URL, 이메일 본문, HTTP 헤더 — 를 살아남게 하려고 존재합니다.',
+  'tools.base64.explainer.mechanic':
+    '3바이트(24비트)를 가져와 6비트씩 4그룹으로 자르고, 각 그룹을 알파벳에서 찾아 4개의 ASCII 문자로 내보냅니다. 끝의 `=`은 입력이 맞아떨어지지 않을 때 출력을 4의 배수로 맞추는 패딩입니다.',
+  'tools.base64.explainer.example.label': '단계별 예제 — "Cat" 인코딩',
+  'tools.base64.explainer.uses':
+    'HTTP Basic Auth(`Authorization: Basic …`), JWT 세그먼트, CSS/HTML의 `data:` URI, 이메일 첨부(MIME)에서 마주칩니다.',
+  'tools.base64.explainer.warning':
+    '암호화가 아닙니다. 인코딩된 문자열을 가진 누구나 다시 디코딩할 수 있습니다. base64는 운송 봉투로 다루고 비밀로 쓰지 마세요.',
+  'tools.base64.explainer.tryauth': 'Basic Auth 헬퍼 시도 →',
+  'tools.basicauth.mode.aria': '헤더 생성 또는 읽기',
+  'tools.basicauth.mode.encode': '생성',
+  'tools.basicauth.mode.decode': '읽기',
+  'tools.basicauth.username.label': '사용자명',
+  'tools.basicauth.username.aria': 'Basic auth 사용자명',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': '비밀번호',
+  'tools.basicauth.password.aria': 'Basic auth 비밀번호',
+  'tools.basicauth.password.placeholder': '열려라 참깨',
+  'tools.basicauth.password.show': '표시',
+  'tools.basicauth.password.hide': '숨김',
+  'tools.basicauth.header.label': 'Authorization 헤더',
+  'tools.basicauth.header.aria': 'HTTP Authorization 헤더 값',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': '헤더 복사',
+  'tools.basicauth.copy.username': '사용자명 복사',
+  'tools.basicauth.copy.password': '비밀번호 복사',
+  'tools.basicauth.paste.header': '헤더 붙여넣기',
+  'tools.basicauth.invalid':
+    '그 헤더를 해석할 수 없었습니다. `Basic <base64>` 형식인지, 디코딩된 페이로드의 사용자명과 비밀번호 사이에 `:`가 있는지 확인하세요.',
+  'tools.basicauth.intro':
+    'HTTP Basic 인증이 사용하는 `Authorization: Basic <base64>` 헤더를 생성하고 읽습니다. 모두 로컬에서 — 자격 증명이 브라우저를 떠나지 않습니다.',
 };
 
 const hi: Translations = {
@@ -485,6 +1179,8 @@ const hi: Translations = {
   'sidebar.foot.line2': 'Pratiyush द्वारा बनाया गया।',
   'topbar.theme.aria': 'थीम',
   'topbar.github.aria': 'GitHub रिपॉजिटरी',
+  'topbar.language.aria': 'भाषा',
+  'topbar.language.label': 'भाषा',
   'tool.placeholder.title': 'टूल अभी तक लागू नहीं किया गया',
   'tool.placeholder.body': 'टूल लॉजिक उपलब्ध; रेंडर लेयर लंबित।',
   'footer.privacy': 'गोपनीयता',
@@ -499,9 +1195,65 @@ const hi: Translations = {
     'कुछ टूट गया। वजह हमें भी पूरी तरह स्पष्ट नहीं है। रीलोड करना अक्सर मदद करता है।',
   'error.copy.failed':
     'क्लिपबोर्ड ने मना कर दिया। शायद अनुमति की बात है — ब्राउज़र देखें और फिर से कोशिश करें।',
+  'error.paste.failed':
+    'क्लिपबोर्ड चुप रहा। ब्राउज़र पेस्ट को परमिशन के पीछे रखते हैं — दे दीजिए, या ⌘/Ctrl-V से सीधा पेस्ट करें।',
   'error.parse.failed':
     'यह पूरी तरह सही नहीं लग रहा। फालतू वर्ण या गलत फॉर्मेट देखें और फिर कोशिश करें।',
   'error.back.home': '← होम पर वापस',
+  'tools.base64.mode.aria': 'एनकोड या डीकोड',
+  'tools.base64.mode.encode': 'एनकोड',
+  'tools.base64.mode.decode': 'डीकोड',
+  'tools.base64.urlsafe.label': 'URL-सुरक्षित प्रकार (-_, बिना पैडिंग)',
+  'tools.base64.urlsafe.aria': 'URL-सुरक्षित base64 वर्णमाला का उपयोग करें',
+  'tools.base64.label.text': 'पाठ',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'Base64 कनवर्टर इनपुट',
+  'tools.base64.result.aria': 'Base64 कनवर्टर आउटपुट',
+  'tools.base64.placeholder.encode':
+    'टाइप करें या पेस्ट करें — UTF-8, इमोजी, JWT सेगमेंट। सब साफ-सुथरे राउंड-ट्रिप करते हैं।',
+  'tools.base64.placeholder.decode':
+    'कोई base64 स्ट्रिंग पेस्ट करें — JWT सेगमेंट और URL-सुरक्षित वैरिएंट दोनों डिकोड होते हैं।',
+  'tools.base64.swap': 'स्वैप ⇄',
+  'tools.base64.copy': 'कॉपी',
+  'tools.base64.copied': 'कॉपी हुआ',
+  'tools.base64.paste': 'पेस्ट',
+  'tools.base64.paste.aria': 'क्लिपबोर्ड से पेस्ट करें',
+  'tools.base64.pasted': 'पेस्ट हुआ',
+  'tools.base64.chars': '{n} वर्ण',
+  'tools.base64.lengths': 'इनपुट {in} वर्ण · आउटपुट {out} वर्ण',
+  'tools.base64.explainer.heading': 'Base64 कैसे काम करता है',
+  'tools.base64.explainer.intro':
+    'Base64 मनमाने बाइट्स को 64 प्रिंट करने योग्य ASCII वर्णों (A–Z, a–z, 0–9, + /) में पैक करता है। यह इसलिए है कि बाइनरी सिर्फ-टेक्स्ट चैनलों — JSON फ़ील्ड, URL, ईमेल बॉडी, HTTP हेडर — से बच निकले।',
+  'tools.base64.explainer.mechanic':
+    '3 बाइट (24 बिट) लो, 6-6 बिट के 4 समूहों में काटो, हर समूह को वर्णमाला में देखो, और 4 ASCII वर्ण निकालो। अंत में `=` तब लगता है जब इनपुट मेल नहीं खाता और आउटपुट को 4 के गुणक तक भरना होता है।',
+  'tools.base64.explainer.example.label': 'उदाहरण के साथ — "Cat" को एनकोड करना',
+  'tools.base64.explainer.uses':
+    'तुम इसे HTTP Basic Auth (`Authorization: Basic …`), JWT सेगमेंट, CSS/HTML में `data:` URI, और ईमेल अटैचमेंट (MIME) में देखोगे।',
+  'tools.base64.explainer.warning':
+    'यह एन्क्रिप्शन नहीं है। एनकोडेड स्ट्रिंग रखने वाला कोई भी इसे वापस डिकोड कर सकता है। base64 को परिवहन का लिफाफा मानो, राज़ नहीं।',
+  'tools.base64.explainer.tryauth': 'Basic Auth मददगार आज़माएँ →',
+  'tools.basicauth.mode.aria': 'हेडर बनाओ या पढ़ो',
+  'tools.basicauth.mode.encode': 'बनाओ',
+  'tools.basicauth.mode.decode': 'पढ़ो',
+  'tools.basicauth.username.label': 'उपयोगकर्ता नाम',
+  'tools.basicauth.username.aria': 'Basic auth के लिए उपयोगकर्ता नाम',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'पासवर्ड',
+  'tools.basicauth.password.aria': 'Basic auth के लिए पासवर्ड',
+  'tools.basicauth.password.placeholder': 'खुल जा सिम सिम',
+  'tools.basicauth.password.show': 'दिखाओ',
+  'tools.basicauth.password.hide': 'छिपाओ',
+  'tools.basicauth.header.label': 'Authorization हेडर',
+  'tools.basicauth.header.aria': 'HTTP Authorization हेडर का मान',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'हेडर कॉपी',
+  'tools.basicauth.copy.username': 'उपयोगकर्ता कॉपी',
+  'tools.basicauth.copy.password': 'पासवर्ड कॉपी',
+  'tools.basicauth.paste.header': 'हेडर पेस्ट',
+  'tools.basicauth.invalid':
+    'वह हेडर पार्स नहीं हुआ। जाँचो कि वह `Basic <base64>` जैसा दिखता है और डिकोड की गई सामग्री में उपयोगकर्ता नाम और पासवर्ड के बीच `:` है।',
+  'tools.basicauth.intro':
+    'HTTP Basic प्रमाणीकरण का `Authorization: Basic <base64>` हेडर बनाता और पढ़ता है। सब डिवाइस पर — क्रेडेंशियल ब्राउज़र से बाहर नहीं जाते।',
 };
 
 const ar: Translations = {
@@ -523,6 +1275,8 @@ const ar: Translations = {
   'sidebar.foot.line2': 'صنع بواسطة Pratiyush.',
   'topbar.theme.aria': 'السمة',
   'topbar.github.aria': 'مستودع GitHub',
+  'topbar.language.aria': 'اللغة',
+  'topbar.language.label': 'اللغة',
   'tool.placeholder.title': 'الأداة لم تُنفّذ بعد',
   'tool.placeholder.body': 'منطق الأداة متاح؛ طبقة العرض في الانتظار.',
   'footer.privacy': 'الخصوصية',
@@ -536,8 +1290,64 @@ const ar: Translations = {
   'error.unknown': 'شيء ما تعطّل. السبب ليس واضحًا تمامًا حتى لنا. إعادة التحميل تفي بالغرض عادةً.',
   'error.copy.failed':
     'الحافظة رفضت. على الأرجح مسألة أذونات — تحقق من إعدادات المتصفح وحاول مرة أخرى.',
+  'error.paste.failed':
+    'الحافظة لزمت الصمت. تحجب المتصفحات اللصق خلف إذن — امنحه، أو الصق مباشرة بـ ⌘/Ctrl-V في الحقل.',
   'error.parse.failed': 'هذا لا يبدو صحيحًا تمامًا. تحقق من حروف زائدة أو تنسيق خاطئ وحاول مجددًا.',
   'error.back.home': '← العودة إلى الرئيسية',
+  'tools.base64.mode.aria': 'ترميز أو فك ترميز',
+  'tools.base64.mode.encode': 'ترميز',
+  'tools.base64.mode.decode': 'فك ترميز',
+  'tools.base64.urlsafe.label': 'المتغير الآمن للروابط (-_، بدون حشو)',
+  'tools.base64.urlsafe.aria': 'استخدم الأبجدية base64 الآمنة للروابط',
+  'tools.base64.label.text': 'نص',
+  'tools.base64.label.base64': 'Base64',
+  'tools.base64.source.aria': 'إدخال محول base64',
+  'tools.base64.result.aria': 'إخراج محول base64',
+  'tools.base64.placeholder.encode':
+    'اكتب أو الصق — UTF-8، الإيموجي، أجزاء JWT. كلها تذهب وتعود نظيفة.',
+  'tools.base64.placeholder.decode':
+    'الصق سلسلة base64 — قطع JWT والمتغيرات الآمنة للروابط جميعها تُفك ترميزها.',
+  'tools.base64.swap': 'تبديل ⇄',
+  'tools.base64.copy': 'نسخ',
+  'tools.base64.copied': 'تم النسخ',
+  'tools.base64.paste': 'لصق',
+  'tools.base64.paste.aria': 'اللصق من الحافظة',
+  'tools.base64.pasted': 'تم اللصق',
+  'tools.base64.chars': '{n} حرف',
+  'tools.base64.lengths': '{in} حرف إدخال · {out} حرف إخراج',
+  'tools.base64.explainer.heading': 'كيف يعمل Base64',
+  'tools.base64.explainer.intro':
+    'يُحزّم Base64 بايتات اعتباطية في 64 محرفًا ASCII قابلًا للطباعة (A–Z، a–z، 0–9، + /). وُجد ليبقى الثنائي حيًا في القنوات النصية فقط: حقول JSON، الروابط، أجساد البريد، ترويسات HTTP.',
+  'tools.base64.explainer.mechanic':
+    'خذ 3 بايتات (24 بِتًّا)، قسّمها إلى 4 مجموعات من 6 بِتّ لكل منها، ابحث عن كل مجموعة في الأبجدية، وأصدر 4 محارف ASCII. علامة `=` في النهاية تكمل الناتج إلى مضاعَف 4 عندما لا تُحاذي المُدخلات.',
+  'tools.base64.explainer.example.label': 'مثال محلول — تشفير "Cat"',
+  'tools.base64.explainer.uses':
+    'ستراه في HTTP Basic Auth (`Authorization: Basic …`)، وفي قطع JWT، وفي روابط `data:` ضمن CSS/HTML، وفي مرفقات البريد (MIME).',
+  'tools.base64.explainer.warning':
+    'ليس تشفيرًا. أيّ شخص بحوزته السلسلة المُشفّرة يستطيع فكّها. عامل base64 كمظروف نقل، ولا تستخدمه سرًّا.',
+  'tools.base64.explainer.tryauth': 'جرّب مساعد Basic Auth →',
+  'tools.basicauth.mode.aria': 'بناء أو قراءة الترويسة',
+  'tools.basicauth.mode.encode': 'بناء',
+  'tools.basicauth.mode.decode': 'قراءة',
+  'tools.basicauth.username.label': 'اسم المستخدم',
+  'tools.basicauth.username.aria': 'اسم المستخدم لـ Basic auth',
+  'tools.basicauth.username.placeholder': 'aladdin',
+  'tools.basicauth.password.label': 'كلمة المرور',
+  'tools.basicauth.password.aria': 'كلمة المرور لـ Basic auth',
+  'tools.basicauth.password.placeholder': 'افتح يا سمسم',
+  'tools.basicauth.password.show': 'إظهار',
+  'tools.basicauth.password.hide': 'إخفاء',
+  'tools.basicauth.header.label': 'ترويسة Authorization',
+  'tools.basicauth.header.aria': 'قيمة ترويسة HTTP Authorization',
+  'tools.basicauth.header.placeholder': 'Basic YWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+  'tools.basicauth.copy.header': 'انسخ الترويسة',
+  'tools.basicauth.copy.username': 'انسخ المستخدم',
+  'tools.basicauth.copy.password': 'انسخ كلمة المرور',
+  'tools.basicauth.paste.header': 'الصق الترويسة',
+  'tools.basicauth.invalid':
+    'هذه الترويسة لم تُحلّل. تأكّد أن صيغتها `Basic <base64>` وأن المحتوى المفكوك يحوي `:` بين المستخدم وكلمة المرور.',
+  'tools.basicauth.intro':
+    'يُنشئ ويقرأ ترويسة `Authorization: Basic <base64>` التي يستخدمها مصادقة HTTP Basic. كلّه محلي — لا تغادر بياناتك المتصفّح.',
 };
 
 export const ALL_TRANSLATIONS: Record<string, Translations> = {

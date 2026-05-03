@@ -1,16 +1,22 @@
+import { ALL_TRANSLATIONS } from '../../scripts/translations-data';
 import type { Translations } from './types';
 import en from './en';
 
 /**
  * Locale registry. The 15 locale codes below are recognized — auto-detected
  * from `navigator.language` and stored when chosen. Real translations come
- * from one of:
- *   1. `src/locales/_synced/<code>.json` — fetched by `pnpm sync-i18n` from
- *      Tolgee. Vite's `import.meta.glob` picks them up at build time, so the
- *      deployed app contains them as static assets and never calls Tolgee.
- *   2. `src/locales/<code>.ts` — hand-rolled fallback (only `en` today).
- *
- * Lookup order: synced JSON → hand-rolled → English.
+ * from three layered sources, lowest priority first:
+ *   1. English fallback (`src/locales/en.ts`) — guaranteed to have every key,
+ *      so a brand-new key never surfaces as a raw string to the user.
+ *   2. Hand-authored translations (`scripts/translations-data.ts`) — written
+ *      in code, type-checked against {@link Translations}. These ship in the
+ *      bundle and make the runtime language switcher actually swap strings,
+ *      even before a Tolgee round-trip has populated the synced JSON.
+ *   3. Tolgee-synced JSON (`src/locales/_synced/<code>.json`) — fetched by
+ *      `pnpm sync-i18n`. Vite's `import.meta.glob` picks them up at build
+ *      time, so the deployed app contains them as static assets and never
+ *      calls Tolgee. When present, these win because translators may have
+ *      refined the authored text.
  */
 
 export const LOCALES = [
@@ -44,13 +50,12 @@ const synced = import.meta.glob<Record<string, string>>('./_synced/*.json', {
 });
 
 function buildTable(code: LocaleCode): Translations {
+  const authored = ALL_TRANSLATIONS[code];
   const synced_ = synced[`./_synced/${code}.json`];
-  if (synced_) {
-    // Merge English defaults with synced overrides so missing keys never
-    // surface as raw key strings to the user.
-    return { ...en, ...synced_ };
-  }
-  return en;
+  // Layered merge: en (every key, English) ← authored (full native, in code)
+  // ← synced (Tolgee-refined). Missing keys fall back gracefully through
+  // each layer instead of surfacing as raw key strings.
+  return { ...en, ...(authored ?? {}), ...(synced_ ?? {}) };
 }
 
 const LOCALE_TABLES: Record<LocaleCode, Translations> = Object.fromEntries(

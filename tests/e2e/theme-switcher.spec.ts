@@ -50,8 +50,11 @@ test.describe('theme switcher', () => {
     expect(stored).toBe('aurora');
   });
 
-  test('renders a usable empty-state when the registry has no tools', async ({ page }) => {
-    await expect(page.locator('.dt-home__empty')).toContainText('No tools yet');
+  test('renders the tool grid once tools are registered', async ({ page }) => {
+    // The registry has shipped tools — the grid replaces the empty state.
+    // Either is acceptable structurally; this test pins the live behavior.
+    await expect(page.locator('.dt-home__grid')).toBeVisible();
+    await expect(page.locator('.dt-home__grid .dt-card').first()).toBeVisible();
   });
 });
 
