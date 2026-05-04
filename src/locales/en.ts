@@ -23,6 +23,7 @@ const en: Translations = {
 
   'topbar.theme.aria': 'Theme',
   'topbar.github.aria': 'GitHub repository',
+  'topbar.menu.aria': 'Open navigation menu',
   'topbar.language.aria': 'Language',
   'topbar.language.label': 'Language',
 
@@ -81,6 +82,18 @@ const en: Translations = {
   'tools.base64.explainer.warning':
     'Not encryption. Anyone with the encoded string can decode it back. Treat base64 as an envelope for transport, never as a secret.',
   'tools.base64.explainer.tryauth': 'Try the Basic Auth helper →',
+  'tools.base64.deepdive.encoding.title': 'Step-by-step: encoding "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Watch one 24-bit chunk turn into four 6-bit indices. The tail cases (1 or 2 leftover bytes) are the same idea with `=` padding.',
+  'tools.base64.deepdive.alphabet.title': 'The 64-character alphabet',
+  'tools.base64.deepdive.alphabet.intro':
+    'Standard base64 (RFC 4648 §4) reserves 64 ASCII characters. The URL-safe variant (§5) swaps two of them so the output survives URLs and filenames.',
+  'tools.base64.deepdive.uses.title': 'Where you actually meet base64',
+  'tools.base64.deepdive.uses.intro':
+    'Anywhere binary needs to ride through a text-only channel. A short tour of the formats you read most:',
+  'tools.base64.deepdive.pitfalls.title': 'Things that bite',
+  'tools.base64.deepdive.pitfalls.intro':
+    'Most "weird base64 bugs" come from one of these. Skim before you debug.',
 
   'tools.basicauth.mode.aria': 'Build header or read header',
   'tools.basicauth.mode.encode': 'Build',
@@ -102,6 +115,7 @@ const en: Translations = {
   'tools.basicauth.paste.header': 'Paste header',
   'tools.basicauth.invalid':
     'That header did not parse. Make sure it looks like `Basic <base64>` and the decoded payload contains a `:` between username and password.',
+  'tools.basicauth.heading': 'HTTP Basic Auth helper',
   'tools.basicauth.intro':
     'Builds and reads the `Authorization: Basic <base64>` header used by HTTP Basic Authentication. All on-device — credentials never leave your browser.',
 };
