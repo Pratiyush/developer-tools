@@ -23,19 +23,41 @@ export interface LayoutOptions {
 export function layout(opts: LayoutOptions): LayoutHandle {
   opts.host.replaceChildren();
   opts.host.classList.add('dt-app');
+  // Drawer state lives on the host as a data attribute so CSS can style
+  // both the sidebar and a sibling backdrop without JS-side bookkeeping.
+  opts.host.dataset.drawer = 'closed';
+
+  // Backdrop sits visually between the sidebar (overlay) and the content.
+  // Hidden on desktop via CSS; toggled visible with the drawer.
+  const backdrop = document.createElement('div');
+  backdrop.classList.add('dt-backdrop');
+  backdrop.addEventListener('click', closeDrawer);
 
   const sb = sidebar({
     tools: opts.tools,
-    onSelect: (id) => opts.onSelectTool?.(id),
+    onSelect: (id) => {
+      // Selecting a tool from the drawer should close it on mobile.
+      closeDrawer();
+      opts.onSelectTool?.(id);
+    },
   });
+
+  // Close button inside the drawer for mobile users — invisible on desktop.
+  const drawerClose = document.createElement('button');
+  drawerClose.type = 'button';
+  drawerClose.classList.add('dt-sidebar__close');
+  drawerClose.setAttribute('aria-label', 'Close menu');
+  drawerClose.innerHTML = '<span aria-hidden="true">×</span>';
+  drawerClose.addEventListener('click', closeDrawer);
+  sb.el.prepend(drawerClose);
 
   const main = document.createElement('div');
   main.classList.add('dt-app__main');
 
   const tb = topbar(
     opts.repoUrl !== undefined
-      ? { initialTheme: opts.initialTheme, repoUrl: opts.repoUrl }
-      : { initialTheme: opts.initialTheme },
+      ? { initialTheme: opts.initialTheme, repoUrl: opts.repoUrl, onMenuClick: openDrawer }
+      : { initialTheme: opts.initialTheme, onMenuClick: openDrawer },
   );
 
   const content = document.createElement('main');
@@ -43,7 +65,23 @@ export function layout(opts: LayoutOptions): LayoutHandle {
 
   const ft = footer();
   main.append(tb.el, content, ft.el);
-  opts.host.append(sb.el, main);
+  opts.host.append(sb.el, backdrop, main);
+
+  // Esc key closes the drawer.
+  const onKeydown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' && opts.host.dataset.drawer === 'open') {
+      closeDrawer();
+    }
+  };
+  document.addEventListener('keydown', onKeydown);
+
+  function openDrawer(): void {
+    opts.host.dataset.drawer = 'open';
+  }
+
+  function closeDrawer(): void {
+    opts.host.dataset.drawer = 'closed';
+  }
 
   function setView(node: HTMLElement, crumb: readonly string[]): void {
     content.replaceChildren(node);
@@ -56,6 +94,7 @@ export function layout(opts: LayoutOptions): LayoutHandle {
     content,
     setView,
     dispose() {
+      document.removeEventListener('keydown', onKeydown);
       tb.dispose();
       sb.dispose();
     },

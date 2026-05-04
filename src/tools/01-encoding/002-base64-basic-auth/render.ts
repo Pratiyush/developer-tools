@@ -36,10 +36,10 @@ export function render(
   top.appendChild(tabs);
 
   // h1 placed above the intro so the tool view satisfies axe's
-  // page-has-heading-one best-practice rule. Visually styled compact.
+  // page-has-heading-one best-practice rule. Visually compact.
   const heading = doc.createElement('h1');
   heading.classList.add('dt-basicauth__heading');
-  heading.textContent = translate('tools.basicauth.header.label');
+  heading.textContent = translate('tools.basicauth.heading');
   top.appendChild(heading);
 
   const intro = doc.createElement('p');

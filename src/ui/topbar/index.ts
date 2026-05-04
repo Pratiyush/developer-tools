@@ -1,6 +1,6 @@
 import { translate, getLocale } from '../../lib/i18n';
 import type { Theme } from '../../lib/theme';
-import { button, icon } from '../primitives';
+import { button } from '../primitives';
 import { languageSwitcher } from './language-switcher';
 import { themeSwitcher } from './theme-switcher';
 
@@ -14,6 +14,8 @@ export interface TopbarOptions {
   initialTheme: Theme;
   initialCrumb?: readonly string[];
   repoUrl?: string;
+  /** Fired when the hamburger menu button is clicked (mobile drawer open). */
+  onMenuClick?: () => void;
 }
 
 export function topbar(opts: TopbarOptions): TopbarHandle {
@@ -22,6 +24,23 @@ export function topbar(opts: TopbarOptions): TopbarHandle {
 
   const left = document.createElement('div');
   left.classList.add('dt-topbar__left');
+
+  // Hamburger — only visible on mobile via CSS. Wired to a layout-level
+  // callback so the sidebar can be opened as a drawer.
+  const menuBtn = button({
+    iconName: 'menu',
+    variant: 'icon',
+    ariaLabel: translate('topbar.menu.aria'),
+  });
+  menuBtn.classList.add('dt-topbar__menu');
+  if (opts.onMenuClick) {
+    const handler = opts.onMenuClick;
+    menuBtn.addEventListener('click', () => {
+      handler();
+    });
+  }
+  left.appendChild(menuBtn);
+
   const crumb = document.createElement('div');
   crumb.classList.add('dt-crumb');
   left.appendChild(crumb);
@@ -43,6 +62,7 @@ export function topbar(opts: TopbarOptions): TopbarHandle {
     ghLink.href = opts.repoUrl;
     ghLink.target = '_blank';
     ghLink.rel = 'noreferrer noopener';
+    ghLink.classList.add('dt-topbar__gh');
     const ghBtn = button({
       iconName: 'github',
       variant: 'icon',
@@ -71,8 +91,6 @@ export function topbar(opts: TopbarOptions): TopbarHandle {
   }
 
   setCrumb(opts.initialCrumb ?? ['Home']);
-  // Suppress unused-icon-import lint by exposing a helper for future use.
-  void icon;
 
   return {
     el,

@@ -33,6 +33,7 @@ const es: Translations = {
   'sidebar.foot.line2': 'Hecho por Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repositorio de GitHub',
+  'topbar.menu.aria': 'Abrir menú de navegación',
   'topbar.language.aria': 'Idioma',
   'topbar.language.label': 'Idioma',
   'tool.placeholder.title': 'Herramienta aún no implementada',
@@ -86,6 +87,18 @@ const es: Translations = {
   'tools.base64.explainer.warning':
     'No es cifrado. Cualquiera con la cadena codificada puede decodificarla. Trata base64 como un sobre de transporte, nunca como un secreto.',
   'tools.base64.explainer.tryauth': 'Prueba el ayudante de Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'Paso a paso: codificando "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Observa cómo un trozo de 24 bits se convierte en cuatro índices de 6 bits. Los casos de cola (1 o 2 bytes sobrantes) son la misma idea con relleno `=`.',
+  'tools.base64.deepdive.alphabet.title': 'El alfabeto de 64 caracteres',
+  'tools.base64.deepdive.alphabet.intro':
+    'El base64 estándar (RFC 4648 §4) reserva 64 caracteres ASCII. La variante URL-safe (§5) intercambia dos de ellos para que la salida sobreviva URLs y nombres de archivo.',
+  'tools.base64.deepdive.uses.title': 'Dónde te encontrarás base64 de verdad',
+  'tools.base64.deepdive.uses.intro':
+    'Donde sea que el binario tenga que viajar por un canal solo de texto. Un recorrido corto por los formatos que más lees:',
+  'tools.base64.deepdive.pitfalls.title': 'Cosas que muerden',
+  'tools.base64.deepdive.pitfalls.intro':
+    'La mayoría de "bugs raros de base64" vienen de uno de estos. Échales un ojo antes de depurar.',
   'tools.basicauth.mode.aria': 'Construir o leer cabecera',
   'tools.basicauth.mode.encode': 'Construir',
   'tools.basicauth.mode.decode': 'Leer',
@@ -106,6 +119,7 @@ const es: Translations = {
   'tools.basicauth.paste.header': 'Pegar cabecera',
   'tools.basicauth.invalid':
     'Esa cabecera no se pudo leer. Asegúrate de que tenga la forma `Basic <base64>` y de que el contenido decodificado contenga `:` entre usuario y contraseña.',
+  'tools.basicauth.heading': 'Asistente de HTTP Basic Auth',
   'tools.basicauth.intro':
     'Construye y lee la cabecera `Authorization: Basic <base64>` que usa la autenticación HTTP Basic. Todo en local — las credenciales nunca salen de tu navegador.',
 };
@@ -129,6 +143,7 @@ const fr: Translations = {
   'sidebar.foot.line2': 'Réalisé par Pratiyush.',
   'topbar.theme.aria': 'Thème',
   'topbar.github.aria': 'Dépôt GitHub',
+  'topbar.menu.aria': 'Ouvrir le menu de navigation',
   'topbar.language.aria': 'Langue',
   'topbar.language.label': 'Langue',
   'tool.placeholder.title': 'Outil non encore implémenté',
@@ -182,6 +197,18 @@ const fr: Translations = {
   'tools.base64.explainer.warning':
     'Ce n’est pas du chiffrement. Quiconque a la chaîne encodée peut la décoder. Considère base64 comme une enveloppe de transport, jamais comme un secret.',
   'tools.base64.explainer.tryauth': 'Essayer l’aide Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'Pas à pas : encoder « Man » → « TWFu »',
+  'tools.base64.deepdive.encoding.intro':
+    'Regarde un bloc de 24 bits se transformer en quatre indices de 6 bits. Les cas de fin (1 ou 2 octets restants) suivent la même idée avec un remplissage `=`.',
+  'tools.base64.deepdive.alphabet.title': 'L’alphabet de 64 caractères',
+  'tools.base64.deepdive.alphabet.intro':
+    'Le base64 standard (RFC 4648 §4) réserve 64 caractères ASCII. La variante URL-safe (§5) en remplace deux pour que la sortie survive aux URLs et aux noms de fichiers.',
+  'tools.base64.deepdive.uses.title': 'Où on croise vraiment base64',
+  'tools.base64.deepdive.uses.intro':
+    'Partout où du binaire doit traverser un canal réservé au texte. Petit tour des formats que tu lis le plus :',
+  'tools.base64.deepdive.pitfalls.title': 'Pièges classiques',
+  'tools.base64.deepdive.pitfalls.intro':
+    'La plupart des « bugs base64 bizarres » viennent de l’une de ces causes. Survole-les avant de déboguer.',
   'tools.basicauth.mode.aria': 'Construire ou lire l’en-tête',
   'tools.basicauth.mode.encode': 'Construire',
   'tools.basicauth.mode.decode': 'Lire',
@@ -202,6 +229,7 @@ const fr: Translations = {
   'tools.basicauth.paste.header': 'Coller l’en-tête',
   'tools.basicauth.invalid':
     'Cet en-tête n’a pas pu être lu. Vérifie qu’il a la forme `Basic <base64>` et que la charge décodée contient un `:` entre identifiant et mot de passe.',
+  'tools.basicauth.heading': 'Aide HTTP Basic Auth',
   'tools.basicauth.intro':
     'Construit et lit l’en-tête `Authorization: Basic <base64>` utilisé par l’authentification HTTP Basic. Tout en local — les identifiants ne quittent jamais ton navigateur.',
 };
@@ -225,6 +253,7 @@ const de: Translations = {
   'sidebar.foot.line2': 'Erstellt von Pratiyush.',
   'topbar.theme.aria': 'Thema',
   'topbar.github.aria': 'GitHub-Repository',
+  'topbar.menu.aria': 'Navigationsmenü öffnen',
   'topbar.language.aria': 'Sprache',
   'topbar.language.label': 'Sprache',
   'tool.placeholder.title': 'Tool noch nicht implementiert',
@@ -278,6 +307,18 @@ const de: Translations = {
   'tools.base64.explainer.warning':
     'Keine Verschlüsselung. Wer den kodierten String hat, kann ihn zurückdekodieren. Behandle base64 als Transportumschlag, nie als Geheimnis.',
   'tools.base64.explainer.tryauth': 'Probier den Basic-Auth-Helfer →',
+  'tools.base64.deepdive.encoding.title': 'Schritt für Schritt: "Man" → "TWFu" kodieren',
+  'tools.base64.deepdive.encoding.intro':
+    'Sieh zu, wie ein 24-Bit-Block in vier 6-Bit-Indizes zerfällt. Die Endfälle (1 oder 2 übrige Bytes) sind dieselbe Idee mit `=`-Padding.',
+  'tools.base64.deepdive.alphabet.title': 'Das 64-Zeichen-Alphabet',
+  'tools.base64.deepdive.alphabet.intro':
+    'Standard-base64 (RFC 4648 §4) reserviert 64 ASCII-Zeichen. Die URL-sichere Variante (§5) tauscht zwei davon aus, damit die Ausgabe URLs und Dateinamen übersteht.',
+  'tools.base64.deepdive.uses.title': 'Wo man base64 tatsächlich trifft',
+  'tools.base64.deepdive.uses.intro':
+    'Überall dort, wo Binärdaten durch einen reinen Textkanal müssen. Eine Kurztour durch die Formate, die du am meisten liest:',
+  'tools.base64.deepdive.pitfalls.title': 'Klassische Fallstricke',
+  'tools.base64.deepdive.pitfalls.intro':
+    'Die meisten "merkwürdigen base64-Bugs" kommen aus einer dieser Quellen. Vor dem Debuggen kurz überfliegen.',
   'tools.basicauth.mode.aria': 'Header bauen oder lesen',
   'tools.basicauth.mode.encode': 'Bauen',
   'tools.basicauth.mode.decode': 'Lesen',
@@ -298,6 +339,7 @@ const de: Translations = {
   'tools.basicauth.paste.header': 'Header einfügen',
   'tools.basicauth.invalid':
     'Dieser Header ließ sich nicht lesen. Stelle sicher, dass er `Basic <base64>` lautet und die dekodierte Nutzlast einen `:` zwischen Benutzer und Passwort enthält.',
+  'tools.basicauth.heading': 'HTTP-Basic-Auth-Helfer',
   'tools.basicauth.intro':
     'Baut und liest den Header `Authorization: Basic <base64>`, den HTTP Basic Authentication verwendet. Alles lokal — die Anmeldedaten verlassen den Browser nie.',
 };
@@ -321,6 +363,7 @@ const pt: Translations = {
   'sidebar.foot.line2': 'Feito por Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repositório do GitHub',
+  'topbar.menu.aria': 'Abrir menu de navegação',
   'topbar.language.aria': 'Idioma',
   'topbar.language.label': 'Idioma',
   'tool.placeholder.title': 'Ferramenta ainda não implementada',
@@ -374,6 +417,18 @@ const pt: Translations = {
   'tools.base64.explainer.warning':
     'Não é criptografia. Qualquer pessoa com a string codificada consegue decodificar de volta. Trate base64 como envelope de transporte, nunca como segredo.',
   'tools.base64.explainer.tryauth': 'Experimenta o ajudante de Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'Passo a passo: codificar "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Vê um bloco de 24 bits virar quatro índices de 6 bits. Os casos de cauda (1 ou 2 bytes restantes) são a mesma ideia com preenchimento `=`.',
+  'tools.base64.deepdive.alphabet.title': 'O alfabeto de 64 caracteres',
+  'tools.base64.deepdive.alphabet.intro':
+    'O base64 padrão (RFC 4648 §4) reserva 64 caracteres ASCII. A variante URL-safe (§5) troca dois deles para que a saída sobreviva a URLs e nomes de ficheiro.',
+  'tools.base64.deepdive.uses.title': 'Onde encontras base64 a sério',
+  'tools.base64.deepdive.uses.intro':
+    'Em qualquer canal só de texto onde precise passar binário. Uma volta rápida pelos formatos que mais lês:',
+  'tools.base64.deepdive.pitfalls.title': 'Coisas que mordem',
+  'tools.base64.deepdive.pitfalls.intro':
+    'A maior parte dos "bugs estranhos de base64" vem de um destes. Lê antes de ir depurar.',
   'tools.basicauth.mode.aria': 'Construir ou ler o cabeçalho',
   'tools.basicauth.mode.encode': 'Construir',
   'tools.basicauth.mode.decode': 'Ler',
@@ -394,6 +449,7 @@ const pt: Translations = {
   'tools.basicauth.paste.header': 'Colar cabeçalho',
   'tools.basicauth.invalid':
     'Esse cabeçalho não pôde ser lido. Confere se tem o formato `Basic <base64>` e se o conteúdo decodificado contém `:` entre usuário e senha.',
+  'tools.basicauth.heading': 'Ajudante HTTP Basic Auth',
   'tools.basicauth.intro':
     'Constrói e lê o cabeçalho `Authorization: Basic <base64>` usado pela autenticação HTTP Basic. Tudo local — as credenciais nunca saem do seu navegador.',
 };
@@ -417,6 +473,7 @@ const it: Translations = {
   'sidebar.foot.line2': 'Realizzato da Pratiyush.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'Repository GitHub',
+  'topbar.menu.aria': 'Apri menu di navigazione',
   'topbar.language.aria': 'Lingua',
   'topbar.language.label': 'Lingua',
   'tool.placeholder.title': 'Strumento non ancora implementato',
@@ -470,6 +527,18 @@ const it: Translations = {
   'tools.base64.explainer.warning':
     'Non è cifratura. Chiunque abbia la stringa codificata può decodificarla. Tratta base64 come una busta di trasporto, mai come un segreto.',
   'tools.base64.explainer.tryauth': 'Prova l’aiutante Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'Passo passo: codificare "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Guarda un blocco da 24 bit trasformarsi in quattro indici da 6 bit. I casi di coda (1 o 2 byte residui) sono la stessa idea con padding `=`.',
+  'tools.base64.deepdive.alphabet.title': 'L’alfabeto da 64 caratteri',
+  'tools.base64.deepdive.alphabet.intro':
+    'Il base64 standard (RFC 4648 §4) riserva 64 caratteri ASCII. La variante URL-safe (§5) ne scambia due perché l’output sopravviva a URL e nomi file.',
+  'tools.base64.deepdive.uses.title': 'Dove incontri base64 davvero',
+  'tools.base64.deepdive.uses.intro':
+    'Ovunque il binario debba viaggiare in un canale solo testo. Un tour rapido dei formati che leggi di più:',
+  'tools.base64.deepdive.pitfalls.title': 'Cose che mordono',
+  'tools.base64.deepdive.pitfalls.intro':
+    'La maggior parte dei "bug strani di base64" nasce da uno di questi. Dai un’occhiata prima di metterti a debuggare.',
   'tools.basicauth.mode.aria': 'Costruisci o leggi l’header',
   'tools.basicauth.mode.encode': 'Costruisci',
   'tools.basicauth.mode.decode': 'Leggi',
@@ -490,6 +559,7 @@ const it: Translations = {
   'tools.basicauth.paste.header': 'Incolla header',
   'tools.basicauth.invalid':
     'Questo header non è stato letto. Assicurati che abbia la forma `Basic <base64>` e che il payload decodificato contenga `:` tra utente e password.',
+  'tools.basicauth.heading': 'Aiutante HTTP Basic Auth',
   'tools.basicauth.intro':
     'Costruisce e legge l’header `Authorization: Basic <base64>` usato dall’autenticazione HTTP Basic. Tutto in locale — le credenziali non lasciano mai il tuo browser.',
 };
@@ -513,6 +583,7 @@ const nl: Translations = {
   'sidebar.foot.line2': 'Gemaakt door Pratiyush.',
   'topbar.theme.aria': 'Thema',
   'topbar.github.aria': 'GitHub-repository',
+  'topbar.menu.aria': 'Navigatiemenu openen',
   'topbar.language.aria': 'Taal',
   'topbar.language.label': 'Taal',
   'tool.placeholder.title': 'Tool nog niet geïmplementeerd',
@@ -566,6 +637,18 @@ const nl: Translations = {
   'tools.base64.explainer.warning':
     'Geen versleuteling. Iedereen met de gecodeerde string kan hem terug decoderen. Behandel base64 als transportenvelop, nooit als geheim.',
   'tools.base64.explainer.tryauth': 'Probeer de Basic-Auth-helper →',
+  'tools.base64.deepdive.encoding.title': 'Stap voor stap: "Man" → "TWFu" coderen',
+  'tools.base64.deepdive.encoding.intro':
+    'Kijk hoe een 24-bits blok in vier 6-bits indices uiteenvalt. De staartgevallen (1 of 2 overgebleven bytes) zijn hetzelfde idee met `=`-opvulling.',
+  'tools.base64.deepdive.alphabet.title': 'Het alfabet van 64 tekens',
+  'tools.base64.deepdive.alphabet.intro':
+    'Standaard base64 (RFC 4648 §4) reserveert 64 ASCII-tekens. De URL-veilige variant (§5) wisselt er twee zodat de uitvoer URL’s en bestandsnamen overleeft.',
+  'tools.base64.deepdive.uses.title': 'Waar je base64 echt tegenkomt',
+  'tools.base64.deepdive.uses.intro':
+    'Overal waar binair door een enkel-tekstkanaal moet. Een korte rondleiding langs de formaten die je het meest leest:',
+  'tools.base64.deepdive.pitfalls.title': 'Dingen die bijten',
+  'tools.base64.deepdive.pitfalls.intro':
+    'De meeste "rare base64-bugs" komen uit één van deze. Lees ze door voordat je debugt.',
   'tools.basicauth.mode.aria': 'Header bouwen of lezen',
   'tools.basicauth.mode.encode': 'Bouwen',
   'tools.basicauth.mode.decode': 'Lezen',
@@ -586,6 +669,7 @@ const nl: Translations = {
   'tools.basicauth.paste.header': 'Header plakken',
   'tools.basicauth.invalid':
     'Die header kon niet gelezen worden. Zorg dat hij eruitziet als `Basic <base64>` en dat de gedecodeerde inhoud een `:` bevat tussen gebruikersnaam en wachtwoord.',
+  'tools.basicauth.heading': 'HTTP-Basic-Auth-helper',
   'tools.basicauth.intro':
     'Bouwt en leest de `Authorization: Basic <base64>`-header die HTTP Basic Authentication gebruikt. Alles lokaal — gegevens verlaten je browser nooit.',
 };
@@ -609,6 +693,7 @@ const pl: Translations = {
   'sidebar.foot.line2': 'Stworzone przez Pratiyusha.',
   'topbar.theme.aria': 'Motyw',
   'topbar.github.aria': 'Repozytorium GitHub',
+  'topbar.menu.aria': 'Otwórz menu nawigacji',
   'topbar.language.aria': 'Język',
   'topbar.language.label': 'Język',
   'tool.placeholder.title': 'Narzędzie jeszcze nie zaimplementowane',
@@ -662,6 +747,18 @@ const pl: Translations = {
   'tools.base64.explainer.warning':
     'To nie szyfrowanie. Każdy z zakodowanym ciągiem może go zdekodować. Traktuj base64 jako kopertę transportową, nigdy jako sekret.',
   'tools.base64.explainer.tryauth': 'Wypróbuj pomocnika Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'Krok po kroku: kodowanie "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Patrz, jak 24-bitowy blok rozpada się na cztery 6-bitowe indeksy. Przypadki ogona (1 lub 2 pozostałe bajty) to ta sama idea z dopełnieniem `=`.',
+  'tools.base64.deepdive.alphabet.title': 'Alfabet 64 znaków',
+  'tools.base64.deepdive.alphabet.intro':
+    'Standardowy base64 (RFC 4648 §4) rezerwuje 64 znaki ASCII. Wariant URL-safe (§5) podmienia dwa z nich, aby wyjście przetrwało URL-e i nazwy plików.',
+  'tools.base64.deepdive.uses.title': 'Gdzie naprawdę spotkasz base64',
+  'tools.base64.deepdive.uses.intro':
+    'Wszędzie tam, gdzie binarne dane muszą jechać kanałem tylko-tekstowym. Krótki przegląd formatów, które czytasz najczęściej:',
+  'tools.base64.deepdive.pitfalls.title': 'Rzeczy, które gryzą',
+  'tools.base64.deepdive.pitfalls.intro':
+    'Większość "dziwnych bugów base64" pochodzi z jednej z tych przyczyn. Przeleć wzrokiem przed debugowaniem.',
   'tools.basicauth.mode.aria': 'Zbuduj lub odczytaj nagłówek',
   'tools.basicauth.mode.encode': 'Zbuduj',
   'tools.basicauth.mode.decode': 'Odczytaj',
@@ -682,6 +779,7 @@ const pl: Translations = {
   'tools.basicauth.paste.header': 'Wklej nagłówek',
   'tools.basicauth.invalid':
     'Tego nagłówka nie udało się odczytać. Upewnij się, że ma postać `Basic <base64>`, a zdekodowany ładunek zawiera `:` między użytkownikiem a hasłem.',
+  'tools.basicauth.heading': 'Pomocnik HTTP Basic Auth',
   'tools.basicauth.intro':
     'Buduje i odczytuje nagłówek `Authorization: Basic <base64>` używany przez uwierzytelnianie HTTP Basic. Wszystko lokalnie — dane nigdy nie opuszczają Twojej przeglądarki.',
 };
@@ -705,6 +803,7 @@ const ru: Translations = {
   'sidebar.foot.line2': 'Сделано Pratiyush.',
   'topbar.theme.aria': 'Тема',
   'topbar.github.aria': 'Репозиторий GitHub',
+  'topbar.menu.aria': 'Открыть меню навигации',
   'topbar.language.aria': 'Язык',
   'topbar.language.label': 'Язык',
   'tool.placeholder.title': 'Инструмент ещё не реализован',
@@ -758,6 +857,18 @@ const ru: Translations = {
   'tools.base64.explainer.warning':
     'Это не шифрование. Любой с закодированной строкой раскодирует её обратно. Считайте base64 транспортным конвертом, не секретом.',
   'tools.base64.explainer.tryauth': 'Попробуйте помощник Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'По шагам: кодируем "Man" → "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'Смотрите, как 24-битный блок превращается в четыре 6-битных индекса. Хвостовые случаи (1 или 2 оставшихся байта) — та же идея с заполнением `=`.',
+  'tools.base64.deepdive.alphabet.title': 'Алфавит из 64 символов',
+  'tools.base64.deepdive.alphabet.intro':
+    'Стандартный base64 (RFC 4648 §4) резервирует 64 ASCII-символа. URL-безопасный вариант (§5) меняет два из них, чтобы результат пережил URL и имена файлов.',
+  'tools.base64.deepdive.uses.title': 'Где реально встречается base64',
+  'tools.base64.deepdive.uses.intro':
+    'Везде, где двоичные данные должны проехать по чисто текстовому каналу. Короткий обзор форматов, которые вы читаете чаще всего:',
+  'tools.base64.deepdive.pitfalls.title': 'То, что кусается',
+  'tools.base64.deepdive.pitfalls.intro':
+    'Большинство "странных багов base64" — отсюда. Пробегите глазами перед отладкой.',
   'tools.basicauth.mode.aria': 'Собрать или прочитать заголовок',
   'tools.basicauth.mode.encode': 'Собрать',
   'tools.basicauth.mode.decode': 'Прочитать',
@@ -778,6 +889,7 @@ const ru: Translations = {
   'tools.basicauth.paste.header': 'Вставить заголовок',
   'tools.basicauth.invalid':
     'Этот заголовок не разобрался. Убедитесь, что он имеет вид `Basic <base64>` и в декодированной нагрузке есть `:` между логином и паролем.',
+  'tools.basicauth.heading': 'Помощник HTTP Basic Auth',
   'tools.basicauth.intro':
     'Собирает и разбирает заголовок `Authorization: Basic <base64>`, используемый HTTP Basic Authentication. Всё локально — учётные данные не покидают браузер.',
 };
@@ -801,6 +913,7 @@ const tr: Translations = {
   'sidebar.foot.line2': 'Pratiyush tarafından yapıldı.',
   'topbar.theme.aria': 'Tema',
   'topbar.github.aria': 'GitHub deposu',
+  'topbar.menu.aria': 'Gezinme menüsünü aç',
   'topbar.language.aria': 'Dil',
   'topbar.language.label': 'Dil',
   'tool.placeholder.title': 'Araç henüz uygulanmadı',
@@ -854,6 +967,18 @@ const tr: Translations = {
   'tools.base64.explainer.warning':
     'Şifreleme değildir. Kodlanmış diziye sahip olan herkes geri çözebilir. Base64’ü taşıma zarfı say, asla sır olarak kullanma.',
   'tools.base64.explainer.tryauth': 'Basic Auth yardımcısını dene →',
+  'tools.base64.deepdive.encoding.title': 'Adım adım: "Man" → "TWFu" kodlama',
+  'tools.base64.deepdive.encoding.intro':
+    '24 bitlik bir bloğun dört adet 6 bitlik indekse nasıl dönüştüğüne bak. Kuyruk durumları (1 veya 2 artık bayt) `=` dolgusuyla aynı fikrin uzantısı.',
+  'tools.base64.deepdive.alphabet.title': '64 karakterlik alfabe',
+  'tools.base64.deepdive.alphabet.intro':
+    'Standart base64 (RFC 4648 §4) 64 ASCII karakter ayırır. URL-güvenli varyant (§5) bunlardan ikisini değiştirir; çıktı URL ve dosya adlarında bozulmaz.',
+  'tools.base64.deepdive.uses.title': 'Base64’ü gerçekten nerede görürsün',
+  'tools.base64.deepdive.uses.intro':
+    'İkilinin yalnızca metin kanalında yolculuk etmesi gerektiği her yerde. En çok okuduğun biçimlere kısa bir tur:',
+  'tools.base64.deepdive.pitfalls.title': 'Isıran şeyler',
+  'tools.base64.deepdive.pitfalls.intro':
+    '"Garip base64 hatalarının" çoğu bu listenin birinden çıkar. Hata ayıklamadan önce göz at.',
   'tools.basicauth.mode.aria': 'Başlık oluştur veya oku',
   'tools.basicauth.mode.encode': 'Oluştur',
   'tools.basicauth.mode.decode': 'Oku',
@@ -874,6 +999,7 @@ const tr: Translations = {
   'tools.basicauth.paste.header': 'Başlığı yapıştır',
   'tools.basicauth.invalid':
     'O başlık çözülemedi. `Basic <base64>` formatında olduğundan ve çözülmüş içerikte kullanıcı ile şifre arasında `:` bulunduğundan emin ol.',
+  'tools.basicauth.heading': 'HTTP Basic Auth yardımcısı',
   'tools.basicauth.intro':
     'HTTP Basic Authentication’ın kullandığı `Authorization: Basic <base64>` başlığını oluşturur ve okur. Hepsi cihazda — kimlik bilgileri tarayıcından çıkmaz.',
 };
@@ -897,6 +1023,7 @@ const ja: Translations = {
   'sidebar.foot.line2': 'Pratiyush が制作。',
   'topbar.theme.aria': 'テーマ',
   'topbar.github.aria': 'GitHub リポジトリ',
+  'topbar.menu.aria': 'ナビゲーションメニューを開く',
   'topbar.language.aria': '言語',
   'topbar.language.label': '言語',
   'tool.placeholder.title': 'ツールはまだ実装されていません',
@@ -950,6 +1077,18 @@ const ja: Translations = {
   'tools.base64.explainer.warning':
     '暗号ではありません。エンコード文字列を持つ人なら誰でもデコードできます。Base64 は輸送用の封筒として扱い、決して秘密として使わないこと。',
   'tools.base64.explainer.tryauth': 'Basic Auth ヘルパーを試す →',
+  'tools.base64.deepdive.encoding.title': 'ステップ解説：「Man」→「TWFu」のエンコード',
+  'tools.base64.deepdive.encoding.intro':
+    '24 ビットのかたまりが 4 つの 6 ビットインデックスに変わる様子を追います。残りが 1 〜 2 バイトの末尾ケースは、同じ理屈に `=` パディングが付くだけです。',
+  'tools.base64.deepdive.alphabet.title': '64 文字のアルファベット',
+  'tools.base64.deepdive.alphabet.intro':
+    '標準 base64（RFC 4648 §4）は 64 個の ASCII 文字を割り当てます。URL 安全な変種（§5）はそのうち 2 文字を入れ替えて、URL やファイル名でも壊れないようにします。',
+  'tools.base64.deepdive.uses.title': 'Base64 に実際に出会う場所',
+  'tools.base64.deepdive.uses.intro':
+    'バイナリがテキストのみの経路を旅する必要があるあらゆる場所。よく目にする形式を駆け足で：',
+  'tools.base64.deepdive.pitfalls.title': '噛みつく罠',
+  'tools.base64.deepdive.pitfalls.intro':
+    '「base64 の妙なバグ」はだいたいここに書かれた原因のどれかです。デバッグの前に一読を。',
   'tools.basicauth.mode.aria': 'ヘッダを作成または読む',
   'tools.basicauth.mode.encode': '作成',
   'tools.basicauth.mode.decode': '読み取り',
@@ -970,6 +1109,7 @@ const ja: Translations = {
   'tools.basicauth.paste.header': 'ヘッダを貼り付け',
   'tools.basicauth.invalid':
     'そのヘッダは解析できませんでした。形式が `Basic <base64>` で、デコード後のペイロードのユーザー名とパスワードの間に `:` があることを確認してください。',
+  'tools.basicauth.heading': 'HTTP Basic 認証ヘルパー',
   'tools.basicauth.intro':
     'HTTP Basic 認証で使う `Authorization: Basic <base64>` ヘッダを作成・読み取りします。すべて端末内で完結 — 資格情報はブラウザを離れません。',
 };
@@ -993,6 +1133,7 @@ const zh: Translations = {
   'sidebar.foot.line2': '由 Pratiyush 制作。',
   'topbar.theme.aria': '主题',
   'topbar.github.aria': 'GitHub 仓库',
+  'topbar.menu.aria': '打开导航菜单',
   'topbar.language.aria': '语言',
   'topbar.language.label': '语言',
   'tool.placeholder.title': '工具尚未实现',
@@ -1041,6 +1182,17 @@ const zh: Translations = {
   'tools.base64.explainer.warning':
     '它不是加密。任何拿到编码字符串的人都能把它解回来。把 base64 当成运输信封，永远别当作秘密。',
   'tools.base64.explainer.tryauth': '试试 Basic Auth 助手 →',
+  'tools.base64.deepdive.encoding.title': '一步步：把 "Man" 编码成 "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    '看着一段 24 位的数据被切成 4 个 6 位索引。尾部情况（剩 1 或 2 个字节）思路一样，只是加上 `=` 填充。',
+  'tools.base64.deepdive.alphabet.title': '64 字符字母表',
+  'tools.base64.deepdive.alphabet.intro':
+    '标准 base64（RFC 4648 §4）保留 64 个 ASCII 字符。URL 安全版本（§5）替换其中两个，让输出能在 URL 和文件名里安然通过。',
+  'tools.base64.deepdive.uses.title': '你真正会遇见 base64 的地方',
+  'tools.base64.deepdive.uses.intro':
+    '凡是二进制要走纯文本通道的地方都有。下面是你最常遇到的几种格式：',
+  'tools.base64.deepdive.pitfalls.title': '会咬人的小坑',
+  'tools.base64.deepdive.pitfalls.intro': '大多数 "base64 怪 bug" 都出自下面之一。调试前先扫一遍。',
   'tools.basicauth.mode.aria': '生成或读取头',
   'tools.basicauth.mode.encode': '生成',
   'tools.basicauth.mode.decode': '读取',
@@ -1061,6 +1213,7 @@ const zh: Translations = {
   'tools.basicauth.paste.header': '粘贴头',
   'tools.basicauth.invalid':
     '没解析出这个头。请确认它形如 `Basic <base64>`，并且解码后的内容里用户名和密码之间有 `:`。',
+  'tools.basicauth.heading': 'HTTP Basic 认证助手',
   'tools.basicauth.intro':
     '生成并读取 HTTP Basic 认证使用的 `Authorization: Basic <base64>` 头。全程本地 — 凭据不会离开你的浏览器。',
 };
@@ -1084,6 +1237,7 @@ const ko: Translations = {
   'sidebar.foot.line2': 'Pratiyush 제작.',
   'topbar.theme.aria': '테마',
   'topbar.github.aria': 'GitHub 리포지토리',
+  'topbar.menu.aria': '내비게이션 메뉴 열기',
   'topbar.language.aria': '언어',
   'topbar.language.label': '언어',
   'tool.placeholder.title': '도구가 아직 구현되지 않았습니다',
@@ -1136,6 +1290,18 @@ const ko: Translations = {
   'tools.base64.explainer.warning':
     '암호화가 아닙니다. 인코딩된 문자열을 가진 누구나 다시 디코딩할 수 있습니다. base64는 운송 봉투로 다루고 비밀로 쓰지 마세요.',
   'tools.base64.explainer.tryauth': 'Basic Auth 헬퍼 시도 →',
+  'tools.base64.deepdive.encoding.title': '단계별: "Man"을 "TWFu"로 인코딩',
+  'tools.base64.deepdive.encoding.intro':
+    '24비트 한 덩어리가 6비트 인덱스 4개로 어떻게 쪼개지는지 따라가 보세요. 꼬리 사례(1~2바이트가 남는 경우)는 같은 아이디어에 `=` 패딩이 붙는 것 뿐입니다.',
+  'tools.base64.deepdive.alphabet.title': '64자 알파벳',
+  'tools.base64.deepdive.alphabet.intro':
+    '표준 base64(RFC 4648 §4)는 64개의 ASCII 문자를 예약합니다. URL 안전 변형(§5)은 그중 두 글자를 바꿔서 URL과 파일 이름을 살아남게 합니다.',
+  'tools.base64.deepdive.uses.title': 'base64를 실제로 만나는 곳',
+  'tools.base64.deepdive.uses.intro':
+    '바이너리가 텍스트 전용 경로를 지나야 하는 모든 곳. 가장 자주 읽게 되는 형식들을 짧게 둘러보기:',
+  'tools.base64.deepdive.pitfalls.title': '무는 함정',
+  'tools.base64.deepdive.pitfalls.intro':
+    '"이상한 base64 버그"의 대부분은 아래 항목 중 하나에서 옵니다. 디버그 전에 훑어보세요.',
   'tools.basicauth.mode.aria': '헤더 생성 또는 읽기',
   'tools.basicauth.mode.encode': '생성',
   'tools.basicauth.mode.decode': '읽기',
@@ -1156,6 +1322,7 @@ const ko: Translations = {
   'tools.basicauth.paste.header': '헤더 붙여넣기',
   'tools.basicauth.invalid':
     '그 헤더를 해석할 수 없었습니다. `Basic <base64>` 형식인지, 디코딩된 페이로드의 사용자명과 비밀번호 사이에 `:`가 있는지 확인하세요.',
+  'tools.basicauth.heading': 'HTTP Basic 인증 헬퍼',
   'tools.basicauth.intro':
     'HTTP Basic 인증이 사용하는 `Authorization: Basic <base64>` 헤더를 생성하고 읽습니다. 모두 로컬에서 — 자격 증명이 브라우저를 떠나지 않습니다.',
 };
@@ -1179,6 +1346,7 @@ const hi: Translations = {
   'sidebar.foot.line2': 'Pratiyush द्वारा बनाया गया।',
   'topbar.theme.aria': 'थीम',
   'topbar.github.aria': 'GitHub रिपॉजिटरी',
+  'topbar.menu.aria': 'नेविगेशन मेन्यू खोलें',
   'topbar.language.aria': 'भाषा',
   'topbar.language.label': 'भाषा',
   'tool.placeholder.title': 'टूल अभी तक लागू नहीं किया गया',
@@ -1232,6 +1400,18 @@ const hi: Translations = {
   'tools.base64.explainer.warning':
     'यह एन्क्रिप्शन नहीं है। एनकोडेड स्ट्रिंग रखने वाला कोई भी इसे वापस डिकोड कर सकता है। base64 को परिवहन का लिफाफा मानो, राज़ नहीं।',
   'tools.base64.explainer.tryauth': 'Basic Auth मददगार आज़माएँ →',
+  'tools.base64.deepdive.encoding.title': 'क़दम-दर-क़दम: "Man" को "TWFu" में बदलना',
+  'tools.base64.deepdive.encoding.intro':
+    'देखो कैसे 24-बिट का एक टुकड़ा 6-बिट के चार इंडेक्स में बँट जाता है। पूँछ वाले मामले (1 या 2 बाइट बचे हों) यही विचार हैं, बस `=` पैडिंग के साथ।',
+  'tools.base64.deepdive.alphabet.title': '64 वर्णों की वर्णमाला',
+  'tools.base64.deepdive.alphabet.intro':
+    'मानक base64 (RFC 4648 §4) 64 ASCII वर्ण आरक्षित करता है। URL-सुरक्षित प्रकार (§5) इनमें दो को बदल देता है ताकि आउटपुट URL और फ़ाइल नामों में भी टिक जाए।',
+  'tools.base64.deepdive.uses.title': 'base64 असल में कहाँ मिलेगा',
+  'tools.base64.deepdive.uses.intro':
+    'जहाँ भी बाइनरी को सिर्फ़-टेक्स्ट चैनल से जाना हो। जिन फ़ॉर्मैट्स को सबसे ज़्यादा पढ़ोगे उनकी झलक:',
+  'tools.base64.deepdive.pitfalls.title': 'काटने वाली बातें',
+  'tools.base64.deepdive.pitfalls.intro':
+    '"base64 की अजीब बग" अक्सर इन्हीं में से किसी एक से आती है। डिबग शुरू करने से पहले एक बार देख लो।',
   'tools.basicauth.mode.aria': 'हेडर बनाओ या पढ़ो',
   'tools.basicauth.mode.encode': 'बनाओ',
   'tools.basicauth.mode.decode': 'पढ़ो',
@@ -1252,6 +1432,7 @@ const hi: Translations = {
   'tools.basicauth.paste.header': 'हेडर पेस्ट',
   'tools.basicauth.invalid':
     'वह हेडर पार्स नहीं हुआ। जाँचो कि वह `Basic <base64>` जैसा दिखता है और डिकोड की गई सामग्री में उपयोगकर्ता नाम और पासवर्ड के बीच `:` है।',
+  'tools.basicauth.heading': 'HTTP Basic Auth मददगार',
   'tools.basicauth.intro':
     'HTTP Basic प्रमाणीकरण का `Authorization: Basic <base64>` हेडर बनाता और पढ़ता है। सब डिवाइस पर — क्रेडेंशियल ब्राउज़र से बाहर नहीं जाते।',
 };
@@ -1275,6 +1456,7 @@ const ar: Translations = {
   'sidebar.foot.line2': 'صنع بواسطة Pratiyush.',
   'topbar.theme.aria': 'السمة',
   'topbar.github.aria': 'مستودع GitHub',
+  'topbar.menu.aria': 'افتح قائمة التنقل',
   'topbar.language.aria': 'اللغة',
   'topbar.language.label': 'اللغة',
   'tool.placeholder.title': 'الأداة لم تُنفّذ بعد',
@@ -1326,6 +1508,18 @@ const ar: Translations = {
   'tools.base64.explainer.warning':
     'ليس تشفيرًا. أيّ شخص بحوزته السلسلة المُشفّرة يستطيع فكّها. عامل base64 كمظروف نقل، ولا تستخدمه سرًّا.',
   'tools.base64.explainer.tryauth': 'جرّب مساعد Basic Auth →',
+  'tools.base64.deepdive.encoding.title': 'خطوة بخطوة: ترميز "Man" إلى "TWFu"',
+  'tools.base64.deepdive.encoding.intro':
+    'تابع كيف تتحول كتلة 24-بِتّاً إلى أربع فهارس من 6 بِتّات. حالات الذيل (1 أو 2 بايت متبقية) هي الفكرة نفسها مع حشوة `=`.',
+  'tools.base64.deepdive.alphabet.title': 'أبجدية الـ 64 محرفًا',
+  'tools.base64.deepdive.alphabet.intro':
+    'يحجز base64 المعياري (RFC 4648 §4) 64 محرفًا من ASCII. المتغيّر الآمن للروابط (§5) يبدّل اثنين منها لتنجو المخرجات في الروابط وأسماء الملفات.',
+  'tools.base64.deepdive.uses.title': 'أين تلتقي base64 فعلاً',
+  'tools.base64.deepdive.uses.intro':
+    'في أي مكان يحتاج فيه الثنائي إلى عبور قناة نصية فقط. جولة سريعة على الصيغ الأكثر شيوعًا:',
+  'tools.base64.deepdive.pitfalls.title': 'أمور تعض',
+  'tools.base64.deepdive.pitfalls.intro':
+    'معظم "أخطاء base64 الغريبة" تنبثق من أحد هذه الأسباب. تصفّح القائمة قبل تنقيح الكود.',
   'tools.basicauth.mode.aria': 'بناء أو قراءة الترويسة',
   'tools.basicauth.mode.encode': 'بناء',
   'tools.basicauth.mode.decode': 'قراءة',
@@ -1346,6 +1540,7 @@ const ar: Translations = {
   'tools.basicauth.paste.header': 'الصق الترويسة',
   'tools.basicauth.invalid':
     'هذه الترويسة لم تُحلّل. تأكّد أن صيغتها `Basic <base64>` وأن المحتوى المفكوك يحوي `:` بين المستخدم وكلمة المرور.',
+  'tools.basicauth.heading': 'مساعد HTTP Basic Auth',
   'tools.basicauth.intro':
     'يُنشئ ويقرأ ترويسة `Authorization: Basic <base64>` التي يستخدمها مصادقة HTTP Basic. كلّه محلي — لا تغادر بياناتك المتصفّح.',
 };

@@ -27,6 +27,7 @@ export interface Translations {
 
   'topbar.theme.aria': string;
   'topbar.github.aria': string;
+  'topbar.menu.aria': string;
 
   'tool.placeholder.title': string;
   'tool.placeholder.body': string;
@@ -80,6 +81,17 @@ export interface Translations {
   'tools.base64.explainer.uses': string;
   'tools.base64.explainer.warning': string;
   'tools.base64.explainer.tryauth': string;
+  // Deep-dive expandable sections — click to reveal a technical breakdown.
+  // Headings are translated; the long-form bodies live as inline content
+  // (universal code blocks, hex/binary tables) inside render.ts.
+  'tools.base64.deepdive.encoding.title': string;
+  'tools.base64.deepdive.encoding.intro': string;
+  'tools.base64.deepdive.alphabet.title': string;
+  'tools.base64.deepdive.alphabet.intro': string;
+  'tools.base64.deepdive.uses.title': string;
+  'tools.base64.deepdive.uses.intro': string;
+  'tools.base64.deepdive.pitfalls.title': string;
+  'tools.base64.deepdive.pitfalls.intro': string;
 
   // Day 2 — base64-basic-auth (HTTP Basic Authorization header builder)
   'tools.basicauth.mode.aria': string;
@@ -101,6 +113,7 @@ export interface Translations {
   'tools.basicauth.copy.password': string;
   'tools.basicauth.paste.header': string;
   'tools.basicauth.invalid': string;
+  'tools.basicauth.heading': string;
   'tools.basicauth.intro': string;
 
   // Topbar language switcher — overrides browser default for the session;
