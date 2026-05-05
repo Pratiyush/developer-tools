@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This file is auto-maintained by [release-please](https://github.com/googleapis/release-please).
 Manual edits below this line will be overwritten on the next release.
 
+## [1.1.0](https://github.com/Pratiyush/developer-tools/compare/v1.0.0...v1.1.0) (2026-05-05)
+
+
+### Features
+
+* **html-entities:** Day 3 — encoder/decoder for SGML-five + extended Latin-1 set ([#36](https://github.com/Pratiyush/developer-tools/issues/36)) ([dceecbb](https://github.com/Pratiyush/developer-tools/commit/dceecbb31ac327b5eb6a586dd11d0dc923051ffa))
+
 ## 1.0.0 (2026-05-05)
 
 
