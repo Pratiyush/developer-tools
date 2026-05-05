@@ -118,6 +118,36 @@ const en: Translations = {
   'tools.basicauth.heading': 'HTTP Basic Auth helper',
   'tools.basicauth.intro':
     'Builds and reads the `Authorization: Basic <base64>` header used by HTTP Basic Authentication. All on-device — credentials never leave your browser.',
+
+  // Day 3 — html-entities
+  'tools.entities.heading': 'HTML entities encoder / decoder',
+  'tools.entities.intro':
+    'Encode `&`, `<`, `>`, `"`, `\'` (the SGML-five) for safe HTML embedding, or extend to the full Latin-1 + currency + math + curly-quotes set. Decode any named or numeric entity (`&copy;`, `&#65;`, `&#x41;`).',
+  'tools.entities.mode.aria': 'Encode or decode',
+  'tools.entities.mode.encode': 'Encode',
+  'tools.entities.mode.decode': 'Decode',
+  'tools.entities.variant.label': 'Extended set (Latin-1 + currency + math)',
+  'tools.entities.variant.aria': 'Toggle extended encode set',
+  'tools.entities.variant.minimal': 'Minimal',
+  'tools.entities.variant.extended': 'Extended',
+  'tools.entities.label.text': 'Text',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML entities tool input',
+  'tools.entities.result.aria': 'HTML entities tool output',
+  'tools.entities.placeholder.encode':
+    'Type or paste — emoji and accents survive. Toggle extended for currency / curly quotes.',
+  'tools.entities.placeholder.decode':
+    'Paste HTML — `&copy;`, `&#65;`, `&#x41;` all decode. Unknown entities pass through untouched.',
+  'tools.entities.entities.found': '{n} entities decoded',
+  'tools.entities.explainer.minimal.heading': 'Minimal: the SGML-five',
+  'tools.entities.explainer.minimal.body':
+    'Only `&`, `<`, `>`, `"`, `\'` get escaped. Idempotent on re-decode and the right call when escaping user input for safe HTML embedding (server-rendered templates, attributes).',
+  'tools.entities.explainer.extended.heading': 'Extended: Latin-1 + curly quotes + math',
+  'tools.entities.explainer.extended.body':
+    'Adds `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, `“ ”`, `‘ ’`, math operators, arrows. Use when you want the source HTML to be ASCII-only after a Markdown / paste.',
+  'tools.entities.explainer.numeric.heading': 'Numeric: decimal and hex',
+  'tools.entities.explainer.numeric.body':
+    'Decode handles both `&#65;` (decimal) and `&#x41;` / `&#X41;` (hex), including astral codepoints — `&#128512;` and `&#x1F600;` both round-trip to 😀.',
 };
 
 export default en;
