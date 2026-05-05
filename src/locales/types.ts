@@ -121,6 +121,30 @@ export interface Translations {
   // detected/persisted locale.
   'topbar.language.aria': string;
   'topbar.language.label': string;
+
+  // Day 3 — html-entities (encoder/decoder for named + numeric entities)
+  'tools.entities.heading': string;
+  'tools.entities.intro': string;
+  'tools.entities.mode.aria': string;
+  'tools.entities.mode.encode': string;
+  'tools.entities.mode.decode': string;
+  'tools.entities.variant.label': string;
+  'tools.entities.variant.aria': string;
+  'tools.entities.variant.minimal': string;
+  'tools.entities.variant.extended': string;
+  'tools.entities.label.text': string;
+  'tools.entities.label.html': string;
+  'tools.entities.source.aria': string;
+  'tools.entities.result.aria': string;
+  'tools.entities.placeholder.encode': string;
+  'tools.entities.placeholder.decode': string;
+  'tools.entities.entities.found': string;
+  'tools.entities.explainer.minimal.heading': string;
+  'tools.entities.explainer.minimal.body': string;
+  'tools.entities.explainer.extended.heading': string;
+  'tools.entities.explainer.extended.body': string;
+  'tools.entities.explainer.numeric.heading': string;
+  'tools.entities.explainer.numeric.body': string;
 }
 
 export type TranslationKey = keyof Translations;

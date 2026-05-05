@@ -122,6 +122,34 @@ const es: Translations = {
   'tools.basicauth.heading': 'Asistente de HTTP Basic Auth',
   'tools.basicauth.intro':
     'Construye y lee la cabecera `Authorization: Basic <base64>` que usa la autenticación HTTP Basic. Todo en local — las credenciales nunca salen de tu navegador.',
+  'tools.entities.heading': 'Entidades HTML — codificador / decodificador',
+  'tools.entities.intro':
+    'Codifica `&`, `<`, `>`, `"`, `\'` para incrustación HTML segura, o extiende al conjunto Latin-1 + monedas + matemáticas + comillas tipográficas. Decodifica cualquier entidad nombrada o numérica.',
+  'tools.entities.mode.aria': 'Codificar o decodificar',
+  'tools.entities.mode.encode': 'Codificar',
+  'tools.entities.mode.decode': 'Decodificar',
+  'tools.entities.variant.label': 'Conjunto extendido (Latin-1 + monedas + matemáticas)',
+  'tools.entities.variant.aria': 'Cambiar conjunto extendido',
+  'tools.entities.variant.minimal': 'Mínimo',
+  'tools.entities.variant.extended': 'Extendido',
+  'tools.entities.label.text': 'Texto',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Entrada de la herramienta de entidades HTML',
+  'tools.entities.result.aria': 'Salida de la herramienta de entidades HTML',
+  'tools.entities.placeholder.encode':
+    'Escribe o pega — emoji y acentos sobreviven. Activa extendido para monedas / comillas tipográficas.',
+  'tools.entities.placeholder.decode':
+    'Pega HTML — `&copy;`, `&#65;`, `&#x41;` se decodifican. Las entidades desconocidas pasan intactas.',
+  'tools.entities.entities.found': '{n} entidades decodificadas',
+  'tools.entities.explainer.minimal.heading': 'Mínimo: las cinco SGML',
+  'tools.entities.explainer.minimal.body':
+    'Solo `&`, `<`, `>`, `"`, `\'` se escapan. Idempotente al re-decodificar y la opción correcta para escapar input de usuario al incrustar HTML.',
+  'tools.entities.explainer.extended.heading': 'Extendido: Latin-1 + comillas + matemáticas',
+  'tools.entities.explainer.extended.body':
+    'Añade `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, `“ ”`, `‘ ’`, operadores matemáticos, flechas. Útil cuando quieres HTML 100 % ASCII después de un pegado / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numérico: decimal y hexadecimal',
+  'tools.entities.explainer.numeric.body':
+    'Decodifica tanto `&#65;` (decimal) como `&#x41;` / `&#X41;` (hex), incluyendo codepoints astrales — `&#128512;` y `&#x1F600;` ambos van a 😀.',
 };
 
 const fr: Translations = {
@@ -232,6 +260,34 @@ const fr: Translations = {
   'tools.basicauth.heading': 'Aide HTTP Basic Auth',
   'tools.basicauth.intro':
     'Construit et lit l’en-tête `Authorization: Basic <base64>` utilisé par l’authentification HTTP Basic. Tout en local — les identifiants ne quittent jamais ton navigateur.',
+  'tools.entities.heading': 'Entités HTML — encodeur / décodeur',
+  'tools.entities.intro':
+    'Encode `&`, `<`, `>`, `"`, `\'` pour une intégration HTML sûre, ou étend au jeu Latin-1 + devises + math + guillemets typographiques. Décode toute entité nommée ou numérique.',
+  'tools.entities.mode.aria': 'Encoder ou décoder',
+  'tools.entities.mode.encode': 'Encoder',
+  'tools.entities.mode.decode': 'Décoder',
+  'tools.entities.variant.label': 'Jeu étendu (Latin-1 + devises + math)',
+  'tools.entities.variant.aria': 'Activer le jeu étendu',
+  'tools.entities.variant.minimal': 'Minimal',
+  'tools.entities.variant.extended': 'Étendu',
+  'tools.entities.label.text': 'Texte',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Entrée de l’outil entités HTML',
+  'tools.entities.result.aria': 'Sortie de l’outil entités HTML',
+  'tools.entities.placeholder.encode':
+    'Tape ou colle — emoji et accents survivent. Active étendu pour devises / guillemets typographiques.',
+  'tools.entities.placeholder.decode':
+    'Colle du HTML — `&copy;`, `&#65;`, `&#x41;` se décodent. Les entités inconnues passent intactes.',
+  'tools.entities.entities.found': '{n} entités décodées',
+  'tools.entities.explainer.minimal.heading': 'Minimal : les cinq SGML',
+  'tools.entities.explainer.minimal.body':
+    'Seuls `&`, `<`, `>`, `"`, `\'` sont échappés. Idempotent et adapté pour échapper du contenu utilisateur dans du HTML.',
+  'tools.entities.explainer.extended.heading': 'Étendu : Latin-1 + guillemets + math',
+  'tools.entities.explainer.extended.body':
+    'Ajoute `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, guillemets typographiques, opérateurs math, flèches. Utile pour rester en ASCII pur après un coller / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numérique : décimal et hexa',
+  'tools.entities.explainer.numeric.body':
+    'Décode `&#65;` (décimal) comme `&#x41;` / `&#X41;` (hexa), y compris les points de code astraux — `&#128512;` et `&#x1F600;` valent tous deux 😀.',
 };
 
 const de: Translations = {
@@ -342,6 +398,34 @@ const de: Translations = {
   'tools.basicauth.heading': 'HTTP-Basic-Auth-Helfer',
   'tools.basicauth.intro':
     'Baut und liest den Header `Authorization: Basic <base64>`, den HTTP Basic Authentication verwendet. Alles lokal — die Anmeldedaten verlassen den Browser nie.',
+  'tools.entities.heading': 'HTML-Entities — Encoder / Decoder',
+  'tools.entities.intro':
+    'Codiert `&`, `<`, `>`, `"`, `\'` für sicheres HTML-Embedding, oder erweitert auf Latin-1 + Währungen + Mathe + typografische Anführungszeichen. Decodiert jede benannte oder numerische Entity.',
+  'tools.entities.mode.aria': 'Kodieren oder Dekodieren',
+  'tools.entities.mode.encode': 'Kodieren',
+  'tools.entities.mode.decode': 'Dekodieren',
+  'tools.entities.variant.label': 'Erweitertes Set (Latin-1 + Währungen + Mathe)',
+  'tools.entities.variant.aria': 'Erweitertes Set umschalten',
+  'tools.entities.variant.minimal': 'Minimal',
+  'tools.entities.variant.extended': 'Erweitert',
+  'tools.entities.label.text': 'Text',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML-Entities-Tool-Eingabe',
+  'tools.entities.result.aria': 'HTML-Entities-Tool-Ausgabe',
+  'tools.entities.placeholder.encode':
+    'Tippen oder einfügen — Emoji und Akzente überleben. Erweitert für Währungen / typografische Anführungszeichen.',
+  'tools.entities.placeholder.decode':
+    'HTML einfügen — `&copy;`, `&#65;`, `&#x41;` werden dekodiert. Unbekannte Entities bleiben unverändert.',
+  'tools.entities.entities.found': '{n} Entities dekodiert',
+  'tools.entities.explainer.minimal.heading': 'Minimal: die SGML-Fünf',
+  'tools.entities.explainer.minimal.body':
+    'Nur `&`, `<`, `>`, `"`, `\'` werden escapt. Idempotent und richtig zum Escapen von Benutzereingaben für HTML-Embedding.',
+  'tools.entities.explainer.extended.heading': 'Erweitert: Latin-1 + Anführungszeichen + Mathe',
+  'tools.entities.explainer.extended.body':
+    'Fügt `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, typografische Anführungszeichen, Mathe-Operatoren, Pfeile hinzu. Praktisch für reines ASCII nach Paste / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numerisch: dezimal und hexadezimal',
+  'tools.entities.explainer.numeric.body':
+    'Dekodiert sowohl `&#65;` (dezimal) als auch `&#x41;` / `&#X41;` (hex), inklusive astraler Codepoints — `&#128512;` und `&#x1F600;` werden beide zu 😀.',
 };
 
 const pt: Translations = {
@@ -452,6 +536,34 @@ const pt: Translations = {
   'tools.basicauth.heading': 'Ajudante HTTP Basic Auth',
   'tools.basicauth.intro':
     'Constrói e lê o cabeçalho `Authorization: Basic <base64>` usado pela autenticação HTTP Basic. Tudo local — as credenciais nunca saem do seu navegador.',
+  'tools.entities.heading': 'Entidades HTML — codificador / decodificador',
+  'tools.entities.intro':
+    'Codifica `&`, `<`, `>`, `"`, `\'` para incorporação HTML segura, ou estende ao conjunto Latin-1 + moedas + matemática + aspas tipográficas. Decodifica qualquer entidade nomeada ou numérica.',
+  'tools.entities.mode.aria': 'Codificar ou decodificar',
+  'tools.entities.mode.encode': 'Codificar',
+  'tools.entities.mode.decode': 'Decodificar',
+  'tools.entities.variant.label': 'Conjunto estendido (Latin-1 + moedas + matemática)',
+  'tools.entities.variant.aria': 'Alternar conjunto estendido',
+  'tools.entities.variant.minimal': 'Mínimo',
+  'tools.entities.variant.extended': 'Estendido',
+  'tools.entities.label.text': 'Texto',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Entrada da ferramenta de entidades HTML',
+  'tools.entities.result.aria': 'Saída da ferramenta de entidades HTML',
+  'tools.entities.placeholder.encode':
+    'Digite ou cole — emoji e acentos sobrevivem. Ative estendido para moedas / aspas tipográficas.',
+  'tools.entities.placeholder.decode':
+    'Cola HTML — `&copy;`, `&#65;`, `&#x41;` decodificam. Entidades desconhecidas passam intactas.',
+  'tools.entities.entities.found': '{n} entidades decodificadas',
+  'tools.entities.explainer.minimal.heading': 'Mínimo: as cinco SGML',
+  'tools.entities.explainer.minimal.body':
+    'Apenas `&`, `<`, `>`, `"`, `\'` são escapados. Idempotente e a escolha certa para escapar input de usuário em HTML.',
+  'tools.entities.explainer.extended.heading': 'Estendido: Latin-1 + aspas + matemática',
+  'tools.entities.explainer.extended.body':
+    'Adiciona `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, aspas tipográficas, operadores matemáticos, setas. Útil para HTML ASCII puro após colar / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numérico: decimal e hexadecimal',
+  'tools.entities.explainer.numeric.body':
+    'Decodifica tanto `&#65;` (decimal) quanto `&#x41;` / `&#X41;` (hex), incluindo codepoints astrais — `&#128512;` e `&#x1F600;` ambos viram 😀.',
 };
 
 const it: Translations = {
@@ -562,6 +674,34 @@ const it: Translations = {
   'tools.basicauth.heading': 'Aiutante HTTP Basic Auth',
   'tools.basicauth.intro':
     'Costruisce e legge l’header `Authorization: Basic <base64>` usato dall’autenticazione HTTP Basic. Tutto in locale — le credenziali non lasciano mai il tuo browser.',
+  'tools.entities.heading': 'Entità HTML — codificatore / decodificatore',
+  'tools.entities.intro':
+    'Codifica `&`, `<`, `>`, `"`, `\'` per inserimento HTML sicuro, oppure estende a Latin-1 + valute + matematica + virgolette tipografiche. Decodifica qualsiasi entità nominata o numerica.',
+  'tools.entities.mode.aria': 'Codifica o decodifica',
+  'tools.entities.mode.encode': 'Codifica',
+  'tools.entities.mode.decode': 'Decodifica',
+  'tools.entities.variant.label': 'Set esteso (Latin-1 + valute + matematica)',
+  'tools.entities.variant.aria': 'Attiva set esteso',
+  'tools.entities.variant.minimal': 'Minimo',
+  'tools.entities.variant.extended': 'Esteso',
+  'tools.entities.label.text': 'Testo',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Input dello strumento entità HTML',
+  'tools.entities.result.aria': 'Output dello strumento entità HTML',
+  'tools.entities.placeholder.encode':
+    'Scrivi o incolla — emoji e accenti sopravvivono. Attiva esteso per valute / virgolette tipografiche.',
+  'tools.entities.placeholder.decode':
+    'Incolla HTML — `&copy;`, `&#65;`, `&#x41;` si decodificano. Entità sconosciute passano intatte.',
+  'tools.entities.entities.found': '{n} entità decodificate',
+  'tools.entities.explainer.minimal.heading': 'Minimo: le cinque SGML',
+  'tools.entities.explainer.minimal.body':
+    'Solo `&`, `<`, `>`, `"`, `\'` vengono escapate. Idempotente e scelta giusta per escapare input utente da inserire in HTML.',
+  'tools.entities.explainer.extended.heading': 'Esteso: Latin-1 + virgolette + matematica',
+  'tools.entities.explainer.extended.body':
+    'Aggiunge `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, virgolette tipografiche, operatori matematici, frecce. Utile per HTML ASCII puro dopo paste / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numerico: decimale ed esadecimale',
+  'tools.entities.explainer.numeric.body':
+    'Decodifica sia `&#65;` (decimale) sia `&#x41;` / `&#X41;` (hex), inclusi codepoint astrali — `&#128512;` e `&#x1F600;` diventano entrambi 😀.',
 };
 
 const nl: Translations = {
@@ -672,6 +812,34 @@ const nl: Translations = {
   'tools.basicauth.heading': 'HTTP-Basic-Auth-helper',
   'tools.basicauth.intro':
     'Bouwt en leest de `Authorization: Basic <base64>`-header die HTTP Basic Authentication gebruikt. Alles lokaal — gegevens verlaten je browser nooit.',
+  'tools.entities.heading': 'HTML-entiteiten — encoder / decoder',
+  'tools.entities.intro':
+    'Codeert `&`, `<`, `>`, `"`, `\'` voor veilige HTML-inbedding, of breidt uit naar Latin-1 + valuta + wiskunde + typografische aanhalingstekens. Decodeert elke benoemde of numerieke entiteit.',
+  'tools.entities.mode.aria': 'Coderen of decoderen',
+  'tools.entities.mode.encode': 'Coderen',
+  'tools.entities.mode.decode': 'Decoderen',
+  'tools.entities.variant.label': 'Uitgebreide set (Latin-1 + valuta + wiskunde)',
+  'tools.entities.variant.aria': 'Uitgebreide set wisselen',
+  'tools.entities.variant.minimal': 'Minimaal',
+  'tools.entities.variant.extended': 'Uitgebreid',
+  'tools.entities.label.text': 'Tekst',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Invoer HTML-entiteiten-tool',
+  'tools.entities.result.aria': 'Uitvoer HTML-entiteiten-tool',
+  'tools.entities.placeholder.encode':
+    'Typ of plak — emoji en accenten overleven. Schakel uitgebreid in voor valuta / typografische aanhalingstekens.',
+  'tools.entities.placeholder.decode':
+    'Plak HTML — `&copy;`, `&#65;`, `&#x41;` decoderen. Onbekende entiteiten blijven ongewijzigd.',
+  'tools.entities.entities.found': '{n} entiteiten gedecodeerd',
+  'tools.entities.explainer.minimal.heading': 'Minimaal: de SGML-vijf',
+  'tools.entities.explainer.minimal.body':
+    'Alleen `&`, `<`, `>`, `"`, `\'` worden ge-escaped. Idempotent en juist voor het escapen van gebruikersinput in HTML.',
+  'tools.entities.explainer.extended.heading': 'Uitgebreid: Latin-1 + aanhalingstekens + wiskunde',
+  'tools.entities.explainer.extended.body':
+    'Voegt `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, typografische aanhalingstekens, wiskundige operatoren, pijlen toe. Handig voor zuivere ASCII-HTML na plakken / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numeriek: decimaal en hex',
+  'tools.entities.explainer.numeric.body':
+    'Decodeert zowel `&#65;` (decimaal) als `&#x41;` / `&#X41;` (hex), inclusief astrale codepoints — `&#128512;` en `&#x1F600;` worden beide 😀.',
 };
 
 const pl: Translations = {
@@ -782,6 +950,34 @@ const pl: Translations = {
   'tools.basicauth.heading': 'Pomocnik HTTP Basic Auth',
   'tools.basicauth.intro':
     'Buduje i odczytuje nagłówek `Authorization: Basic <base64>` używany przez uwierzytelnianie HTTP Basic. Wszystko lokalnie — dane nigdy nie opuszczają Twojej przeglądarki.',
+  'tools.entities.heading': 'Encje HTML — koder / dekoder',
+  'tools.entities.intro':
+    'Koduje `&`, `<`, `>`, `"`, `\'` do bezpiecznego osadzania w HTML lub rozszerza do Latin-1 + waluty + matematyka + cudzysłowy typograficzne. Dekoduje dowolną encję nazwaną lub numeryczną.',
+  'tools.entities.mode.aria': 'Koduj lub dekoduj',
+  'tools.entities.mode.encode': 'Koduj',
+  'tools.entities.mode.decode': 'Dekoduj',
+  'tools.entities.variant.label': 'Zestaw rozszerzony (Latin-1 + waluty + matematyka)',
+  'tools.entities.variant.aria': 'Przełącz zestaw rozszerzony',
+  'tools.entities.variant.minimal': 'Minimalny',
+  'tools.entities.variant.extended': 'Rozszerzony',
+  'tools.entities.label.text': 'Tekst',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Wejście narzędzia encji HTML',
+  'tools.entities.result.aria': 'Wyjście narzędzia encji HTML',
+  'tools.entities.placeholder.encode':
+    'Wpisz lub wklej — emoji i akcenty pozostają. Włącz rozszerzony dla walut / cudzysłowów typograficznych.',
+  'tools.entities.placeholder.decode':
+    'Wklej HTML — `&copy;`, `&#65;`, `&#x41;` zdekodują. Nieznane encje przejdą bez zmian.',
+  'tools.entities.entities.found': 'zdekodowano {n} encji',
+  'tools.entities.explainer.minimal.heading': 'Minimalny: pięć SGML',
+  'tools.entities.explainer.minimal.body':
+    'Tylko `&`, `<`, `>`, `"`, `\'` są escapowane. Idempotentny i właściwy do escapowania danych użytkownika osadzanych w HTML.',
+  'tools.entities.explainer.extended.heading': 'Rozszerzony: Latin-1 + cudzysłowy + matematyka',
+  'tools.entities.explainer.extended.body':
+    'Dodaje `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, cudzysłowy typograficzne, operatory matematyczne, strzałki. Przydatny dla czystego ASCII-HTML po wklejeniu / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Numeryczne: dziesiętne i szesnastkowe',
+  'tools.entities.explainer.numeric.body':
+    'Dekoduje zarówno `&#65;` (dziesiętne) jak `&#x41;` / `&#X41;` (hex), w tym astralne codepointy — `&#128512;` i `&#x1F600;` oba dają 😀.',
 };
 
 const ru: Translations = {
@@ -892,6 +1088,34 @@ const ru: Translations = {
   'tools.basicauth.heading': 'Помощник HTTP Basic Auth',
   'tools.basicauth.intro':
     'Собирает и разбирает заголовок `Authorization: Basic <base64>`, используемый HTTP Basic Authentication. Всё локально — учётные данные не покидают браузер.',
+  'tools.entities.heading': 'HTML-сущности — кодировщик / декодер',
+  'tools.entities.intro':
+    'Кодирует `&`, `<`, `>`, `"`, `\'` для безопасной вставки в HTML или расширяет до Latin-1 + валюты + математика + типографские кавычки. Декодирует любую именованную или числовую сущность.',
+  'tools.entities.mode.aria': 'Кодировать или декодировать',
+  'tools.entities.mode.encode': 'Кодировать',
+  'tools.entities.mode.decode': 'Декодировать',
+  'tools.entities.variant.label': 'Расширенный набор (Latin-1 + валюты + математика)',
+  'tools.entities.variant.aria': 'Переключить расширенный набор',
+  'tools.entities.variant.minimal': 'Минимальный',
+  'tools.entities.variant.extended': 'Расширенный',
+  'tools.entities.label.text': 'Текст',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'Вход инструмента HTML-сущностей',
+  'tools.entities.result.aria': 'Выход инструмента HTML-сущностей',
+  'tools.entities.placeholder.encode':
+    'Введите или вставьте — эмодзи и акценты сохраняются. Включите расширенный для валют / кавычек.',
+  'tools.entities.placeholder.decode':
+    'Вставьте HTML — `&copy;`, `&#65;`, `&#x41;` декодируются. Неизвестные сущности проходят без изменений.',
+  'tools.entities.entities.found': 'декодировано {n} сущностей',
+  'tools.entities.explainer.minimal.heading': 'Минимальный: пятёрка SGML',
+  'tools.entities.explainer.minimal.body':
+    'Экранируются только `&`, `<`, `>`, `"`, `\'`. Идемпотентен и правилен для экранирования пользовательского ввода в HTML.',
+  'tools.entities.explainer.extended.heading': 'Расширенный: Latin-1 + кавычки + математика',
+  'tools.entities.explainer.extended.body':
+    'Добавляет `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, типографские кавычки, математические операторы, стрелки. Удобен для чистого ASCII-HTML после вставки / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'Числовые: десятичные и шестнадцатеричные',
+  'tools.entities.explainer.numeric.body':
+    'Декодирует и `&#65;` (десятичное), и `&#x41;` / `&#X41;` (hex), включая астральные кодпойнты — `&#128512;` и `&#x1F600;` оба становятся 😀.',
 };
 
 const tr: Translations = {
@@ -1002,6 +1226,34 @@ const tr: Translations = {
   'tools.basicauth.heading': 'HTTP Basic Auth yardımcısı',
   'tools.basicauth.intro':
     'HTTP Basic Authentication’ın kullandığı `Authorization: Basic <base64>` başlığını oluşturur ve okur. Hepsi cihazda — kimlik bilgileri tarayıcından çıkmaz.',
+  'tools.entities.heading': 'HTML varlıkları — kodlayıcı / çözücü',
+  'tools.entities.intro':
+    'Güvenli HTML gömme için `&`, `<`, `>`, `"`, `\'` karakterlerini kodlar veya Latin-1 + para birimleri + matematik + tipografik tırnaklar setine genişletir. Adlandırılmış veya sayısal varlıkları çözer.',
+  'tools.entities.mode.aria': 'Kodla veya çöz',
+  'tools.entities.mode.encode': 'Kodla',
+  'tools.entities.mode.decode': 'Çöz',
+  'tools.entities.variant.label': 'Genişletilmiş set (Latin-1 + para + matematik)',
+  'tools.entities.variant.aria': 'Genişletilmiş seti aç/kapa',
+  'tools.entities.variant.minimal': 'Minimal',
+  'tools.entities.variant.extended': 'Genişletilmiş',
+  'tools.entities.label.text': 'Metin',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML varlıkları aracı girişi',
+  'tools.entities.result.aria': 'HTML varlıkları aracı çıkışı',
+  'tools.entities.placeholder.encode':
+    'Yaz veya yapıştır — emoji ve aksanlar korunur. Para birimleri / tipografik tırnaklar için genişletilmişi etkinleştir.',
+  'tools.entities.placeholder.decode':
+    'HTML yapıştır — `&copy;`, `&#65;`, `&#x41;` çözülür. Bilinmeyen varlıklar olduğu gibi geçer.',
+  'tools.entities.entities.found': '{n} varlık çözüldü',
+  'tools.entities.explainer.minimal.heading': 'Minimal: SGML beşlisi',
+  'tools.entities.explainer.minimal.body':
+    "Sadece `&`, `<`, `>`, `\"`, `'` kaçırılır. İdempotenttir; kullanıcı girdisini HTML'e gömerken doğru seçim.",
+  'tools.entities.explainer.extended.heading': 'Genişletilmiş: Latin-1 + tırnaklar + matematik',
+  'tools.entities.explainer.extended.body':
+    '`©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, tipografik tırnaklar, matematik operatörleri, oklar eklenir. Yapıştırma / Markdown sonrası saf ASCII-HTML için kullanışlı.',
+  'tools.entities.explainer.numeric.heading': 'Sayısal: ondalık ve onaltılık',
+  'tools.entities.explainer.numeric.body':
+    'Hem `&#65;` (ondalık) hem `&#x41;` / `&#X41;` (hex) çözer; astral kod noktaları dahil — `&#128512;` ve `&#x1F600;` her ikisi de 😀 olur.',
 };
 
 const ja: Translations = {
@@ -1112,6 +1364,34 @@ const ja: Translations = {
   'tools.basicauth.heading': 'HTTP Basic 認証ヘルパー',
   'tools.basicauth.intro':
     'HTTP Basic 認証で使う `Authorization: Basic <base64>` ヘッダを作成・読み取りします。すべて端末内で完結 — 資格情報はブラウザを離れません。',
+  'tools.entities.heading': 'HTML エンティティ — エンコーダ / デコーダ',
+  'tools.entities.intro':
+    '`&`, `<`, `>`, `"`, `\'` を安全な HTML 埋め込み用にエンコード、または Latin-1 + 通貨 + 数学 + 引用符の拡張セットに展開。名前付き・数値エンティティを問わずデコードします。',
+  'tools.entities.mode.aria': 'エンコードまたはデコード',
+  'tools.entities.mode.encode': 'エンコード',
+  'tools.entities.mode.decode': 'デコード',
+  'tools.entities.variant.label': '拡張セット (Latin-1 + 通貨 + 数学)',
+  'tools.entities.variant.aria': '拡張セットの切り替え',
+  'tools.entities.variant.minimal': '最小',
+  'tools.entities.variant.extended': '拡張',
+  'tools.entities.label.text': 'テキスト',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML エンティティツールの入力',
+  'tools.entities.result.aria': 'HTML エンティティツールの出力',
+  'tools.entities.placeholder.encode':
+    '入力または貼り付け — 絵文字とアクセントは保持されます。通貨 / 引用符を含めるには拡張をオンに。',
+  'tools.entities.placeholder.decode':
+    'HTML を貼り付け — `&copy;`, `&#65;`, `&#x41;` はデコードされ、未知のエンティティはそのまま通過します。',
+  'tools.entities.entities.found': '{n} 個のエンティティをデコード',
+  'tools.entities.explainer.minimal.heading': '最小: SGML の 5 文字',
+  'tools.entities.explainer.minimal.body':
+    '`&`, `<`, `>`, `"`, `\'` のみエスケープされます。冪等で、HTML に埋め込むユーザー入力のエスケープに最適。',
+  'tools.entities.explainer.extended.heading': '拡張: Latin-1 + 引用符 + 数学',
+  'tools.entities.explainer.extended.body':
+    '`©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, 引用符、数学演算子、矢印を追加。貼り付け / Markdown 後の純 ASCII-HTML に便利。',
+  'tools.entities.explainer.numeric.heading': '数値: 10 進と 16 進',
+  'tools.entities.explainer.numeric.body':
+    '`&#65;`（10 進）と `&#x41;` / `&#X41;`（16 進）の両方をデコード。アストラル領域コードポイント — `&#128512;` と `&#x1F600;` は両方とも 😀 になります。',
 };
 
 const zh: Translations = {
@@ -1216,6 +1496,34 @@ const zh: Translations = {
   'tools.basicauth.heading': 'HTTP Basic 认证助手',
   'tools.basicauth.intro':
     '生成并读取 HTTP Basic 认证使用的 `Authorization: Basic <base64>` 头。全程本地 — 凭据不会离开你的浏览器。',
+  'tools.entities.heading': 'HTML 实体 — 编码 / 解码',
+  'tools.entities.intro':
+    '编码 `&`, `<`, `>`, `"`, `\'` 用于 HTML 安全嵌入，或扩展到 Latin-1 + 货币 + 数学 + 印刷引号。任意命名或数字实体都能解码。',
+  'tools.entities.mode.aria': '编码或解码',
+  'tools.entities.mode.encode': '编码',
+  'tools.entities.mode.decode': '解码',
+  'tools.entities.variant.label': '扩展集（Latin-1 + 货币 + 数学）',
+  'tools.entities.variant.aria': '切换扩展集',
+  'tools.entities.variant.minimal': '最小',
+  'tools.entities.variant.extended': '扩展',
+  'tools.entities.label.text': '文本',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML 实体工具输入',
+  'tools.entities.result.aria': 'HTML 实体工具输出',
+  'tools.entities.placeholder.encode':
+    '输入或粘贴 — 表情和重音都会保留。需要货币 / 引号请打开扩展。',
+  'tools.entities.placeholder.decode':
+    '粘贴 HTML — `&copy;`、`&#65;`、`&#x41;` 都能解码；未知实体原样保留。',
+  'tools.entities.entities.found': '解码了 {n} 个实体',
+  'tools.entities.explainer.minimal.heading': '最小：SGML 五字符',
+  'tools.entities.explainer.minimal.body':
+    '只转义 `&`, `<`, `>`, `"`, `\'`。幂等，适合把用户输入安全嵌入到 HTML。',
+  'tools.entities.explainer.extended.heading': '扩展：Latin-1 + 引号 + 数学',
+  'tools.entities.explainer.extended.body':
+    '增加 `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`、印刷引号、数学运算符、箭头。适合粘贴 / Markdown 后想得到纯 ASCII-HTML。',
+  'tools.entities.explainer.numeric.heading': '数字：十进制和十六进制',
+  'tools.entities.explainer.numeric.body':
+    '同时解码 `&#65;`（十进制）和 `&#x41;` / `&#X41;`（十六进制），包括星体平面码点 — `&#128512;` 和 `&#x1F600;` 都解码为 😀。',
 };
 
 const ko: Translations = {
@@ -1325,6 +1633,34 @@ const ko: Translations = {
   'tools.basicauth.heading': 'HTTP Basic 인증 헬퍼',
   'tools.basicauth.intro':
     'HTTP Basic 인증이 사용하는 `Authorization: Basic <base64>` 헤더를 생성하고 읽습니다. 모두 로컬에서 — 자격 증명이 브라우저를 떠나지 않습니다.',
+  'tools.entities.heading': 'HTML 엔티티 — 인코더 / 디코더',
+  'tools.entities.intro':
+    '`&`, `<`, `>`, `"`, `\'` 을 안전한 HTML 임베딩용으로 인코딩하거나 Latin-1 + 통화 + 수학 + 인쇄용 따옴표 세트로 확장합니다. 명명·숫자 엔티티 모두 디코딩합니다.',
+  'tools.entities.mode.aria': '인코딩 또는 디코딩',
+  'tools.entities.mode.encode': '인코딩',
+  'tools.entities.mode.decode': '디코딩',
+  'tools.entities.variant.label': '확장 세트 (Latin-1 + 통화 + 수학)',
+  'tools.entities.variant.aria': '확장 세트 토글',
+  'tools.entities.variant.minimal': '최소',
+  'tools.entities.variant.extended': '확장',
+  'tools.entities.label.text': '텍스트',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML 엔티티 도구 입력',
+  'tools.entities.result.aria': 'HTML 엔티티 도구 출력',
+  'tools.entities.placeholder.encode':
+    '입력하거나 붙여넣으세요 — 이모지와 악센트는 유지됩니다. 통화 / 인쇄용 따옴표를 위해 확장을 켜세요.',
+  'tools.entities.placeholder.decode':
+    'HTML을 붙여넣으세요 — `&copy;`, `&#65;`, `&#x41;`은 디코딩되고 알 수 없는 엔티티는 그대로 통과합니다.',
+  'tools.entities.entities.found': '{n}개 엔티티 디코딩됨',
+  'tools.entities.explainer.minimal.heading': '최소: SGML 다섯 문자',
+  'tools.entities.explainer.minimal.body':
+    '`&`, `<`, `>`, `"`, `\'`만 이스케이프됩니다. 멱등적이며 HTML에 임베딩할 사용자 입력 이스케이프에 적합합니다.',
+  'tools.entities.explainer.extended.heading': '확장: Latin-1 + 따옴표 + 수학',
+  'tools.entities.explainer.extended.body':
+    '`©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, 인쇄용 따옴표, 수학 연산자, 화살표 추가. 붙여넣기 / Markdown 후 순수 ASCII-HTML에 유용합니다.',
+  'tools.entities.explainer.numeric.heading': '숫자: 10진수와 16진수',
+  'tools.entities.explainer.numeric.body':
+    '`&#65;`(10진수)와 `&#x41;` / `&#X41;`(16진수) 모두 디코딩되며, 별자리 코드포인트 포함 — `&#128512;`와 `&#x1F600;`는 둘 다 😀이 됩니다.',
 };
 
 const hi: Translations = {
@@ -1435,6 +1771,34 @@ const hi: Translations = {
   'tools.basicauth.heading': 'HTTP Basic Auth मददगार',
   'tools.basicauth.intro':
     'HTTP Basic प्रमाणीकरण का `Authorization: Basic <base64>` हेडर बनाता और पढ़ता है। सब डिवाइस पर — क्रेडेंशियल ब्राउज़र से बाहर नहीं जाते।',
+  'tools.entities.heading': 'HTML एंटिटीज़ — एनकोडर / डिकोडर',
+  'tools.entities.intro':
+    '`&`, `<`, `>`, `"`, `\'` को सुरक्षित HTML एम्बेडिंग के लिए एनकोड करता है, या Latin-1 + करेंसी + गणित + टाइपोग्राफिक कोट्स तक बढ़ा देता है। नामित या संख्यात्मक — कोई भी एंटिटी डिकोड कर देता है।',
+  'tools.entities.mode.aria': 'एनकोड या डिकोड',
+  'tools.entities.mode.encode': 'एनकोड',
+  'tools.entities.mode.decode': 'डिकोड',
+  'tools.entities.variant.label': 'विस्तारित सेट (Latin-1 + करेंसी + गणित)',
+  'tools.entities.variant.aria': 'विस्तारित सेट टॉगल',
+  'tools.entities.variant.minimal': 'न्यूनतम',
+  'tools.entities.variant.extended': 'विस्तारित',
+  'tools.entities.label.text': 'पाठ',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'HTML एंटिटीज़ टूल इनपुट',
+  'tools.entities.result.aria': 'HTML एंटिटीज़ टूल आउटपुट',
+  'tools.entities.placeholder.encode':
+    'टाइप या पेस्ट करो — इमोजी और एक्सेंट रहते हैं। करेंसी / टाइपोग्राफिक कोट्स के लिए विस्तारित ऑन करो।',
+  'tools.entities.placeholder.decode':
+    'HTML पेस्ट करो — `&copy;`, `&#65;`, `&#x41;` डिकोड होते हैं। अज्ञात एंटिटी जैसी की तैसी रहती हैं।',
+  'tools.entities.entities.found': '{n} एंटिटी डिकोड हुईं',
+  'tools.entities.explainer.minimal.heading': 'न्यूनतम: SGML के पाँच',
+  'tools.entities.explainer.minimal.body':
+    'सिर्फ़ `&`, `<`, `>`, `"`, `\'` एस्केप होते हैं। आइडेम्पोटेंट और HTML में उपयोगकर्ता इनपुट एम्बेड करते समय सही विकल्प।',
+  'tools.entities.explainer.extended.heading': 'विस्तारित: Latin-1 + कोट्स + गणित',
+  'tools.entities.explainer.extended.body':
+    '`©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`, टाइपोग्राफिक कोट्स, गणितीय ऑपरेटर, तीर जोड़ता है। पेस्ट / Markdown के बाद शुद्ध ASCII-HTML के लिए काम का।',
+  'tools.entities.explainer.numeric.heading': 'संख्यात्मक: दशमलव और हेक्साडेसिमल',
+  'tools.entities.explainer.numeric.body':
+    '`&#65;` (दशमलव) और `&#x41;` / `&#X41;` (हेक्स) दोनों डिकोड करता है, खगोलीय कोडपॉइंट सहित — `&#128512;` और `&#x1F600;` दोनों 😀 बनते हैं।',
 };
 
 const ar: Translations = {
@@ -1543,6 +1907,34 @@ const ar: Translations = {
   'tools.basicauth.heading': 'مساعد HTTP Basic Auth',
   'tools.basicauth.intro':
     'يُنشئ ويقرأ ترويسة `Authorization: Basic <base64>` التي يستخدمها مصادقة HTTP Basic. كلّه محلي — لا تغادر بياناتك المتصفّح.',
+  'tools.entities.heading': 'كيانات HTML — مُرمِّز / مفكِّك',
+  'tools.entities.intro':
+    'يُرمِّز `&`, `<`, `>`, `"`, `\'` للتضمين الآمن في HTML، أو يتوسّع إلى مجموعة Latin-1 + العملات + الرياضيات + علامات التنصيص الطباعية. يفكّ أي كيان مُسمّى أو رقمي.',
+  'tools.entities.mode.aria': 'ترميز أو فك ترميز',
+  'tools.entities.mode.encode': 'ترميز',
+  'tools.entities.mode.decode': 'فك ترميز',
+  'tools.entities.variant.label': 'مجموعة موسّعة (Latin-1 + عملات + رياضيات)',
+  'tools.entities.variant.aria': 'تبديل المجموعة الموسّعة',
+  'tools.entities.variant.minimal': 'الحد الأدنى',
+  'tools.entities.variant.extended': 'موسّعة',
+  'tools.entities.label.text': 'نص',
+  'tools.entities.label.html': 'HTML',
+  'tools.entities.source.aria': 'مدخل أداة كيانات HTML',
+  'tools.entities.result.aria': 'مخرج أداة كيانات HTML',
+  'tools.entities.placeholder.encode':
+    'اكتب أو الصق — تبقى الإيموجي واللواحق. فعّل الموسّعة للعملات / علامات التنصيص الطباعية.',
+  'tools.entities.placeholder.decode':
+    'الصق HTML — `&copy;`, `&#65;`, `&#x41;` تُفكّ، والكيانات غير المعروفة تمرّ كما هي.',
+  'tools.entities.entities.found': 'تم فكّ {n} كيانًا',
+  'tools.entities.explainer.minimal.heading': 'الحد الأدنى: خماسي SGML',
+  'tools.entities.explainer.minimal.body':
+    'تُهرب فقط `&`, `<`, `>`, `"`, `\'`. عملية متماثلة (idempotent) ومناسبة لتهريب مدخلات المستخدم عند التضمين في HTML.',
+  'tools.entities.explainer.extended.heading': 'موسّعة: Latin-1 + علامات تنصيص + رياضيات',
+  'tools.entities.explainer.extended.body':
+    'يُضيف `©`, `®`, `™`, `€`, `£`, `¥`, `–`, `—`, `…`، علامات التنصيص الطباعية، عوامل الرياضيات، الأسهم. مفيد لإنتاج HTML بـ ASCII خالص بعد لصق / Markdown.',
+  'tools.entities.explainer.numeric.heading': 'رقمي: عشري وست عشري',
+  'tools.entities.explainer.numeric.body':
+    'يفكّ كلًّا من `&#65;` (عشري) و `&#x41;` / `&#X41;` (ست عشري)، بما في ذلك نقاط الكود السماوية — `&#128512;` و `&#x1F600;` كلاهما يُعطي 😀.',
 };
 
 export const ALL_TRANSLATIONS: Record<string, Translations> = {
