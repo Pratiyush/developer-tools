@@ -284,3 +284,119 @@
   justify-content: center;
   min-height: 80px;
 }
+
+/* ---------- tabs (SB-24) ---------- */
+.dt-tabs__list {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line, #e5e7eb);
+  margin-bottom: 12px;
+}
+
+.dt-tabs__trigger {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 500;
+  color: var(--fg-muted, #555);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+
+.dt-tabs__trigger[data-state='active'] {
+  color: var(--fg-default, #111);
+  border-bottom-color: var(--accent, var(--dt-info));
+}
+
+.dt-tabs--pill .dt-tabs__list {
+  border-bottom: 0;
+  gap: 2px;
+  padding: 2px;
+  background: var(--bg-surface-2, #f4f4f5);
+  border-radius: var(--dt-radius);
+  display: inline-flex;
+}
+
+.dt-tabs--pill .dt-tabs__trigger {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: calc(var(--dt-radius) - 2px);
+  margin: 0;
+}
+
+.dt-tabs--pill .dt-tabs__trigger[data-state='active'] {
+  background: var(--bg-surface, #fff);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+}
+
+.dt-tabs__panel[hidden] {
+  display: none;
+}
+
+/* ---------- toast (SB-24) ---------- */
+.dt-toast-portal {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+  max-width: min(360px, 90vw);
+}
+
+.dt-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--dt-radius, 8px);
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--line, #e5e7eb);
+  box-shadow: var(--dt-shadow-2);
+  font-size: 14px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dt-toast[data-state='exit'] {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.dt-toast[data-tone='success'] {
+  border-color: var(--dt-success);
+}
+.dt-toast[data-tone='error'] {
+  border-color: var(--dt-danger);
+}
+.dt-toast[data-tone='info'] {
+  border-color: var(--dt-info);
+}
+
+.dt-toast__body {
+  flex: 1 1 0;
+  color: var(--fg-default, #111);
+}
+
+.dt-toast__dismiss {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--fg-muted, #555);
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dt-toast__dismiss:hover,
+.dt-toast__dismiss:focus-visible {
+  background: var(--bg-surface-2, #f4f4f5);
+  color: var(--fg-default, #111);
+}
