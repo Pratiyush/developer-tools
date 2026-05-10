@@ -47,6 +47,9 @@
     ],
     "*.{json,css,html,md,yml,yaml}": [
       "prettier --write"
+    ],
+    "src/stories/**/*.stories.ts": [
+      "bash -c 'pnpm typecheck'"
     ]
   },
   "devDependencies": {
@@ -54,6 +57,7 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@playwright/test": "^1.48.2",
+    "@storybook/addon-a11y": "^8.6.0",
     "@storybook/html": "^8.4.7",
     "@storybook/html-vite": "^8.4.7",
     "@types/bcryptjs": "^3.0.0",

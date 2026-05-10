@@ -59,6 +59,17 @@ const preview: Preview = {
   },
   parameters: {
     layout: 'fullscreen',
+    // SB-18 (#56): WCAG 2.1 AA rules. No rule disabled (per
+    // `feedback_wcag_axe.md`). A story can opt out by tagging itself
+    // `a11y-exempt` AND providing `parameters.a11yExemptReason`.
+    a11y: {
+      options: {
+        runOnly: {
+          type: 'tag',
+          values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'],
+        },
+      },
+    },
     viewport: {
       viewports: {
         mobile: {
