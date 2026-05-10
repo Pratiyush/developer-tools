@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs / Foundations" />
+
+# Foundations
+
+Welcome to the **developer-tools** design system. This page is the
+narrative entry point — open a Foundation story for the canonical
+example of any primitive, then come here for the rules behind it.
+
+## The token model
+
+Every visual is driven by CSS custom properties under three layered
+selectors:
+
+1. **`:where(.dt-foundation-host)`** — base tokens. Used inside
+   Storybook stories so they never clobber the live app's
+   `src/style.css`.
+2. **`[data-preset="…"]`** — preset-scoped overrides (clean, linear,
+   vercel, paper, swiss, aurora, matrix). Sets accent, type, radius,
+   shadow tone.
+3. **`[data-density="…"]`** — density-scoped overrides (default,
+   compact). Tweaks control heights, gaps, line-height.
+
+The Storybook toolbar lets you switch each axis independently —
+**Theme**, **Preset**, **Density**, **Locale**. The
+`themeDecorator` + `localeDecorator` (in
+`src/stories/_decorators/`) write these to `<html>` so the
+CSS selectors take effect.
+
+> **In transition:** the live app currently reads `[data-theme]`
+> for legacy reasons. **SB-16 / #54** unifies on
+> `[data-preset]` + `[data-density]` — deferred per the
+> Storybook-first policy (#70) until the design system has
+> stabilized in Storybook.
+
+## What lives where
+
+| File                                  | Purpose                                                                                                 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `src/ui/_helpers/variants.ts`         | Type-safe CVA-style variant builder (SB-14)                                                             |
+| `src/ui/primitives/`                  | Existing live-app primitives (button, input, panel, ...) + new SB-14 primitives (segment, status, stat) |
+| `src/ui/layout/`                      | Layout utilities (grid, form-grid, push, grow)                                                          |
+| `src/ui/data-display/`                | Data displays (kv-row, kv-list, output, preview)                                                        |
+| `src/stories/00-foundations/`         | Foundation stories — every variant of every primitive                                                   |
+| `src/stories/_styles/foundations.css` | Locally-scoped tokens + component CSS for the foundation stories                                        |
+| `src/stories/01-encoding/`, etc.      | Per-category tool stories                                                                               |
+
+## Conventions to read first
+
+- **[Tokens](?path=/docs/docs-tokens--docs)** — the live token table.
+- **[Accessibility](?path=/docs/docs-accessibility--docs)** — WCAG 2.1 AA,
+  RTL, addon-a11y usage.
+- **[Contributing](?path=/docs/docs-contributing--docs)** — what every PR must do.
+
+## Recommended onboarding path
+
+1. Read this page.
+2. Open `Foundations / Primitives / Segment` and toggle the toolbar.
+3. Look at the live tool example in `Tools / 01-encoding /
+Base64 String Converter`. Notice how the same primitives compose.
+4. Run `pnpm storybook` locally and try the addon-a11y panel.

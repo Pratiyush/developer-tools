@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs / Accessibility" />
+
+# Accessibility
+
+> **The pledge:** every story in this Storybook MUST pass
+> **WCAG 2.1 AA** unless explicitly tagged `a11y-exempt` with a
+> justification. There are no exceptions in the existing rule
+> config — see `feedback_wcag_axe.md` in the team memory.
+
+## How we enforce this
+
+Two layers of axe-core, catching different bugs:
+
+### 1. In-Storybook addon (dev-loop)
+
+The **A11y** panel beneath every story runs axe-core continuously.
+Configured in `.storybook/preview.ts` (SB-18 / #56):
+
+```ts
+parameters: {
+  a11y: {
+    options: {
+      runOnly: {
+        type: 'tag',
+        values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'],
+      },
+    },
+  },
+}
+```
+
+Use this while authoring — fix violations before opening a PR.
+
+### 2. Playwright + `@axe-core/playwright` (CI gate)
+
+The live-app E2E run in `tests/e2e/*.spec.ts` runs axe against
+real pages in real browsers. Catches issues only visible at full
+viewport with real fonts and animations.
+
+## Opting out — `a11y-exempt`
+
+If a story genuinely cannot pass (e.g. a token-only story whose
+swatches fail contrast on purpose to demonstrate the warning
+tone), tag it:
+
+```ts
+const meta: Meta = {
+  title: '…',
+  tags: ['a11y-exempt'],
+  parameters: {
+    a11yExemptReason: 'Demonstrates intentionally low-contrast warning tone.',
+  },
+};
+```
+
+Both `tags` and `a11yExemptReason` are REQUIRED. The CI lint will
+flag bare `a11y-exempt` without a reason (covered by future
+SB-CC-2 work).
+
+## RTL testing
+
+Every story is rendered under `<html dir="ltr">` by default. The
+locale toolbar (SB-07 / #46) flips this:
+
+- `ar` → `dir="rtl"` (only Arabic in the catalog today)
+- everything else → `dir="ltr"`
+
+Foundation stories at `src/stories/00-foundations/rtl.stories.ts`
+exercise every primitive in an explicit `dir="rtl"` container so
+the visual regression matrix (SB-05 / #44, pending) has a stable
+baseline.
+
+When authoring a new primitive: open a story under the `ar`
+locale and confirm:
+
+- Logical CSS properties used (`margin-inline-start` not
+  `margin-left`).
+- No fixed `left`/`right` positions.
+- Text inputs respect `direction` automatically — they should
+  read right-to-left when `dir="rtl"`.
+
+## Tooling map
+
+| Tool                             | What it catches                                        | When                |
+| -------------------------------- | ------------------------------------------------------ | ------------------- |
+| `@storybook/addon-a11y`          | All WCAG 2.1 A/AA rules inside a story                 | Author-time         |
+| `@axe-core/playwright`           | Real-browser axe on live tools                         | CI on every PR      |
+| `pnpm test:smoke`                | Stories with `console.error` (including a11y warnings) | CI on every PR      |
+| Visual regression matrix (SB-05) | Pixel-diff regressions per preset × viewport           | CI when SB-05 ships |
