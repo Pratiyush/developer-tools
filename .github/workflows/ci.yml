@@ -81,6 +81,9 @@ jobs:
       - name: Install Playwright browsers (chromium only)
         run: pnpm exec playwright install --with-deps chromium
 
+      - name: Storybook smoke (SB-22)
+        run: pnpm test:smoke
+
       - name: Run E2E (chromium project only)
         run: pnpm exec playwright test --project=chromium
 
