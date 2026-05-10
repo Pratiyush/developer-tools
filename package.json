@@ -27,8 +27,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
-    "lint:fix": "eslint . --fix --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
+    "lint": "eslint . --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts' --ignore-pattern 'playwright.smoke.config.ts'",
+    "lint:fix": "eslint . --fix --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts' --ignore-pattern 'playwright.smoke.config.ts'",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
@@ -36,6 +36,7 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "test:smoke": "playwright test --config=playwright.smoke.config.ts",
     "check:story-coverage": "tsx scripts/check-story-coverage.ts",
     "new-tool": "tsx scripts/new-tool.ts",
     "sync-i18n": "tsx scripts/sync-translations.ts",
@@ -44,7 +45,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "eslint --fix --no-warn-ignored --ignore-pattern eslint.config.js --ignore-pattern commitlint.config.ts --ignore-pattern playwright.config.ts --ignore-pattern '.storybook/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts'",
+      "eslint --fix --no-warn-ignored --ignore-pattern eslint.config.js --ignore-pattern commitlint.config.ts --ignore-pattern playwright.config.ts --ignore-pattern playwright.smoke.config.ts --ignore-pattern '.storybook/**' --ignore-pattern 'src/tools/_template/__SLUG__.stories.ts'",
       "prettier --write"
     ],
     "*.{json,css,html,md,yml,yaml}": [

@@ -28,6 +28,7 @@ export default defineConfig({
       '.playwright-mcp/**',
       '.claude/**',
       'tests/e2e/**',
+      'tests/visual/**',
     ],
     coverage: {
       provider: 'v8',

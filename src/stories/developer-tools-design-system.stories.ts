@@ -49,6 +49,14 @@ const TOKEN_GROUPS = {
 
 const meta = {
   title: 'Developer Tools Design System',
+  // SB-22 (#60) tag-taxonomy: WIP. The CSS this story loads
+  // (/design-showcase/themes.css, /design-showcase/system-tokens.css,
+  // /design-showcase/system-components.css) lives in the gitignored
+  // public/design-showcase/ extracted from the IT Tools zip. CI clones
+  // don't have those files, so smoke + visual regression MUST skip these
+  // stories. The canonical design-system primitives are in
+  // src/stories/00-foundations/* (SB-14 / #52) with bundled CSS.
+  tags: ['wip'],
   parameters: {
     layout: 'fullscreen',
     docs: {
