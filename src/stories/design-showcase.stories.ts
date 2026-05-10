@@ -47,6 +47,12 @@ const screens = [
 
 const meta = {
   title: 'Design Screens/Tools',
+  // SB-22 (#60) tag-taxonomy: WIP iframe showcase. Its assets live in the
+  // gitignored `public/design-showcase/` (extracted from the IT Tools zip
+  // via `pnpm design:extract`). CI clones don't have those files, so the
+  // smoke + visual regression matrix MUST skip these stories — both pass
+  // the `wip` tag-filter check.
+  tags: ['wip'],
   render: (args: StoryArgs, context: StoryContext) => renderScreen(args, context),
   argTypes: {
     path: { table: { disable: true } },

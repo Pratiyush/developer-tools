@@ -15,6 +15,7 @@ import { expect, test } from '@playwright/test';
 interface StoryEntry {
   readonly id: string;
   readonly type?: string;
+  readonly tags?: readonly string[];
 }
 
 interface StoriesIndex {
@@ -60,9 +61,13 @@ test.describe('Storybook smoke', () => {
     );
     expect(indexResponse.ok(), 'Storybook /index.json must be reachable').toBe(true);
     const index = (await indexResponse.json()) as StoriesIndex;
-    const stories = Object.values(index.entries).filter(
-      (e) => e.type === 'story' || e.type === undefined,
-    );
+    // Skip stories tagged `wip` (cross-cutting tag taxonomy — visual
+    // regression + smoke both skip these). Also skip `flaky` if it appears.
+    const stories = Object.values(index.entries).filter((e) => {
+      if (e.type !== 'story' && e.type !== undefined) return false;
+      const tags = e.tags ?? [];
+      return !tags.includes('wip') && !tags.includes('flaky');
+    });
     expect(stories.length, 'Storybook should expose at least 3 stories').toBeGreaterThanOrEqual(3);
 
     // Deterministic sample: first, middle, last. Avoids flaky randomness on CI.
