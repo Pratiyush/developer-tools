@@ -1,6 +1,6 @@
 {
   "name": "developer-tools",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "100+ small developer utilities. TypeScript + Vite + GitHub Pages. Local-only — nothing leaves your browser.",
   "homepage": "https://pratiyush.github.io/developer-tools",

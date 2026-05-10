@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This file is auto-maintained by [release-please](https://github.com/googleapis/release-please).
 Manual edits below this line will be overwritten on the next release.
 
+## [1.2.0](https://github.com/Pratiyush/developer-tools/compare/v1.1.0...v1.2.0) (2026-05-10)
+
+
+### Features
+
+* catch up days 4-36 — 32 tools + Phase A polish + Phase C richness + code-split ([#38](https://github.com/Pratiyush/developer-tools/issues/38)) ([0c26da1](https://github.com/Pratiyush/developer-tools/commit/0c26da18228684cf5605f6c24149335dc31749fb))
+
 ## [1.1.0](https://github.com/Pratiyush/developer-tools/compare/v1.0.0...v1.1.0) (2026-05-05)
 
 
