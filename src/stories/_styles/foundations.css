@@ -1,0 +1,286 @@
+/*
+ * Storybook-only stylesheet for the SB-14 primitives, layout utils, and
+ * data displays. Imported by the foundation stories so they render with
+ * design tokens applied.
+ *
+ * Tokens here are intentionally local-scope (`:where(.dt-foundation-host)`)
+ * to avoid clobbering the live app's `src/style.css`. SB-16 (#54) will
+ * later promote these into the canonical `src/styles/system-tokens.css`
+ * and `src/styles/system-components.css`.
+ */
+
+:where(.dt-foundation-host) {
+  --dt-success: #22c55e;
+  --dt-success-fg: #052e16;
+  --dt-danger: #ef4444;
+  --dt-danger-fg: #450a0a;
+  --dt-warning: #f59e0b;
+  --dt-warning-fg: #451a03;
+  --dt-info: #3b82f6;
+  --dt-info-fg: #0c1e3d;
+  --dt-neutral: var(--bg-surface-2, #f4f4f5);
+  --dt-neutral-fg: var(--fg-default, #111);
+  --dt-shadow-2: 0 4px 12px rgb(0 0 0 / 0.08);
+  --dt-radius: 8px;
+  --dt-radius-sm: 6px;
+  --dt-radius-lg: 12px;
+  --dt-gap-sm: 8px;
+  --dt-gap-md: 16px;
+  --dt-gap-lg: 24px;
+}
+
+/* ---------- segment ---------- */
+.dt-segment {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--dt-radius);
+  background: var(--bg-surface-2, #f4f4f5);
+}
+
+.dt-segment__item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 6px 12px;
+  font: inherit;
+  color: var(--fg-muted, #555);
+  border-radius: calc(var(--dt-radius) - 2px);
+  cursor: pointer;
+}
+
+.dt-segment__item[data-state='active'] {
+  background: var(--bg-surface, #fff);
+  color: var(--fg-default, #111);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+}
+
+.dt-segment--secondary {
+  background: transparent;
+  border: 1px solid var(--line, #e5e7eb);
+}
+
+/* ---------- status ---------- */
+.dt-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--dt-neutral);
+  color: var(--dt-neutral-fg);
+}
+
+.dt-status[data-tone='success'] {
+  background: var(--dt-success);
+  color: var(--dt-success-fg);
+}
+.dt-status[data-tone='danger'] {
+  background: var(--dt-danger);
+  color: var(--dt-danger-fg);
+}
+.dt-status[data-tone='warning'] {
+  background: var(--dt-warning);
+  color: var(--dt-warning-fg);
+}
+.dt-status[data-tone='info'] {
+  background: var(--dt-info);
+  color: var(--dt-info-fg);
+}
+
+.dt-status__icon {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+}
+
+/* ---------- stat ---------- */
+.dt-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: var(--dt-radius);
+  background: var(--bg-surface, #fff);
+  box-shadow: var(--dt-shadow-2);
+}
+
+.dt-stat__label {
+  font-size: 12px;
+  color: var(--fg-muted, #555);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dt-stat__value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--fg-default, #111);
+}
+
+.dt-stat__delta {
+  font-size: 12px;
+  color: var(--fg-muted, #555);
+}
+
+.dt-stat__delta[data-trend='up'] {
+  color: var(--dt-success);
+}
+.dt-stat__delta[data-trend='down'] {
+  color: var(--dt-danger);
+}
+
+.dt-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--dt-gap-md);
+}
+
+/* ---------- layout ---------- */
+.dt-grid {
+  display: grid;
+  gap: var(--dt-gap-md);
+}
+
+.dt-grid[data-gap='sm'] {
+  gap: var(--dt-gap-sm);
+}
+.dt-grid[data-gap='lg'] {
+  gap: var(--dt-gap-lg);
+}
+
+.dt-grid[data-cols='1'] {
+  grid-template-columns: 1fr;
+}
+.dt-grid[data-cols='2'] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.dt-grid[data-cols='3'] {
+  grid-template-columns: repeat(3, 1fr);
+}
+.dt-grid[data-cols='4'] {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.dt-form-grid {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 3fr;
+  gap: var(--dt-gap-md);
+  align-items: start;
+}
+
+.dt-form-grid__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-default, #111);
+  padding-top: 6px;
+}
+
+.dt-form-grid__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dt-form-grid__hint {
+  font-size: 12px;
+  color: var(--fg-muted, #555);
+  margin: 0;
+}
+
+.dt-push {
+  margin-left: auto;
+}
+
+.dt-grow {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ---------- data display ---------- */
+.dt-kv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.dt-kv-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 2fr auto;
+  gap: var(--dt-gap-md);
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-surface, #fff);
+  border: 1px solid var(--line, #e5e7eb);
+  border-radius: var(--dt-radius-sm);
+}
+
+.dt-kv-row__key {
+  font-size: 12px;
+  color: var(--fg-muted, #555);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.dt-kv-row__value {
+  font-size: 14px;
+  color: var(--fg-default, #111);
+  margin: 0;
+}
+
+.dt-kv-row__value--mono {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 13px;
+}
+
+.dt-kv-row__action {
+  display: inline-flex;
+}
+
+.dt-output {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--bg-surface-2, #f8f8f9);
+  border: 1px solid var(--line, #e5e7eb);
+  border-radius: var(--dt-radius);
+  overflow: auto;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-default, #111);
+}
+
+.dt-output__code {
+  font: inherit;
+  color: inherit;
+  white-space: pre;
+}
+
+.dt-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--bg-surface, #fff);
+  border: 1px dashed var(--line, #d4d4d8);
+  border-radius: var(--dt-radius);
+}
+
+.dt-preview__caption {
+  font-size: 12px;
+  color: var(--fg-muted, #555);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dt-preview__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
