@@ -45,8 +45,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Build Storybook
-        run: pnpm build-storybook
+      - name: Build Storybook (public — internal-tagged stories stripped)
+        run: pnpm build-storybook:public
 
       - name: Stage Storybook under dist/storybook/
         run: |
