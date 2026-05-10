@@ -1,0 +1,87 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs / Contributing" />
+
+# Contributing to the design system
+
+Quick reference for design-system contributors. The repo-level
+`CONTRIBUTING.md` covers the broader project rules; this page
+focuses on Storybook + primitive work.
+
+## When you add a new tool
+
+1. Run `pnpm new-tool <slug> --category <NN-name> --name "<Name>"`
+   (SB-15 / #53). The generator emits:
+   - `src/tools/<NN>/<NNN>-<slug>/{index, render, logic, url-state, *.test, *.stories}.ts`
+   - The story file already includes the spec-link convention.
+2. Fill in the tool logic. Stories will render the live factory.
+3. Replace the `TODO`s in the generated story with real
+   tool-specific states (Default / Empty / Error / WithMaxInput
+   are required; add more as needed).
+
+`pnpm check:story-coverage` (SB-10 / #48) fails CI if any tool
+lacks a story or drops one of the four minimum exports.
+`pnpm check:spec-links` (SB-CC-3 / #68) fails if the spec link
+disappears.
+
+## When you add a new primitive
+
+1. New file under `src/ui/primitives/` (or `layout/` / `data-display/`).
+2. Export a typed `Options` interface and a factory returning
+   `HTMLElement`.
+3. Use the `variants()` helper from `src/ui/_helpers/variants.ts`
+   for any class-variant logic — no inline branching.
+4. Add a foundation story under
+   `src/stories/00-foundations/`. Cover every variant +
+   keyboard/state interaction.
+5. Co-locate a unit test (`*.test.ts`) — DOM construction,
+   attribute setting, event wiring.
+
+See [reference-patterns.md](https://github.com/Pratiyush/developer-tools/blob/master/docs/storybook/reference-patterns.md)
+for the conventions we've adopted from Carbon / Chakra / Primer /
+Nord / shadcn.
+
+## Tag taxonomy
+
+| Tag           | Effect                                                                         |
+| ------------- | ------------------------------------------------------------------------------ |
+| `internal`    | Stripped from `pnpm build-storybook:public` (SB-11)                            |
+| `wip`         | Smoke + visual regression skip it                                              |
+| `flaky`       | Smoke + visual regression skip; weekly auto-issue (planned)                    |
+| `a11y-exempt` | addon-a11y shows banner; CI axe skips. Requires `parameters.a11yExemptReason`. |
+
+## i18n parity
+
+Every label change touches all 15 locales. The TS parity check in
+`src/locales/index.ts` blocks PRs that update English without
+updating the rest. The generator emits English keys; run
+`pnpm sync-i18n` to round-trip through Tolgee.
+
+## Console discipline
+
+No `console.error` / `console.warn` in any story. The smoke test
+(SB-22 / #60) fails on any uncovered console output. Use
+`consola` from `src/lib/log.ts` if a script needs to log.
+
+## Snapshot baseline updates (when SB-05 ships)
+
+Any PR that legitimately changes a visual snapshot MUST:
+
+- Carry the `update-baselines` PR label.
+- Include a description of the diff in the PR body.
+
+The baseline-gate workflow rejects baseline-only PRs without
+both. This guards against accidental visual drift.
+
+## Quick local commands
+
+```sh
+pnpm storybook            # dev server on :6006
+pnpm build-storybook      # static build
+pnpm test:smoke           # the 60s Storybook canary
+pnpm check:story-coverage # the coverage gate
+pnpm check:spec-links     # the spec-link gate
+pnpm tokens:check         # token snapshot drift gate
+pnpm new-tool <slug> ...  # scaffold a new tool
+pnpm design:extract       # rebuild public/design-showcase/ from the zip
+```

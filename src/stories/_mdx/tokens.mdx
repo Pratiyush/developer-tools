@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/blocks';
+import tokens from '../../../scripts/__snapshots__/tokens.json';
+
+<Meta title="Docs / Tokens" />
+
+# Tokens
+
+The tables below are **auto-generated** from
+`src/stories/_styles/foundations.css` via
+`scripts/extract-css-tokens.ts` (SB-20 / #58). Adding a new
+`--dt-*` variable to the CSS makes it appear here on the next
+Storybook build — no hand-edit needed.
+
+CI gates against drift via `pnpm tokens:check` — if the
+committed snapshot disagrees with the live extraction, the build
+fails.
+
+<style>
+  {`
+  .dt-tokens-table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; }
+  .dt-tokens-table th, .dt-tokens-table td { padding: 6px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; font-size: 13px; }
+  .dt-tokens-table th { background: #f4f4f5; font-weight: 600; }
+  .dt-tokens-table code { font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 12px; }
+  .dt-tokens-swatch { display: inline-block; width: 16px; height: 16px; border-radius: 4px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(0,0,0,0.08); }
+`}
+</style>
+
+{Object.entries(tokens).map(([category, entries]) => (
+
+  <section key={category}>
+    <h2 style={{ textTransform: 'capitalize', marginTop: '28px' }}>{category}</h2>
+    <table className="dt-tokens-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        {entries.map((t) => (
+          <tr key={t.name}>
+            <td>
+              {category === 'color' && /^#|^rgb|^hsl/.test(t.value) && (
+                <span className="dt-tokens-swatch" style={{ background: t.value }} />
+              )}
+              <code>{t.name}</code>
+            </td>
+            <td><code>{t.value}</code></td>
+            <td><code>{t.source}</code></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+))}
+
+## How to add a token
+
+1. Edit `src/stories/_styles/foundations.css` and add the
+   `--dt-*` variable under the appropriate selector
+   (`:where(.dt-foundation-host)` for base, `[data-preset="…"]`
+   for preset-specific).
+2. Run `pnpm tokens:snapshot` to refresh
+   `scripts/__snapshots__/tokens.json`.
+3. Commit both the CSS change and the snapshot. CI verifies they
+   stay in sync.

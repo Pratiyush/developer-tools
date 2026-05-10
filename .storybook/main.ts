@@ -25,11 +25,14 @@ const DESIGN_SHOWCASE = resolve(HERE, '../public/design-showcase');
 const staticDirs: string[] = existsSync(DESIGN_SHOWCASE) ? ['../public/design-showcase'] : [];
 
 const config: StorybookConfig = {
-  stories: ['../src/stories/**/*.stories.ts'],
+  // SB-17 (#55): MDX docs pages live under `src/stories/_mdx/`. The
+  // glob picks them up alongside CSF `*.stories.ts`.
+  stories: ['../src/stories/**/*.stories.ts', '../src/stories/_mdx/*.mdx'],
   // SB-18 (#56): in-Storybook axe panel via `@storybook/addon-a11y`.
+  // SB-17 (#55): MDX rendering via `@storybook/addon-docs`.
   // WCAG 2.1 AA rules enabled — see `.storybook/preview.ts` `parameters.a11y`.
   // No rules disabled (per existing `feedback_wcag_axe.md` memory).
-  addons: ['@storybook/addon-a11y'],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-docs'],
   staticDirs,
   framework: {
     name: '@storybook/html-vite',
