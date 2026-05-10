@@ -43,6 +43,8 @@
     "tokens:snapshot": "tsx scripts/extract-css-tokens.ts --snapshot",
     "tokens:check": "tsx scripts/extract-css-tokens.ts --check",
     "design:extract": "tsx scripts/extract-design-showcase.ts",
+    "prune:snapshots": "tsx scripts/prune-orphan-snapshots.ts",
+    "prune:snapshots:check": "tsx scripts/prune-orphan-snapshots.ts --check",
     "new-tool": "tsx scripts/new-tool.ts",
     "sync-i18n": "tsx scripts/sync-translations.ts",
     "seed-tolgee": "tsx scripts/seed-tolgee.ts",
