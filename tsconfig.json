@@ -27,5 +27,6 @@
     /* Types */
     "types": ["vite/client", "vitest/globals"]
   },
-  "include": ["src", "tests", "scripts", "vite.config.ts"]
+  "include": ["src", "tests", "scripts", "vite.config.ts"],
+  "exclude": ["src/tools/_template/__SLUG__.stories.ts"]
 }

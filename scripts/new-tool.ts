@@ -10,6 +10,7 @@ import {
   copyFileSync,
   readFileSync,
   writeFileSync,
+  renameSync,
   existsSync,
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -123,6 +124,25 @@ function walkAndReplace(dir: string, args: CliArgs, num: number): void {
   }
 }
 
+/**
+ * Rename any file whose name contains `__SLUG__` to use the actual slug.
+ * Walks the tree after content replacement so e.g. `__SLUG__.stories.ts`
+ * becomes `<slug>.stories.ts` in the generated tool directory.
+ */
+function walkAndRenameFiles(dir: string, args: CliArgs): void {
+  for (const entry of readdirSync(dir)) {
+    const p = join(dir, entry);
+    if (statSync(p).isDirectory()) {
+      walkAndRenameFiles(p, args);
+      continue;
+    }
+    if (entry.includes('__SLUG__')) {
+      const renamed = entry.replace(/__SLUG__/g, args.slug);
+      renameSync(p, join(dir, renamed));
+    }
+  }
+}
+
 function ensureRegistry(): void {
   if (existsSync(REGISTRY_FILE)) return;
   writeFileSync(
@@ -131,7 +151,7 @@ function ensureRegistry(): void {
       "import type { ToolModule } from '../lib/types';",
       '',
       '// Auto-managed by `pnpm new-tool`. Add new tool imports above the closing `];`.',
-      'export const TOOLS: readonly ToolModule<unknown>[] = [];',
+      'export const TOOLS: readonly ToolModule<never>[] = [];',
       '',
     ].join('\n'),
   );
@@ -152,7 +172,7 @@ function updateRegistry(args: CliArgs, num: number, dirName: string): void {
   }
   lines.splice(lastImportIdx + 1, 0, importLine);
 
-  const arrayRe = /export const TOOLS: readonly ToolModule<unknown>\[\] = \[(.*?)\];/s;
+  const arrayRe = /export const TOOLS: readonly ToolModule<never>\[\] = \[(.*?)\];/s;
   const joined = lines.join('\n');
   const m = arrayRe.exec(joined);
   if (m?.[1] === undefined) {
@@ -169,7 +189,7 @@ function updateRegistry(args: CliArgs, num: number, dirName: string): void {
   });
   const rebuilt = joined.replace(
     arrayRe,
-    `export const TOOLS: readonly ToolModule<unknown>[] = [\n  ${entries.join(',\n  ')},\n];`,
+    `export const TOOLS: readonly ToolModule<never>[] = [\n  ${entries.join(',\n  ')},\n];`,
   );
   writeFileSync(REGISTRY_FILE, rebuilt);
 }
@@ -185,6 +205,7 @@ function main(): void {
   }
   copyTree(TEMPLATE_DIR, target);
   walkAndReplace(target, args, num);
+  walkAndRenameFiles(target, args);
   updateRegistry(args, num, dirName);
 
   process.stdout.write(
