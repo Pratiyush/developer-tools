@@ -6,7 +6,16 @@ node_modules/
 # Build output
 dist/
 build/
+storybook-static/
 *.tsbuildinfo
+
+# Design showcase — extracted/auto-generated from the IT Tools zip.
+# Tracking it would break the build because it duplicates assets and would
+# bloat package.json on every refresh. Keep local-only.
+public/design-showcase/
+
+# Local zips / archives (e.g. design dumps, IT Tools reference)
+*.zip
 
 # Test / coverage
 coverage/
@@ -43,8 +52,12 @@ memory/
 # Tool specifications (local design notes, not part of the public artifact)
 .specification/
 
+# Kiro spec docs (requirements/design/tasks — local-only, mirrors .specification/ pattern)
+.kiro/
+
 # Design playground / Figma exports (local-only)
 design/
+design-extracted/
 
 # Marketing artifacts (LinkedIn drafts, social cards, 100-day plan — local only)
 marketing/

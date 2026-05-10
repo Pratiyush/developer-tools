@@ -21,11 +21,13 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "vite",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
-    "lint:fix": "eslint . --fix --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
+    "lint": "eslint . --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
+    "lint:fix": "eslint . --fix --ignore-pattern '.analysis/**' --ignore-pattern '.specification/**' --ignore-pattern 'marketing/**' --ignore-pattern 'tools/**' --ignore-pattern 'design/**' --ignore-pattern 'design-extracted/**' --ignore-pattern '.playwright-mcp/**' --ignore-pattern '.claude/**' --ignore-pattern '.storybook/**' --ignore-pattern 'storybook-static/**' --ignore-pattern 'public/design-showcase/**' --ignore-pattern 'eslint.config.js' --ignore-pattern 'commitlint.config.ts' --ignore-pattern 'playwright.config.ts'",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
@@ -40,7 +42,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "eslint --fix --no-warn-ignored --ignore-pattern eslint.config.js --ignore-pattern commitlint.config.ts --ignore-pattern playwright.config.ts",
+      "eslint --fix --no-warn-ignored --ignore-pattern eslint.config.js --ignore-pattern commitlint.config.ts --ignore-pattern playwright.config.ts --ignore-pattern '.storybook/**'",
       "prettier --write"
     ],
     "*.{json,css,html,md,yml,yaml}": [
@@ -52,6 +54,8 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@playwright/test": "^1.48.2",
+    "@storybook/html": "^8.4.7",
+    "@storybook/html-vite": "^8.4.7",
     "@types/bcryptjs": "^3.0.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.7",
@@ -65,6 +69,7 @@
     "jsdom": "^29.1.1",
     "lint-staged": "^17.0.4",
     "prettier": "^3.2.5",
+    "storybook": "^8.4.7",
     "tsx": "^4.19.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.16.0",
