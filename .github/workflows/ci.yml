@@ -48,6 +48,9 @@ jobs:
       - name: Story coverage gate (SB-10)
         run: pnpm check:story-coverage
 
+      - name: Spec-link gate (SB-CC-3)
+        run: pnpm check:spec-links
+
       - name: Build
         run: pnpm build
 

@@ -36,6 +36,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "check:story-coverage": "tsx scripts/check-story-coverage.ts",
+    "check:spec-links": "tsx scripts/check-spec-links.ts",
     "new-tool": "tsx scripts/new-tool.ts",
     "sync-i18n": "tsx scripts/sync-translations.ts",
     "seed-tolgee": "tsx scripts/seed-tolgee.ts",
