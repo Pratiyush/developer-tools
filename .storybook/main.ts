@@ -11,10 +11,10 @@ import type { StorybookConfig } from '@storybook/html-vite';
 // `render(host, initial): { dispose }` and mount onto the host element.
 // Story authors wrap this via the `mountTool` helper (added in SB-04 / #43).
 //
-// Known issue (fixed in SB-16 / #54): preview.ts toolbar `theme` items don't
-// match the live app's 7 themes. The live app reads `[data-theme]`; the
-// design system reads `[data-preset]` + `[data-density]`. Until SB-16 lands,
-// switching the toolbar produces minimal visual change.
+// Known issue (folded into SB-03 / #42): preview.ts toolbar `theme` items now
+// match the live app's 7 themes (clean / linear / vercel / paper / swiss /
+// aurora / matrix). SB-16 (#54) folds the `[data-theme]` attribute into
+// `[data-preset]` + `[data-density]` later.
 
 // Static dirs guarded by existsSync — `public/design-showcase/` is gitignored
 // (extracted from the IT Tools zip via `pnpm design:extract`); CI clones do
@@ -26,6 +26,10 @@ const staticDirs: string[] = existsSync(DESIGN_SHOWCASE) ? ['../public/design-sh
 
 const config: StorybookConfig = {
   stories: ['../src/stories/**/*.stories.ts'],
+  // SB-18 (#56): in-Storybook axe panel via `@storybook/addon-a11y`.
+  // WCAG 2.1 AA rules enabled — see `.storybook/preview.ts` `parameters.a11y`.
+  // No rules disabled (per existing `feedback_wcag_axe.md` memory).
+  addons: ['@storybook/addon-a11y'],
   staticDirs,
   framework: {
     name: '@storybook/html-vite',
