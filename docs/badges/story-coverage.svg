@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="177" height="20" role="img" aria-label="story coverage: 1/1 (100%)">
+  <rect width="95" height="20" fill="#555"/>
+  <rect x="95" width="82" height="20" fill="#22c55e"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
+    <text x="47.5" y="14">story coverage</text>
+    <text x="136" y="14">1/1 (100%)</text>
+  </g>
+</svg>

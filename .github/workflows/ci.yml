@@ -45,6 +45,9 @@ jobs:
       - name: Test (unit)
         run: pnpm test
 
+      - name: Story coverage gate (SB-10)
+        run: pnpm check:story-coverage
+
       - name: Build
         run: pnpm build
 
