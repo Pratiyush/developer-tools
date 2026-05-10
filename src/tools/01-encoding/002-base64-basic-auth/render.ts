@@ -113,6 +113,7 @@ export function render(
 
   buildBody.append(usernameRow, passwordRow);
   const buildPane = panel({
+    num: 1,
     body: buildBody,
     className: 'dt-basicauth__pane',
   });
@@ -178,6 +179,7 @@ export function render(
   headerBody.append(headerLabel, headerArea, headerFoot);
 
   const headerPane = panel({
+    num: 2,
     body: headerBody,
     className: 'dt-basicauth__pane',
   });

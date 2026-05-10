@@ -11,7 +11,7 @@ import type { Result as AxeResult } from 'axe-core';
  * add it via `disableRules([...])` with a comment explaining why.
  */
 
-const THEMES = ['clean', 'linear', 'vercel', 'paper', 'swiss', 'aurora', 'matrix'] as const;
+const THEMES = ['editorial', 'clean', 'vercel'] as const;
 
 test.describe('a11y — home page', () => {
   for (const theme of THEMES) {

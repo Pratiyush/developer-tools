@@ -3,11 +3,12 @@ import { expect, test } from '@playwright/test';
 /**
  * E2E coverage for the runtime theme switcher.
  *
- * Locked design (2026-04-29): default theme = `clean`. Six alternates.
- * Reference screenshots live at marketing/research/design-samples/.
+ * Locked design (2026-05-07): default theme = `editorial`. Two alternates
+ * (`clean`, `vercel`). The original ten-theme set was pruned in a
+ * follow-up to focus the surface area — see `marketing/pivots/`.
  */
 
-const THEMES = ['clean', 'linear', 'vercel', 'paper', 'swiss', 'aurora', 'matrix'] as const;
+const THEMES = ['editorial', 'clean', 'vercel'] as const;
 
 test.describe('theme switcher', () => {
   test.beforeEach(async ({ page }) => {
@@ -21,10 +22,10 @@ test.describe('theme switcher', () => {
     await expect(page.locator('.dt-home__hero h1')).toContainText('100 dev tools');
   });
 
-  test('defaults to the Clean theme on first visit', async ({ page }) => {
+  test('defaults to the Editorial theme on first visit', async ({ page }) => {
     await page.evaluate(() => localStorage.removeItem('dt.theme'));
     await page.reload();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'clean');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'editorial');
   });
 
   test('cycles through every locked theme via the dropdown', async ({ page }) => {

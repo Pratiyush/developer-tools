@@ -7,6 +7,9 @@ export type { CopyButtonHandle, CopyButtonOptions } from './copy-button';
 export { dropdown } from './dropdown';
 export type { DropdownHandle, DropdownOption, DropdownOptions } from './dropdown';
 
+export { heroBlock } from './hero-block';
+export type { HeroBlockOptions } from './hero-block';
+
 export { icon } from './icon';
 export type { IconName, IconOptions } from './icon';
 
