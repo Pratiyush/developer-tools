@@ -26,6 +26,7 @@ export default defineConfig({
       'tools/**',
       'design/**',
       '.playwright-mcp/**',
+      '.claude/**',
       'tests/e2e/**',
     ],
     coverage: {
