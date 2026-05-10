@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/html-vite';
 
 // Storybook 8 (HTML + Vite) configuration.
@@ -13,12 +16,17 @@ import type { StorybookConfig } from '@storybook/html-vite';
 // design system reads `[data-preset]` + `[data-density]`. Until SB-16 lands,
 // switching the toolbar produces minimal visual change.
 
+// Static dirs guarded by existsSync — `public/design-showcase/` is gitignored
+// (extracted from the IT Tools zip via `pnpm design:extract`); CI clones do
+// not have it. Storybook 8.6 hard-fails when a `staticDirs` path is missing,
+// so we conditionally include the path only when it actually exists.
+const HERE = dirname(fileURLToPath(import.meta.url));
+const DESIGN_SHOWCASE = resolve(HERE, '../public/design-showcase');
+const staticDirs: string[] = existsSync(DESIGN_SHOWCASE) ? ['../public/design-showcase'] : [];
+
 const config: StorybookConfig = {
   stories: ['../src/stories/**/*.stories.ts'],
-  // Narrow allowlist (SB-12 / #50). The live app's `public/` contains
-  // favicons, manifests, and SEO files that Storybook does not need; only
-  // `design-showcase/` is required by the iframe stories.
-  staticDirs: ['../public/design-showcase'],
+  staticDirs,
   framework: {
     name: '@storybook/html-vite',
     options: {},
