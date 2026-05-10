@@ -51,6 +51,9 @@ jobs:
       - name: Spec-link gate (SB-CC-3)
         run: pnpm check:spec-links
 
+      - name: Token snapshot gate (SB-20)
+        run: pnpm tokens:check
+
       - name: Build
         run: pnpm build
 
