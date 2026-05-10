@@ -1,43 +1,50 @@
 import type { Preview } from '@storybook/html';
+import { themeDecorator } from '../src/stories/_decorators/theme';
 
 const preview: Preview = {
+  decorators: [themeDecorator],
   globalTypes: {
     theme: {
-      description: 'Design theme from the extracted zip',
-      defaultValue: 'mono',
+      // Mirrors `THEMES` in `src/lib/theme.ts`. Default matches `DEFAULT_THEME`.
+      // Both `theme` and `preset` are written to `<html>` until SB-16 (#54)
+      // unifies on `[data-preset]` + `[data-density]`.
+      description: 'Live app theme — applied as [data-theme] on <html>',
+      defaultValue: 'clean',
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
         items: [
-          { value: 'mono', title: 'Mono' },
-          { value: 'editorial', title: 'Editorial' },
-          { value: 'grid', title: 'Grid' },
-          { value: 'aurora', title: 'Aurora' },
           { value: 'clean', title: 'Clean' },
-        ],
-        dynamicTitle: true,
-      },
-    },
-    preset: {
-      description: 'Curated preset: theme + accent + type + radius',
-      defaultValue: 'linear',
-      toolbar: {
-        title: 'Preset',
-        icon: 'switchalt',
-        items: [
           { value: 'linear', title: 'Linear' },
           { value: 'vercel', title: 'Vercel' },
           { value: 'paper', title: 'Paper' },
           { value: 'swiss', title: 'Swiss' },
           { value: 'aurora', title: 'Aurora' },
+          { value: 'matrix', title: 'Matrix' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    preset: {
+      description: 'Design preset — applied as [data-preset] on <html>',
+      defaultValue: 'clean',
+      toolbar: {
+        title: 'Preset',
+        icon: 'switchalt',
+        items: [
           { value: 'clean', title: 'Clean' },
+          { value: 'linear', title: 'Linear' },
+          { value: 'vercel', title: 'Vercel' },
+          { value: 'paper', title: 'Paper' },
+          { value: 'swiss', title: 'Swiss' },
+          { value: 'aurora', title: 'Aurora' },
           { value: 'matrix', title: 'Matrix' },
         ],
         dynamicTitle: true,
       },
     },
     density: {
-      description: 'Density scale',
+      description: 'Density scale — applied as [data-density] on <html>',
       defaultValue: 'default',
       toolbar: {
         title: 'Density',
