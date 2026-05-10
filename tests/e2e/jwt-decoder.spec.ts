@@ -32,8 +32,10 @@ test.describe('jwt-decoder', () => {
 
     const headerArea = page.getByLabel(/^Header$/i);
     const payloadArea = page.getByLabel(/^Payload$/i);
-    await expect(headerArea).toContainText('"alg": "HS256"', { timeout: 2000 });
-    await expect(payloadArea).toContainText('"iss": "joe"');
+    // Textareas hold content in `.value`, not textContent — use toHaveValue
+    // with a regex so we don't pin every whitespace byte.
+    await expect(headerArea).toHaveValue(/"alg":\s*"HS256"/, { timeout: 2000 });
+    await expect(payloadArea).toHaveValue(/"iss":\s*"joe"/);
   });
 
   test('shows the "never verified" standing warning on a valid decode', async ({ page }) => {
@@ -57,7 +59,7 @@ test.describe('jwt-decoder', () => {
   test('tolerates a leading Bearer prefix', async ({ page }) => {
     await page.goto(TOOL_PATH);
     await page.getByLabel(/JWT to decode/i).fill(`Bearer ${RFC_TOKEN}`);
-    await expect(page.getByLabel(/^Header$/i)).toContainText('"alg": "HS256"');
+    await expect(page.getByLabel(/^Header$/i)).toHaveValue(/"alg":\s*"HS256"/);
   });
 
   test('token persists in URL hash for sharing', async ({ page }) => {

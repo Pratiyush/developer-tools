@@ -40,21 +40,23 @@ test.describe('theme switcher', () => {
   });
 
   test('persists the chosen theme across reload', async ({ page }) => {
+    // Aurora was pruned with the rest of the original 10-theme set;
+    // Vercel is the dark-leaning alternate now.
     await page.locator('.dt-theme-switcher').click();
-    await page.locator('.dt-dropdown__item:has-text("Aurora")').first().click();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'aurora');
+    await page.locator('.dt-dropdown__item:has-text("Vercel")').first().click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'vercel');
 
     await page.reload();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'aurora');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'vercel');
 
     const stored = await page.evaluate(() => localStorage.getItem('dt.theme'));
-    expect(stored).toBe('aurora');
+    expect(stored).toBe('vercel');
   });
 
   test('renders the tool grid once tools are registered', async ({ page }) => {
-    // The registry has shipped tools — the grid replaces the empty state.
-    // Either is acceptable structurally; this test pins the live behavior.
-    await expect(page.locator('.dt-home__grid')).toBeVisible();
+    // The home page renders one `.dt-home__grid` per category section.
+    // Just assert at least one is visible and contains tool cards.
+    await expect(page.locator('.dt-home__grid').first()).toBeVisible();
     await expect(page.locator('.dt-home__grid .dt-card').first()).toBeVisible();
   });
 });

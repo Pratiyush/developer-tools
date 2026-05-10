@@ -43,7 +43,7 @@
   --fg-strong: #1a1814;
   --fg-default: #1a1814;
   --fg-muted: #5a544c;
-  --fg-faint: #9b948a;
+  --fg-faint: #767065;
   --line: rgba(26, 24, 20, 0.1);
   --line-strong: rgba(26, 24, 20, 0.18);
   --accent: #b8472b;
@@ -88,7 +88,7 @@
   --fg-strong: #1a1814;
   --fg-default: #1a1814;
   --fg-muted: #5a544c;
-  --fg-faint: #9b948a;
+  --fg-faint: #767065;
   --line: rgba(26, 24, 20, 0.1);
   --line-strong: rgba(26, 24, 20, 0.18);
   --accent: #b8472b;
@@ -139,9 +139,13 @@
   --fg-faint: #737373;
   --line: #e5e5e5;
   --line-strong: #d4d4d4;
-  --accent: #a855f7;
+  /* purple-600 (#9333ea), darkened from purple-500 (#a855f7) so small
+     accent-coloured text — the home eyebrow, panel num prefix, regex
+     named-capture chip — clears WCAG 2.1 AA's 4.5:1 minimum on the
+     #fafafa surface (4.96:1 vs 3.79:1 at the original shade). */
+  --accent: #9333ea;
   --accent-fg: #ffffff;
-  --accent-glow: rgba(168, 85, 247, 0.18);
+  --accent-glow: rgba(147, 51, 234, 0.18);
   --radius: 6px;
   --radius-sm: 4px;
   --shadow-mult: 0.6;
@@ -1165,7 +1169,9 @@ select {
   font-size: var(--fs-xs);
   font-weight: 500;
   font-family: var(--font-default, var(--font-sans, system-ui));
-  color: #b45309;
+  /* amber-800 — darkened from amber-700 (#b45309 = 4.24:1 on cream) so the
+     'Expired' tag clears WCAG 2.1 AA's 4.5:1 minimum on every theme. */
+  color: #92400e;
   background: rgba(217, 119, 6, 0.12);
   border-radius: 9999px;
   letter-spacing: normal;

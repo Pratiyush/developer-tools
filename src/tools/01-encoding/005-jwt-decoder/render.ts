@@ -210,13 +210,13 @@ export function render(
       output.appendChild(unsafe);
     }
 
-    output.appendChild(buildJsonPanel(translate('tools.jwt.header.label'), result.headerPretty));
-    output.appendChild(buildJsonPanel(translate('tools.jwt.payload.label'), result.payloadPretty));
+    output.appendChild(buildJsonPanel(2, translate('tools.jwt.header.label'), result.headerPretty));
+    output.appendChild(buildJsonPanel(3, translate('tools.jwt.payload.label'), result.payloadPretty));
     output.appendChild(buildSigPanel(result.signature, state.input));
     output.appendChild(buildClaims(result.header, result.payload));
   }
 
-  function buildJsonPanel(label: string, json: string): HTMLElement {
+  function buildJsonPanel(num: number, label: string, json: string): HTMLElement {
     const ta = textarea({
       value: json,
       ariaLabel: label,
@@ -244,7 +244,7 @@ export function render(
     body.appendChild(foot);
 
     return panel({
-      num: 2,
+      num,
       label,
       body,
       className: 'dt-base64__pane',
@@ -322,7 +322,7 @@ export function render(
     body.appendChild(verifyWrap);
 
     return panel({
-      num: 3,
+      num: 4,
       label: translate('tools.jwt.signature.label'),
       body,
       className: 'dt-base64__pane',
