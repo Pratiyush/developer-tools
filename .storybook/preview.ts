@@ -1,8 +1,20 @@
 import type { Preview } from '@storybook/html';
 import { themeDecorator } from '../src/stories/_decorators/theme';
+import { localeDecorator } from '../src/stories/_decorators/locale';
+import { LOCALES } from '../src/locales';
+
+// Locale toolbar items derived from the live app's `LOCALES` so the source
+// of truth stays in one place. The default matches the live app's
+// browser-language detection: `navigator.language?.slice(0, 2)` is used at
+// build-time, falling back to `en` if the locale isn't recognized.
+const detectDefaultLocale = (): string => {
+  if (typeof navigator === 'undefined') return 'en';
+  const code = navigator.language.slice(0, 2);
+  return LOCALES.some((l) => l.code === code) ? code : 'en';
+};
 
 const preview: Preview = {
-  decorators: [themeDecorator],
+  decorators: [themeDecorator, localeDecorator],
   globalTypes: {
     theme: {
       // Mirrors `THEMES` in `src/lib/theme.ts`. Default matches `DEFAULT_THEME`.
@@ -53,6 +65,22 @@ const preview: Preview = {
           { value: 'default', title: 'Default' },
           { value: 'compact', title: 'Compact' },
         ],
+        dynamicTitle: true,
+      },
+    },
+    // SB-07 (#46): all 15 locales the live app supports. Items derive from
+    // `LOCALES` in src/locales/index.ts. Selecting `ar` flips `<html dir>`
+    // to `rtl` via the `localeDecorator`.
+    locale: {
+      description: 'i18n locale — wired through the live-app provider',
+      defaultValue: detectDefaultLocale(),
+      toolbar: {
+        title: 'Locale',
+        icon: 'globe',
+        items: LOCALES.map((l) => ({
+          value: l.code,
+          title: `${l.nativeLabel} (${l.code}${l.dir === 'rtl' ? ', RTL' : ''})`,
+        })),
         dynamicTitle: true,
       },
     },
