@@ -45,3 +45,15 @@ export interface ToolModule<S> extends ToolMeta {
  * Tool registrations widen this via the `as` assertion in the registry file.
  */
 export type ToolRegistry = readonly ToolModule<never>[];
+
+/**
+ * Lazy entry for the route-level code-split. The metadata fields satisfy
+ * the sidebar / home grid synchronously; `load()` triggers a dynamic
+ * `import()` (Vite emits one chunk per call site) and resolves to the
+ * full {@link ToolModule}. The router awaits this only when the user
+ * actually navigates to the tool.
+ */
+export interface ToolManifest extends ToolMeta {
+  /** Returns a thenable for the runtime module — render / parse / serialize. */
+  readonly load: () => Promise<ToolModule<unknown>>;
+}

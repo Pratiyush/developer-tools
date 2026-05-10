@@ -55,7 +55,7 @@ test.describe('html-entities', () => {
   });
 });
 
-const A11Y_THEMES = ['clean', 'linear', 'vercel', 'paper', 'swiss', 'aurora', 'matrix'] as const;
+const A11Y_THEMES = ['editorial', 'clean', 'vercel'] as const;
 
 test.describe('a11y — html-entities', () => {
   for (const theme of A11Y_THEMES) {

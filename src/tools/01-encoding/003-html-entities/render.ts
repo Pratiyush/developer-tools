@@ -118,6 +118,7 @@ export function render(
   sourcePaneBody.appendChild(sourceFoot);
 
   const sourcePane = panel({
+    num: 1,
     label: sourceLabel(state.mode),
     body: sourcePaneBody,
     className: 'dt-base64__pane',
@@ -171,6 +172,7 @@ export function render(
   resultPaneBody.appendChild(resultFoot);
 
   const resultPane = panel({
+    num: 2,
     label: resultLabel(state.mode),
     body: resultPaneBody,
     className: 'dt-base64__pane',

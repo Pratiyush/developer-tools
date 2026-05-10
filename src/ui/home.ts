@@ -1,14 +1,28 @@
 import { translate } from '../lib/i18n';
-import type { ToolModule } from '../lib/types';
+import type { ToolMeta } from '../lib/types';
 
-export function home(tools: readonly ToolModule<unknown>[]): HTMLElement {
+export function home(tools: readonly ToolMeta[]): HTMLElement {
   const root = document.createElement('div');
   root.classList.add('dt-home');
 
   const hero = document.createElement('section');
   hero.classList.add('dt-home__hero');
+
+  // Editorial eyebrow above the hero headline. Text is the brand short form
+  // + total tool count — mirrors the zip's "§ 01 · Crypto" pattern but at
+  // the home level.
+  const eyebrow = document.createElement('div');
+  eyebrow.classList.add('dt-eyebrow');
+  eyebrow.textContent = translate('home.eyebrow', { count: tools.length });
+  hero.appendChild(eyebrow);
+
+  // Hero headline. The translation is allowed to contain a single `*word*`
+  // segment which becomes an italic accent (terracotta under editorial,
+  // theme-accent under others). We DO NOT use innerHTML — the splitter
+  // below builds nodes manually so untrusted translation strings can't
+  // smuggle markup.
   const h1 = document.createElement('h1');
-  h1.textContent = translate('home.hero.title');
+  appendHeroAccent(h1, translate('home.hero.title'));
   const lede = document.createElement('p');
   lede.textContent = translate('home.hero.subtitle');
   hero.append(h1, lede);
@@ -23,7 +37,7 @@ export function home(tools: readonly ToolModule<unknown>[]): HTMLElement {
   }
 
   // Group by category
-  const groups = new Map<string, ToolModule<unknown>[]>();
+  const groups = new Map<string, ToolMeta[]>();
   for (const tool of tools) {
     const list = groups.get(tool.category) ?? [];
     list.push(tool);
@@ -72,4 +86,21 @@ function formatCategory(slug: string): string {
   if (parts.length < 2) return slug;
   const rest = parts.slice(1).join(' ');
   return rest.charAt(0).toUpperCase() + rest.slice(1);
+}
+
+/** Append a hero-headline string, treating one `*word*` segment as an
+ *  italic-accent <em>. Produces text nodes for the rest so untrusted
+ *  translation strings can't smuggle markup. */
+function appendHeroAccent(parent: HTMLElement, text: string): void {
+  const parts = text.split(/(\*[^*]+\*)/);
+  for (const part of parts) {
+    if (!part) continue;
+    if (part.startsWith('*') && part.endsWith('*')) {
+      const em = document.createElement('em');
+      em.textContent = part.slice(1, -1);
+      parent.appendChild(em);
+    } else {
+      parent.appendChild(document.createTextNode(part));
+    }
+  }
 }

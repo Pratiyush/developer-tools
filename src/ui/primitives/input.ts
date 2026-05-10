@@ -2,7 +2,7 @@ export interface InputOptions {
   value?: string;
   placeholder?: string;
   ariaLabel?: string;
-  type?: 'text' | 'search';
+  type?: 'text' | 'search' | 'password' | 'number' | 'email';
   onInput?: (value: string) => void;
 }
 

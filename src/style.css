@@ -1,23 +1,27 @@
 /*
- * Design tokens — Clean theme as default.
- * Override via [data-theme="<name>"] on <html> for the runtime switcher.
+ * Design tokens — **Editorial** is the new default theme as of the
+ * 2026-05-07 design pivot (`marketing/pivots/2026-05-07-design-pivot.md`).
+ * Fraunces serif italic for hero, Geist sans for body, IBM Plex Mono for
+ * code, terracotta accent #b8472b on warm cream #faf8f4.
  *
- * Locked direction: marketing/research/design-samples/16-clean-tool-base64.png.
- * No tokens copied from design/themes.css; the values here are our own.
+ * Override via [data-theme="<name>"] on <html> for the runtime switcher.
+ * Themes: editorial (default) · mono · grid · clean · linear · vercel ·
+ *         paper · swiss · aurora · matrix.
  */
 
 :root {
-  /* Type */
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-head: var(--font-body);
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* Type — editorial defaults; theme blocks below override per-theme.
+     Fraunces / Geist / IBM Plex Mono are pulled in via index.html. */
+  --font-body: 'Geist', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-head: 'Fraunces', 'Newsreader', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --fs-xs: 11px;
   --fs-sm: 12.5px;
   --fs-base: 14px;
   --fs-lg: 16px;
   --fs-xl: 20px;
-  --fs-h1: 30px;
-  --lh-tight: 1.25;
+  --fs-h1: 38px; /* editorial hero — was 30 */
+  --lh-tight: 1.05; /* editorial hero is tighter */
   --lh-base: 1.55;
 
   /* Spacing — 4px scale */
@@ -31,20 +35,20 @@
   --sp-10: 40px;
   --sp-12: 48px;
 
-  /* Surface — Clean (light) */
-  --bg-app: #f4f5f7;
+  /* Surface — Editorial (warm cream + paper) */
+  --bg-app: #faf8f4;
   --bg-surface: #ffffff;
-  --bg-surface-2: #fafafa;
-  --bg-surface-hover: #f3f4f6;
-  --fg-strong: #18181b;
-  --fg-default: #27272a;
-  --fg-muted: #565d6e;
-  --fg-faint: #6b7280;
-  --line: #e5e7eb;
-  --line-strong: #d1d5db;
-  --accent: #000000;
+  --bg-surface-2: #f3efe8;
+  --bg-surface-hover: #ece7dd;
+  --fg-strong: #1a1814;
+  --fg-default: #1a1814;
+  --fg-muted: #5a544c;
+  --fg-faint: #767065;
+  --line: rgba(26, 24, 20, 0.1);
+  --line-strong: rgba(26, 24, 20, 0.18);
+  --accent: #b8472b;
   --accent-fg: #ffffff;
-  --accent-glow: rgba(0, 0, 0, 0.08);
+  --accent-glow: rgba(184, 71, 43, 0.1);
 
   /* Geometry */
   --radius: 14px;
@@ -71,30 +75,55 @@
   color-scheme: light;
 }
 
-/* ─── Linear — Mono dark, indigo accent ─── */
-[data-theme='linear'] {
-  --font-body: 'Geist', system-ui, sans-serif;
-  --font-head: var(--font-body);
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
-  --bg-app: #0a0a0b;
-  --bg-surface: #131316;
-  --bg-surface-2: #19191d;
-  --bg-surface-hover: #1f1f24;
-  --fg-strong: #ffffff;
-  --fg-default: #ededed;
-  --fg-muted: #a1a1a1;
-  --fg-faint: #6b6b6b;
-  --line: rgba(255, 255, 255, 0.07);
-  --line-strong: rgba(255, 255, 255, 0.13);
-  --accent: #6366f1;
+/* ─── Editorial — explicit override (matches :root defaults). Lets the user
+       switch away and back without a reload. ─── */
+[data-theme='editorial'] {
+  --font-body: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-head: 'Fraunces', 'Newsreader', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --bg-app: #faf8f4;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f3efe8;
+  --bg-surface-hover: #ece7dd;
+  --fg-strong: #1a1814;
+  --fg-default: #1a1814;
+  --fg-muted: #5a544c;
+  --fg-faint: #767065;
+  --line: rgba(26, 24, 20, 0.1);
+  --line-strong: rgba(26, 24, 20, 0.18);
+  --accent: #b8472b;
   --accent-fg: #ffffff;
-  --accent-glow: rgba(99, 102, 241, 0.3);
-  --radius: 8px;
-  --radius-sm: 6px;
-  --shadow-mult: 1;
-  color-scheme: dark;
+  --accent-glow: rgba(184, 71, 43, 0.1);
+  color-scheme: light;
 }
 
+/* ─── Mono — Linear / Vercel-grade dark, indigo accent ─── */
+/* ─── Grid — Swiss monochrome, IBM Plex everything ─── */
+/* ─── Clean — kept as the friendly fallback (was the previous default
+       before the 2026-05-07 pivot). Soft shadow, sans throughout. ─── */
+[data-theme='clean'] {
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-head: var(--font-body);
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --bg-app: #f4f5f7;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #fafafa;
+  --bg-surface-hover: #f3f4f6;
+  --fg-strong: #18181b;
+  --fg-default: #27272a;
+  --fg-muted: #565d6e;
+  --fg-faint: #6b7280;
+  --line: #e5e7eb;
+  --line-strong: #d1d5db;
+  --accent: #000000;
+  --accent-fg: #ffffff;
+  --accent-glow: rgba(0, 0, 0, 0.08);
+  --fs-h1: 30px;
+  --lh-tight: 1.25;
+  color-scheme: light;
+}
+
+/* ─── Linear — Mono dark, indigo accent ─── */
 /* ─── Vercel — Black + violet, sharp edges ─── */
 [data-theme='vercel'] {
   --font-body: 'Geist', system-ui, sans-serif;
@@ -110,9 +139,13 @@
   --fg-faint: #737373;
   --line: #e5e5e5;
   --line-strong: #d4d4d4;
-  --accent: #a855f7;
+  /* purple-600 (#9333ea), darkened from purple-500 (#a855f7) so small
+     accent-coloured text — the home eyebrow, panel num prefix, regex
+     named-capture chip — clears WCAG 2.1 AA's 4.5:1 minimum on the
+     #fafafa surface (4.96:1 vs 3.79:1 at the original shade). */
+  --accent: #9333ea;
   --accent-fg: #ffffff;
-  --accent-glow: rgba(168, 85, 247, 0.18);
+  --accent-glow: rgba(147, 51, 234, 0.18);
   --radius: 6px;
   --radius-sm: 4px;
   --shadow-mult: 0.6;
@@ -120,107 +153,9 @@
 }
 
 /* ─── Paper — Newsreader serif, beige, generous whitespace ─── */
-[data-theme='paper'] {
-  --font-body: 'Newsreader', Georgia, serif;
-  --font-head: var(--font-body);
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --bg-app: #f5f1e8;
-  --bg-surface: #fbf7ec;
-  --bg-surface-2: #f0ebdb;
-  --bg-surface-hover: #ebe5d4;
-  --fg-strong: #1a1612;
-  --fg-default: #2a221a;
-  --fg-muted: #6b5f4c;
-  --fg-faint: #998a72;
-  --line: #ddd2bc;
-  --line-strong: #c8b896;
-  --accent: #3b2f56;
-  --accent-fg: #fbf7ec;
-  --accent-glow: rgba(59, 47, 86, 0.12);
-  --radius: 0px;
-  --radius-sm: 0px;
-  --shadow-mult: 0;
-  --fs-base: 16px;
-  --fs-h1: 34px;
-  --lh-base: 1.6;
-  color-scheme: light;
-}
-
 /* ─── Swiss — Hard borders, monospace, structural ─── */
-[data-theme='swiss'] {
-  --font-body: 'IBM Plex Mono', ui-monospace, monospace;
-  --font-head: var(--font-body);
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --bg-app: #ffffff;
-  --bg-surface: #ffffff;
-  --bg-surface-2: #f7f7f7;
-  --bg-surface-hover: #efefef;
-  --fg-strong: #000000;
-  --fg-default: #111111;
-  --fg-muted: #666666;
-  --fg-faint: #999999;
-  --line: #000000;
-  --line-strong: #000000;
-  --accent: #000000;
-  --accent-fg: #ffffff;
-  --accent-glow: rgba(0, 0, 0, 0.12);
-  --radius: 0px;
-  --radius-sm: 0px;
-  --shadow-mult: 0;
-  --border-w: 1.5px;
-  --fs-base: 13px;
-  color-scheme: light;
-}
-
 /* ─── Aurora — Purple→cyan gradient atmosphere ─── */
-[data-theme='aurora'] {
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-head: var(--font-body);
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --bg-app: #0c0a18;
-  --bg-surface: #15122a;
-  --bg-surface-2: #1c1735;
-  --bg-surface-hover: #251f44;
-  --fg-strong: #ffffff;
-  --fg-default: #e2e0f0;
-  --fg-muted: #a8a3c4;
-  --fg-faint: #756f95;
-  --line: rgba(168, 163, 196, 0.14);
-  --line-strong: rgba(168, 163, 196, 0.24);
-  --accent: #06b6d4;
-  --accent-fg: #06121a;
-  --accent-glow: rgba(6, 182, 212, 0.32);
-  --radius: 16px;
-  --radius-sm: 10px;
-  --shadow-mult: 1.6;
-  color-scheme: dark;
-}
-
 /* ─── Matrix — Green-on-black hacker terminal ─── */
-[data-theme='matrix'] {
-  --font-body: 'JetBrains Mono', ui-monospace, monospace;
-  --font-head: var(--font-body);
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --bg-app: #000000;
-  --bg-surface: #050a05;
-  --bg-surface-2: #0a140a;
-  --bg-surface-hover: #0f1d0f;
-  --fg-strong: #00ff41;
-  --fg-default: #c2ffc2;
-  --fg-muted: #5a8c5a;
-  --fg-faint: #2f5a2f;
-  --line: rgba(0, 255, 65, 0.16);
-  --line-strong: rgba(0, 255, 65, 0.28);
-  --accent: #00ff41;
-  --accent-fg: #000000;
-  --accent-glow: rgba(0, 255, 65, 0.32);
-  --radius: 4px;
-  --radius-sm: 2px;
-  --shadow-mult: 0.8;
-  --fs-base: 13px;
-  color-scheme: dark;
-}
-
 /* ─── Reset + base ─── */
 
 *,
@@ -464,16 +399,32 @@ select {
   margin: 0 0 var(--sp-2);
   font-family: var(--font-head);
   font-size: var(--fs-h1);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: var(--lh-tight);
   color: var(--fg-strong);
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+/* Editorial accent inside the hero — a single italic word in terracotta. */
+.dt-home__hero h1 em,
+.dt-hero em {
+  font-style: italic;
+  color: var(--accent);
 }
 
 .dt-home__hero p {
   margin: 0 0 var(--sp-8);
   color: var(--fg-muted);
-  max-width: 60ch;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+[data-theme='clean'] .dt-home__hero h1,
+[data-theme='vercel'] .dt-home__hero h1 {
+  font-weight: 600;
+  font-family: var(--font-body);
 }
 
 .dt-home__section-h {
@@ -603,13 +554,47 @@ select {
 }
 
 .dt-panel__label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--fg-muted);
   font-weight: 600;
   margin-bottom: var(--sp-2);
-  display: block;
+}
+
+/* Mono number prefix — `01 · Configuration`. Used by panel({ num: 1 }). */
+.dt-panel__num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.dt-panel__num::after {
+  content: ' ·';
+  margin-left: 4px;
+  color: var(--fg-faint);
+}
+
+.dt-panel__label-text {
+  /* Inherits the parent label styling. Carved out as a span so the
+     editorial override below can target text-only without affecting
+     the num/right siblings. */
+}
+
+/* Right-aligned hint chip on a panel label row — flush right, mono. */
+.dt-panel__right {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--fg-faint);
+  font-weight: 400;
+  text-transform: none;
 }
 
 .dt-card {
@@ -900,6 +885,299 @@ select {
   color: var(--fg-default);
 }
 
+/* ─── Topbar settings panel (tool-visibility chooser) ─── */
+
+.dt-settings {
+  position: relative;
+  display: inline-block;
+}
+
+.dt-settings__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: min(380px, calc(100vw - 24px));
+  max-height: 70vh;
+  overflow: auto;
+  background: var(--bg-surface);
+  border: var(--border-w) solid var(--line-strong);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  box-shadow: var(--shadow-3);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.dt-settings__heading {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--fg-strong);
+}
+
+.dt-settings__lede {
+  margin: 0;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--fg-muted);
+}
+
+.dt-settings__modes {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+.dt-settings__mode {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--fg-default);
+  background: var(--bg-surface);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--anim-fast),
+    border-color var(--anim-fast),
+    color var(--anim-fast);
+}
+
+.dt-settings__mode:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--line-strong);
+  color: var(--fg-strong);
+}
+
+.dt-settings__mode--active {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dt-settings__preset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-2);
+  background: var(--bg-surface-2);
+  border: var(--border-w) dashed var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.dt-settings__preset-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.dt-settings__preset-note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+.dt-settings__bulk {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+.dt-settings__bulk .dt-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.dt-settings__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-top: var(--border-w) solid var(--line);
+  padding-top: var(--sp-2);
+}
+
+.dt-settings__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--fg-default);
+  cursor: pointer;
+  transition: background var(--anim-fast);
+}
+
+.dt-settings__item:hover {
+  background: var(--bg-surface-hover);
+  color: var(--fg-strong);
+}
+
+.dt-settings__item--locked {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.dt-settings__item--locked:hover {
+  background: transparent;
+}
+
+.dt-settings__checkbox {
+  appearance: auto;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.dt-settings__checkbox:disabled {
+  cursor: not-allowed;
+}
+
+.dt-settings__item-label {
+  font-weight: 500;
+}
+
+.dt-settings__only {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--fg-muted);
+  background: transparent;
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--sp-2);
+  cursor: pointer;
+  transition:
+    background var(--anim-fast),
+    border-color var(--anim-fast),
+    color var(--anim-fast);
+}
+
+.dt-settings__only:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dt-settings__summary {
+  margin: 0;
+  padding-top: var(--sp-2);
+  border-top: var(--border-w) solid var(--line);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+.dt-settings__empty {
+  margin: 0;
+  padding: var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+/* Mobile: full-width drawer-style panel anchored to the right edge. */
+@media (max-width: 720px) {
+  .dt-settings__menu {
+    position: fixed;
+    top: 56px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}
+
+/* ─── Day 5: jwt-decoder (single-pane input → multiple output panels) ─── */
+
+.dt-jwt__output {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+}
+
+.dt-jwt__error {
+  margin: 0;
+  padding: var(--sp-3);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--fg-strong);
+  text-align: center;
+}
+
+.dt-jwt__warn {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-surface-2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--fg-default);
+}
+
+.dt-jwt__warn--strong {
+  border-left-color: #d97706;
+  background: rgba(217, 119, 6, 0.08);
+  font-weight: 500;
+}
+
+.dt-jwt__claims {
+  display: grid;
+  grid-template-columns: minmax(120px, max-content) 1fr;
+  gap: var(--sp-1) var(--sp-3);
+  margin: 0;
+  padding: var(--sp-3);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.dt-jwt__claim-key {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  align-self: center;
+}
+
+.dt-jwt__claim-value {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-strong);
+  word-break: break-word;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.dt-jwt__tag {
+  display: inline-block;
+  padding: 1px var(--sp-2);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  font-family: var(--font-default, var(--font-sans, system-ui));
+  /* amber-800 — darkened from amber-700 (#b45309 = 4.24:1 on cream) so the
+     'Expired' tag clears WCAG 2.1 AA's 4.5:1 minimum on every theme. */
+  color: #92400e;
+  background: rgba(217, 119, 6, 0.12);
+  border-radius: 9999px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 /* ─── Day 1: base64-string-converter (Claude-style two-pane) ─── */
 
 .dt-base64 {
@@ -1082,6 +1360,89 @@ select {
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-3);
+}
+
+/* ─── Hash tool anatomy panel — one row per algorithm ─────────────── */
+.dt-hash__anatomy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+}
+
+.dt-hash__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: var(--sp-2) var(--sp-3);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.dt-hash__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dt-hash__row-head {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.dt-hash__row-algo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: 0.02em;
+}
+
+.dt-hash__row-bytes {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+}
+
+.dt-hash__row-value-wrap {
+  grid-column: 1 / 2;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.dt-hash__row-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  word-break: break-all;
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+.dt-hash__row-tail {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+}
+
+.dt-hash__row-copy {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: var(--sp-1) var(--sp-3);
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--anim-fast);
+}
+
+.dt-hash__row-copy:hover {
+  background: var(--bg-muted);
 }
 
 .dt-base64__lengths {
@@ -1427,10 +1788,37 @@ select {
   gap: var(--sp-3);
 }
 
+/* Heading + intro for the Day-2 → Day-5 tools (basic-auth, html-entities,
+   url-encode-decode, jwt-decoder). The 2026-05-07 editorial pivot styles
+   these as `.dt-hero` + `.dt-lede` — we alias the legacy classnames here
+   so each render.ts doesn't need a per-tool edit. */
+.dt-basicauth__heading {
+  font-family: var(--font-head);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-tight);
+  color: var(--fg-strong);
+  margin: 0 0 var(--sp-2);
+  text-wrap: balance;
+  max-width: 22ch;
+}
+[data-theme='clean'] .dt-basicauth__heading,
+[data-theme='vercel'] .dt-basicauth__heading {
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+.dt-basicauth__heading em {
+  font-style: italic;
+  color: var(--accent);
+}
+
 .dt-basicauth__intro {
-  margin: 0;
+  margin: var(--sp-2) 0 0;
   color: var(--fg-muted);
-  max-width: 72ch;
+  max-width: 64ch;
+  text-wrap: pretty;
+  font-size: 14.5px;
   line-height: var(--lh-base);
 }
 
@@ -1532,6 +1920,148 @@ select {
   color: var(--accent);
 }
 
+/* ─── Editorial design primitives (2026-05-07 pivot) ─────────────────────
+   Eyebrow, hero block, numbered panel labels, pill chips. These compose
+   on top of the existing layout — opt-in via class names so the Day 1-5
+   tools migrate to the new look gradually rather than via a global edit. */
+
+/* Eyebrow: small mono-spaced accent line above a hero. e.g. "§ 01 · Crypto" */
+.dt-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-3);
+}
+.dt-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Hero — Fraunces serif italic accent under the editorial theme; falls
+   back to the body font under any sans-favouring theme via the rules above. */
+.dt-hero {
+  font-family: var(--font-head);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-tight);
+  color: var(--fg-strong);
+  margin: 0 0 var(--sp-2);
+  text-wrap: balance;
+  max-width: 22ch;
+}
+[data-theme='clean'] .dt-hero,
+[data-theme='vercel'] .dt-hero {
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.dt-lede {
+  margin: var(--sp-2) 0 0;
+  color: var(--fg-muted);
+  max-width: 64ch;
+  text-wrap: pretty;
+  font-size: 14.5px;
+}
+
+/* Pill — a small rounded chip used for "local · in your browser",
+   "64 chars · 380 bits", state tags, etc. */
+.dt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-surface);
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  line-height: 1.2;
+}
+.dt-pill--accent {
+  background: var(--accent-glow);
+  color: var(--accent);
+  border-color: transparent;
+}
+.dt-pill--ok {
+  color: #2f7d4a;
+}
+.dt-pill--warn {
+  color: var(--accent);
+}
+.dt-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2f7d4a;
+  flex: none;
+}
+
+/* Numbered panel label — e.g. "01 · Configuration" with monospace number,
+   serif italic label. Sits at the top of a `.dt-panel` instead of (or
+   alongside) the existing `.dt-panel__label`. */
+.dt-panel-num {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.dt-panel-num__num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-faint);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.dt-panel-num__label {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+[data-theme='clean'] .dt-panel-num__label,
+[data-theme='vercel'] .dt-panel-num__label {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.dt-panel-num__right {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-faint);
+}
+
+/* Tool page wrapper — replaces the ad-hoc `.dt-base64` shell that the
+   first 5 tools all reuse. New tools use `.dt-tool-page`; the old class is
+   kept as an alias. */
+.dt-tool-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-4) 0;
+}
+.dt-tool-page__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--sp-2);
+}
+
 /* ─── Mobile drawer & backdrop ───────────────────────────────────────────
  * Desktop: sidebar is sticky, drawer/backdrop are inert.
  * Mobile: sidebar slides in from the left with a translucent backdrop. */
@@ -1569,6 +2099,925 @@ select {
   transition: opacity var(--anim-fast);
 }
 
+/* ─── Editorial polish overrides (matches `tool-screens-v3.html` mockups
+       byte-for-byte). Applied only under `[data-theme='editorial']` so the
+       other themes keep their pre-existing look. Five blocks below:
+         1. Panel labels — serif italic (replaces uppercase-sans default)
+         2. Textareas / inputs — paper-2 tint + IBM Plex Mono
+         3. Pill-shaped buttons + dark primary
+         4. Refined segmented tabs (tighter, true pill)
+         5. New `.dt-pill--local` topbar chip + serif brand
+   ────────────────────────────────────────────────────────────────────── */
+
+[data-theme='editorial'] {
+  /* Tighter editorial paper tones; the panel sits on cream, the inputs
+     sit on the paper-2 tint underneath the panel. */
+  --paper-2: #f3efe7;
+}
+
+/* 1 ─ Panel label : serif italic, optional mono number prefix.
+       The legacy `.dt-panel__label` is uppercase-bold; we replace it
+       under editorial only, with rules that match v3's `.panel-l`. */
+[data-theme='editorial'] .dt-panel__label {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-3);
+}
+/* Number prefix stays mono uppercase under editorial — matches v3 spec
+   where numerals are mono and the label itself is serif italic. */
+[data-theme='editorial'] .dt-panel__num {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-faint);
+}
+[data-theme='editorial'] .dt-panel__right {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--fg-faint);
+  text-transform: none;
+}
+
+/* 2 ─ Inputs / textareas : paper-2 tint background + mono font + tighter
+       padding. Matches v3 `.ui textarea` rule almost 1:1. */
+[data-theme='editorial'] .dt-base64__textarea,
+[data-theme='editorial'] .dt-input,
+[data-theme='editorial'] .dt-textarea {
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  border-radius: 10px;
+  padding: var(--sp-3);
+  border: var(--border-w) solid var(--line);
+}
+
+[data-theme='editorial'] .dt-base64__textarea:focus,
+[data-theme='editorial'] .dt-input:focus,
+[data-theme='editorial'] .dt-textarea:focus {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* 3 ─ Pill-shaped buttons. Default `.dt-btn` is a square 8-radius button;
+       editorial swaps it for a true pill, dark primary, terracotta accent.
+       The `.dt-base64__copy` (used by every tool's copy/regenerate row)
+       inherits via cascade. */
+[data-theme='editorial'] .dt-btn {
+  border-radius: var(--radius-pill);
+  padding: 9px 16px;
+  font-size: 13px;
+}
+
+[data-theme='editorial'] .dt-btn--primary {
+  background: #1a1814;
+  color: #faf7f2;
+  border-color: #1a1814;
+}
+
+[data-theme='editorial'] .dt-btn--primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  filter: none;
+}
+
+/* "Accent" variant — terracotta filled. We don't have a class for this
+   yet, but `.dt-btn--acc` is the conventional name; reserved for tools
+   that need an emphatic CTA distinct from the dark primary. */
+[data-theme='editorial'] .dt-btn--acc {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* 4 ─ Segmented tabs — make them a true pill with tighter inner buttons.
+       The default has `min-width: 96px` which feels like a button; v3
+       uses content-width pills that look like one continuous control. */
+[data-theme='editorial'] .dt-base64__segmented {
+  padding: 3px;
+  gap: 0;
+  background: var(--paper-2);
+}
+
+[data-theme='editorial'] .dt-base64__tab {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 0;
+  color: var(--fg-muted);
+}
+
+[data-theme='editorial'] .dt-base64__tab--active {
+  background: var(--bg-surface);
+  color: var(--fg-strong);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* 5 ─ Topbar polish. The v3 mock has a small "local · in your browser"
+       pill near the icon buttons. Brand (currently in the sidebar) is
+       left alone for now — the sidebar treatment is its own pass. */
+[data-theme='editorial'] .dt-topbar {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: var(--border-w) solid var(--line);
+}
+
+[data-theme='editorial'] .dt-topbar__right {
+  gap: var(--sp-2);
+}
+
+/* The new `.dt-pill--local` is rendered by the topbar (see TS edit) and
+   sits to the left of the language switcher. */
+.dt-pill--local {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: var(--border-w) solid var(--line);
+  background: var(--bg-surface);
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.dt-pill--local::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2f7d4a;
+}
+
+/* 6 ─ Out-row — used by case / color / datetime. Editorial flavour:
+       serif italic label + mono value + subtle row divider. */
+[data-theme='editorial'] .dt-case__row {
+  background: transparent;
+  border: 0;
+  border-bottom: var(--border-w) solid var(--line);
+  border-radius: 0;
+  padding: 10px 0;
+  /* The label column needs to fit the longest case name (SCREAMING_KEBAB
+     in 14px Fraunces italic ≈ 180px). Auto-width on the label, 1fr on the
+     value, auto on the copy button. */
+  grid-template-columns: minmax(140px, max-content) minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--sp-3);
+}
+[data-theme='editorial'] .dt-case__label {
+  white-space: nowrap;
+}
+[data-theme='editorial'] .dt-case__row:last-child {
+  border-bottom: 0;
+}
+[data-theme='editorial'] .dt-case__label {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--fg-muted);
+}
+[data-theme='editorial'] .dt-case__value {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--fg-strong);
+}
+
+/* 7 ─ Stat tiles — already mostly editorial; tighten label/value to v3. */
+[data-theme='editorial'] .dt-wc__stat-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+[data-theme='editorial'] .dt-wc__stat-value {
+  font-family: var(--font-head);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  color: var(--fg-strong);
+}
+
+/* 8 ─ Field labels (form labels under .dt-uuid__field-label etc.) — mono
+       uppercase to match v3 .field-l. */
+[data-theme='editorial'] .dt-uuid__field-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* 9 ─ Sidebar group labels — already match the mono uppercase style.
+       Brand mark gets a small terracotta accent dot for editorial. */
+[data-theme='editorial'] .dt-sidebar__brand-mark {
+  position: relative;
+}
+[data-theme='editorial'] .dt-sidebar__brand-mark::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ─── New-tool styles (UUID, ULID, password, hash, case, base, roman,
+       NATO, wordcount, lorem, chmod, ascii-binary, color, unicode, json,
+       regex, diff, math-eval, datetime, user-agent). All ship as
+       opt-in classes that compose with the existing `.dt-base64__pane`
+       and `.dt-tool-page` shell. */
+
+/* Side-by-side workspace used by UUID / ULID / password (config + output).
+   Stacks on narrow viewports via the responsive block at the bottom. */
+.dt-uuid__workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+/* Config panel internals — vertical stack of labeled inputs / sliders. */
+.dt-uuid__cfg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.dt-uuid__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.dt-uuid__field-label {
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+.dt-uuid__field-value {
+  color: var(--fg-strong);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.dt-uuid__field input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+/* Password strength meter */
+.dt-pwd__check {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.dt-pwd__check input[type='checkbox'] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.dt-pwd__meter {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-2);
+  overflow: hidden;
+  border: var(--border-w) solid var(--line);
+}
+.dt-pwd__meter-fill {
+  height: 100%;
+  background: var(--fg-faint);
+  border-radius: var(--radius-pill);
+  transition:
+    width var(--anim-base),
+    background var(--anim-base);
+}
+.dt-pwd__meter-fill[data-strength='awful'] {
+  background: #b91c1c;
+}
+.dt-pwd__meter-fill[data-strength='weak'] {
+  background: #d97706;
+}
+.dt-pwd__meter-fill[data-strength='okay'] {
+  background: #ca8a04;
+}
+.dt-pwd__meter-fill[data-strength='strong'] {
+  background: #16a34a;
+}
+.dt-pwd__meter-fill[data-strength='extreme'] {
+  background: var(--accent);
+}
+.dt-pwd__meter-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+.dt-pwd__meter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.dt-pwd__chip {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-2);
+  color: var(--fg);
+  border: var(--border-w) solid var(--line);
+  white-space: nowrap;
+}
+.dt-pwd__chip--bits {
+  color: var(--fg-muted);
+}
+.dt-pwd__chip--time {
+  color: var(--fg-muted);
+}
+.dt-pwd__chip--strength {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.dt-pwd__chip--strength[data-strength='awful'] {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+.dt-pwd__chip--strength[data-strength='weak'] {
+  background: #ffedd5;
+  color: #9a3412;
+  border-color: #fed7aa;
+}
+.dt-pwd__chip--strength[data-strength='okay'] {
+  background: #fef9c3;
+  color: #854d0e;
+  border-color: #fef08a;
+}
+.dt-pwd__chip--strength[data-strength='strong'] {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+.dt-pwd__chip--strength[data-strength='extreme'] {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: transparent;
+}
+
+/* ─── UUID anatomy panel — RFC 4122 §4.1 field breakdown ─────────── */
+.dt-uuid__anatomy {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-4);
+}
+.dt-uuid__anatomy-row {
+  display: grid;
+  grid-template-columns: minmax(160px, max-content) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.dt-uuid__anatomy-row:last-child {
+  border-bottom: none;
+}
+.dt-uuid__anatomy-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+.dt-uuid__anatomy-value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg);
+  word-break: break-all;
+}
+
+/* ─── JWT signature verifier — HMAC secret + status chip ─────────── */
+.dt-jwt__verify {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+.dt-jwt__verify-status {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-2);
+  color: var(--fg-muted);
+  border: var(--border-w) solid var(--line);
+  align-self: flex-start;
+}
+.dt-jwt__verify-status[data-status='pending'] {
+  background: #fef9c3;
+  color: #854d0e;
+  border-color: #fef08a;
+}
+.dt-jwt__verify-status[data-status='match'] {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+.dt-jwt__verify-status[data-status='mismatch'] {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+.dt-jwt__verify-status[data-status='unsupported'] {
+  background: #ffedd5;
+  color: #9a3412;
+  border-color: #fed7aa;
+}
+
+/* ─── jwt.io-style colored input overlay ─────────────────────────── */
+/* Pattern: a <pre> sits behind a transparent-text <textarea>. The pre
+   paints `header.payload.signature` in three colors; the textarea
+   provides editing + caret. Both elements share identical typography
+   so the cursor lines up with the colored text underneath. */
+.dt-jwt__input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Mutual-exclusive shape: identical box-model so the overlay's text
+   geometry matches the textarea exactly. Tweak both blocks together. */
+.dt-jwt__input-overlay,
+.dt-jwt__input-textarea {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  letter-spacing: 0;
+  padding: var(--sp-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dt-jwt__input-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--bg-surface-2);
+  color: transparent;
+  overflow: auto;
+  z-index: 0;
+  /* Make sure the overlay isn't visually selectable; the textarea handles selection. */
+  user-select: none;
+}
+
+.dt-jwt__input-textarea {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  /* Caret color stays normal; the text itself is invisible because the
+     pre underneath supplies the colors. */
+  color: transparent;
+  caret-color: var(--fg);
+  resize: vertical;
+  min-height: calc(1.5em * 4 + var(--sp-3) * 2 + var(--border-w) * 2);
+}
+
+/* When the textarea is empty, let the placeholder show (the overlay is
+   empty too, so there's nothing to clash with). */
+.dt-jwt__input-textarea::placeholder {
+  color: var(--fg-faint);
+}
+
+/* Selection highlights on a transparent-text textarea need an explicit
+   background so the user can see what they've selected. */
+.dt-jwt__input-textarea::selection {
+  background: color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* The three colored segments. Picked to be legible on the cream surface
+   in editorial mode and distinct from the terracotta accent. */
+.dt-jwt__seg-head {
+  color: #b8472b;
+} /* terracotta — header */
+.dt-jwt__seg-payload {
+  color: #6d28d9;
+} /* violet     — payload */
+.dt-jwt__seg-sig {
+  color: #0e7490;
+} /* teal       — signature */
+.dt-jwt__seg-dot {
+  color: var(--fg-muted);
+}
+
+/* Dark theme: lift the colors so they read on a dark surface. */
+[data-theme='vercel'] .dt-jwt__seg-head {
+  color: #ff7849;
+}
+[data-theme='vercel'] .dt-jwt__seg-payload {
+  color: #c4b5fd;
+}
+[data-theme='vercel'] .dt-jwt__seg-sig {
+  color: #67e8f9;
+}
+
+/* Case / color / datetime / base — multi-row label · value · copy grid. */
+.dt-case__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dt-case__row {
+  display: grid;
+  grid-template-columns: minmax(140px, max-content) 1fr auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+}
+.dt-case__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.dt-case__value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-strong);
+  word-break: break-all;
+  background: transparent;
+  padding: 0;
+}
+.dt-case__copy {
+  /* Reuse .dt-copy structure but smaller — already styled by .dt-base64__copy. */
+}
+
+/* Wordcount stats grid */
+.dt-wc__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--sp-3);
+}
+.dt-wc__stat {
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.dt-wc__stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.dt-wc__stat-value {
+  font-family: var(--font-head);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--fg-strong);
+  letter-spacing: -0.01em;
+}
+[data-theme='clean'] .dt-wc__stat-value,
+[data-theme='vercel'] .dt-wc__stat-value {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+/* chmod calculator */
+.dt-chmod__grid {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--fs-sm);
+}
+.dt-chmod__grid th,
+.dt-chmod__grid td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: center;
+  border-bottom: var(--border-w) solid var(--line);
+}
+.dt-chmod__grid th:first-child,
+.dt-chmod__grid td:first-child {
+  text-align: left;
+}
+.dt-chmod__grid th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+.dt-chmod__grid input[type='checkbox'] {
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+}
+.dt-chmod__big {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--fg-strong);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.dt-chmod__sym {
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  color: var(--fg-muted);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.dt-chmod__cmd {
+  display: block;
+  margin: 0 auto;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-strong);
+  text-align: center;
+  width: max-content;
+  max-width: 100%;
+  word-break: break-all;
+}
+
+/* Color converter swatch */
+.dt-color__swatch {
+  height: 96px;
+  border-radius: var(--radius-sm);
+  border: var(--border-w) solid var(--line);
+  background: var(--bg-surface-2);
+  transition: background var(--anim-base);
+}
+
+/* Unicode inspector table */
+.dt-unicode__table {
+  overflow-x: auto;
+}
+.dt-unicode__table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+.dt-unicode__table th,
+.dt-unicode__table td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  border-bottom: var(--border-w) solid var(--line);
+  font-family: var(--font-mono);
+}
+.dt-unicode__table th {
+  font-size: var(--fs-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  background: var(--bg-surface-2);
+  position: sticky;
+  top: 0;
+}
+
+/* Regex tester */
+.dt-regex__pattern {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.dt-regex__slash {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.dt-regex__pattern-in {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  font-family: var(--font-mono);
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.dt-regex__flags {
+  width: 60px;
+  background: transparent !important;
+  border: none !important;
+  border-left: var(--border-w) solid var(--line) !important;
+  font-family: var(--font-mono);
+  text-align: center;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 var(--sp-2) !important;
+  border-radius: 0 !important;
+}
+.dt-regex__summary {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  padding: var(--sp-1) 0;
+}
+.dt-regex__summary--err {
+  color: var(--accent);
+}
+.dt-regex__matches {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dt-regex__match {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-surface-2);
+  border-radius: var(--radius-sm);
+  align-items: center;
+}
+.dt-regex__match-idx {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-faint);
+}
+.dt-regex__match-val {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-strong);
+  background: var(--accent-glow);
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-sm);
+  word-break: break-all;
+}
+.dt-regex__match-groups {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  word-break: break-all;
+}
+.dt-regex__match-named {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.dt-regex__highlight {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  margin: 0;
+  max-height: 240px;
+  overflow: auto;
+  line-height: 1.6;
+}
+.dt-regex__highlight:empty {
+  display: none;
+}
+.dt-regex__mark {
+  background: var(--accent-glow);
+  color: var(--fg);
+  padding: 0 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+.dt-regex__mark--empty {
+  color: var(--fg-muted);
+}
+
+/* ─── Diff word-mode inline view ─────────────────────────────────── */
+.dt-diff__inline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--bg-surface-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  margin: 0;
+}
+.dt-diff__inline:empty {
+  display: none;
+}
+.dt-diff__add {
+  background: #dcfce7;
+  color: #166534;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.dt-diff__del {
+  background: #fee2e2;
+  color: #991b1b;
+  text-decoration: line-through;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* ─── Status-coloured right-hint chips on panel labels ───────────── */
+.dt-panel__right[data-status='ok'] {
+  color: #166534;
+}
+.dt-panel__right[data-status='err'] {
+  color: #991b1b;
+}
+
+/* Diff lines */
+.dt-diff__lines {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.dt-diff__line {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: var(--sp-2);
+  padding: 2px var(--sp-3);
+  border-bottom: var(--border-w) solid var(--line);
+}
+.dt-diff__line:last-child {
+  border-bottom: 0;
+}
+.dt-diff__sigil {
+  color: var(--fg-faint);
+  user-select: none;
+  text-align: center;
+}
+.dt-diff__line code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.dt-diff__line--add {
+  background: rgba(22, 163, 74, 0.1);
+}
+.dt-diff__line--add .dt-diff__sigil {
+  color: #16a34a;
+}
+.dt-diff__line--del {
+  background: rgba(220, 38, 38, 0.08);
+}
+.dt-diff__line--del .dt-diff__sigil {
+  color: #dc2626;
+}
+
 /* ─── Responsive overrides ───────────────────────────────────────────────
  * Single consolidated block placed at the very end of the file so it
  * always wins over the regular component rules above. Two breakpoints:
@@ -1588,6 +3037,10 @@ select {
     transform: rotate(270deg);
   }
   .dt-basicauth__workspace {
+    grid-template-columns: 1fr;
+  }
+  /* New-tool dual-pane workspaces also stack at this breakpoint. */
+  .dt-uuid__workspace {
     grid-template-columns: 1fr;
   }
 }
@@ -1791,5 +3244,110 @@ select {
   }
   .dt-language-switcher__code {
     display: none;
+  }
+
+  /* Hide the "local · in your browser" pill on phones — the disclaimer
+     lives in the sidebar footer too, and topbar real estate is precious. */
+  .dt-pill--local {
+    display: none;
+  }
+
+  /* New-tool tweaks for narrow phones (<=720px). The dual-pane
+     workspaces already stacked at 880px; these rules tighten paddings,
+     allow tables to scroll horizontally, and shrink hero typography. */
+  .dt-tool-page {
+    padding: var(--sp-3) 0;
+    gap: var(--sp-3);
+  }
+  .dt-hero,
+  .dt-home__hero h1,
+  .dt-basicauth__heading {
+    font-size: 28px;
+    max-width: none;
+  }
+  .dt-eyebrow {
+    font-size: 10px;
+  }
+  .dt-lede,
+  .dt-basicauth__intro {
+    font-size: 13.5px;
+  }
+
+  /* Case / color / datetime / base — tighten the row layout. */
+  .dt-case__row {
+    grid-template-columns: 1fr;
+    gap: var(--sp-1);
+    padding: var(--sp-2);
+  }
+  .dt-case__copy {
+    align-self: flex-end;
+  }
+
+  /* Wordcount stat tiles — pack 2 per row instead of auto-fill. */
+  .dt-wc__stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-2);
+  }
+  .dt-wc__stat {
+    padding: var(--sp-2) var(--sp-3);
+  }
+  .dt-wc__stat-value {
+    font-size: 18px;
+  }
+
+  /* chmod — shrink the big octal display, allow rwx columns to breathe. */
+  .dt-chmod__big {
+    font-size: 36px;
+  }
+  .dt-chmod__grid {
+    font-size: var(--fs-xs);
+  }
+  .dt-chmod__grid th,
+  .dt-chmod__grid td {
+    padding: var(--sp-1) var(--sp-2);
+  }
+
+  /* Color swatch shrinks. */
+  .dt-color__swatch {
+    height: 64px;
+  }
+
+  /* Unicode table scrolls horizontally on tiny screens. */
+  .dt-unicode__table {
+    margin: 0 calc(var(--sp-3) * -1);
+  }
+  .dt-unicode__table table {
+    min-width: 480px;
+  }
+
+  /* Regex pattern row stacks slash + input cleanly; flags input
+     gets full width below. */
+  .dt-regex__pattern {
+    flex-wrap: wrap;
+    padding: var(--sp-2);
+  }
+  .dt-regex__flags {
+    width: 100%;
+    border-left: none !important;
+    border-top: var(--border-w) solid var(--line) !important;
+    text-align: left !important;
+    padding: var(--sp-1) 0 !important;
+  }
+  .dt-regex__match {
+    grid-template-columns: 40px 1fr;
+  }
+  .dt-regex__match-groups {
+    grid-column: 1 / -1;
+  }
+
+  /* Diff lines — slightly tighter padding. */
+  .dt-diff__line {
+    padding: 1px var(--sp-2);
+    font-size: var(--fs-xs);
+  }
+
+  /* Settings panel: fix the popover to viewport edges with scroll. */
+  .dt-settings__menu {
+    max-width: calc(100vw - 24px);
   }
 }

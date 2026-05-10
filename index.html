@@ -9,7 +9,7 @@
       content="A workbench of 100 small developer utilities. Local-only — nothing leaves your browser."
     />
     <meta name="author" content="Pratiyush Kumar" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#faf8f4" />
 
     <!-- Icons + manifest -->
     <link rel="icon" type="image/svg+xml" href="/developer-tools/favicon.svg" />
@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap"
       rel="stylesheet"
     />
 
@@ -58,18 +58,19 @@
     </script>
 
     <script>
-      // Apply persisted theme before paint to avoid flash.
+      // Apply persisted theme before paint to avoid flash. Default = editorial
+      // per the 2026-05-07 design pivot. Theme set pruned to 3 in a follow-up.
       (function applyEarlyTheme() {
         try {
           var t = localStorage.getItem('dt.theme');
-          var allowed = ['clean', 'linear', 'vercel', 'paper', 'swiss', 'aurora', 'matrix'];
+          var allowed = ['editorial', 'clean', 'vercel'];
           if (t && allowed.indexOf(t) !== -1) {
             document.documentElement.setAttribute('data-theme', t);
           } else {
-            document.documentElement.setAttribute('data-theme', 'clean');
+            document.documentElement.setAttribute('data-theme', 'editorial');
           }
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'clean');
+          document.documentElement.setAttribute('data-theme', 'editorial');
         }
       })();
     </script>

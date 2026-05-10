@@ -1,5 +1,5 @@
 import { translate } from '../../lib/i18n';
-import type { ToolModule } from '../../lib/types';
+import type { ToolMeta } from '../../lib/types';
 import { input } from '../primitives';
 
 export interface SidebarHandle {
@@ -9,7 +9,7 @@ export interface SidebarHandle {
 }
 
 export interface SidebarOptions {
-  tools: readonly ToolModule<unknown>[];
+  tools: readonly ToolMeta[];
   onSelect?: (id: string) => void;
 }
 
@@ -81,7 +81,7 @@ export function sidebar(opts: SidebarOptions): SidebarHandle {
       return;
     }
 
-    const groups = new Map<string, ToolModule<unknown>[]>();
+    const groups = new Map<string, ToolMeta[]>();
     for (const tool of filtered) {
       const list = groups.get(tool.category) ?? [];
       list.push(tool);

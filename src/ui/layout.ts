@@ -1,4 +1,4 @@
-import type { ToolModule } from '../lib/types';
+import type { ToolMeta } from '../lib/types';
 import type { Theme } from '../lib/theme';
 import { footer } from './footer';
 import { sidebar, type SidebarHandle } from './sidebar';
@@ -15,9 +15,15 @@ export interface LayoutHandle {
 export interface LayoutOptions {
   host: HTMLElement;
   initialTheme: Theme;
-  tools: readonly ToolModule<unknown>[];
+  /** Tools that pass the visibility filter — what the sidebar/home shows. */
+  tools: readonly ToolMeta[];
+  /** Full registry, including hidden tools — used by the settings panel
+   *  so the user can re-enable a tool they've previously hidden. */
+  allTools?: readonly ToolMeta[];
   onSelectTool?: (id: string | null) => void;
   repoUrl?: string;
+  /** Lookup for the currently-mounted tool. */
+  getActiveToolId?: () => string | null;
 }
 
 export function layout(opts: LayoutOptions): LayoutHandle {
@@ -54,11 +60,17 @@ export function layout(opts: LayoutOptions): LayoutHandle {
   const main = document.createElement('div');
   main.classList.add('dt-app__main');
 
-  const tb = topbar(
-    opts.repoUrl !== undefined
-      ? { initialTheme: opts.initialTheme, repoUrl: opts.repoUrl, onMenuClick: openDrawer }
-      : { initialTheme: opts.initialTheme, onMenuClick: openDrawer },
-  );
+  // The settings panel needs the *full* registry (including hidden tools)
+  // so the user can re-enable anything. Falls back to the visible list if
+  // the host hasn't passed the broader registry.
+  const registry = opts.allTools ?? opts.tools;
+  const tb = topbar({
+    initialTheme: opts.initialTheme,
+    onMenuClick: openDrawer,
+    tools: registry,
+    ...(opts.repoUrl !== undefined ? { repoUrl: opts.repoUrl } : {}),
+    ...(opts.getActiveToolId ? { getActiveToolId: opts.getActiveToolId } : {}),
+  });
 
   const content = document.createElement('main');
   content.classList.add('dt-app__content');
