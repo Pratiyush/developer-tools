@@ -54,13 +54,28 @@ const LOCALE_BLOCKS: readonly string[] = [
 
 type Pairs = Readonly<Record<string, string>>;
 
+function isPairs(value: unknown): value is Pairs {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return false;
+  for (const v of Object.values(value)) {
+    if (typeof v !== 'string') return false;
+  }
+  return true;
+}
+
 function main(): void {
   const jsonPath = process.argv[2];
   if (!jsonPath) {
     console.error('usage: add-tool-keys.ts <jsonPath>');
     process.exit(1);
   }
-  const pairs = JSON.parse(readFileSync(jsonPath, 'utf8')) as Pairs;
+  const parsed: unknown = JSON.parse(readFileSync(jsonPath, 'utf8'));
+  if (!isPairs(parsed)) {
+    console.error(
+      'expected JSON object with string values: { "tools.foo.bar": "English text", ... }',
+    );
+    process.exit(1);
+  }
+  const pairs: Pairs = parsed;
   const keys = Object.keys(pairs);
   if (keys.length === 0) {
     console.error('no keys to add');

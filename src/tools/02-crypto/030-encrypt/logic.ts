@@ -17,9 +17,14 @@ const ITERATIONS = 250_000;
 /** Slice a Uint8Array into a freestanding ArrayBuffer. Avoids the trap
  *  where `.buffer` exposes the whole underlying buffer the view was
  *  carved from — SubtleCrypto would then read across the slice. */
-function cloneToArrayBuffer(view: Uint8Array): ArrayBuffer {
-  const out = new ArrayBuffer(view.byteLength);
-  new Uint8Array(out).set(view);
+/** Defensive copy: return a fresh Uint8Array of exactly `view.byteLength`
+ *  bytes. Required because (a) `view.buffer` may be a larger pooled buffer
+ *  the view was sliced from, which SubtleCrypto would read past, and
+ *  (b) Node 20's WebCrypto rejects bare `ArrayBuffer` from a different VM
+ *  realm — passing a TypedArray instead works on every supported runtime. */
+function cloneToArrayBuffer(view: Uint8Array): Uint8Array<ArrayBuffer> {
+  const out = new Uint8Array(view.byteLength);
+  out.set(view);
   return out;
 }
 

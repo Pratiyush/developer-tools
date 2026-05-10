@@ -34,9 +34,12 @@ export async function hmac(
   return toHex(new Uint8Array(sig));
 }
 
-function cloneToArrayBuffer(view: Uint8Array): ArrayBuffer {
-  const out = new ArrayBuffer(view.byteLength);
-  new Uint8Array(out).set(view);
+/** Defensive copy: returns a fresh Uint8Array (TypedArray) so SubtleCrypto
+ *  can't read past view bounds AND so Node 20's stricter realm-aware
+ *  ArrayBuffer check doesn't reject the buffer. */
+function cloneToArrayBuffer(view: Uint8Array): Uint8Array<ArrayBuffer> {
+  const out = new Uint8Array(view.byteLength);
+  out.set(view);
   return out;
 }
 

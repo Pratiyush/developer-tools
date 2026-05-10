@@ -32,7 +32,17 @@ let edited = 0;
 let skipped = 0;
 for (const file of walk(TOOLS_DIR, [])) {
   const src = readFileSync(file, 'utf8');
-  if (/\bnum:/.test(src)) {
+  // Per-call idempotency: only skip a `panel({` opening if the very next
+  // property is already `num:`. A `num:` elsewhere in the file (e.g. in a
+  // comment, or on a different object literal) does NOT count as "this
+  // file is already done" — that file-level guard would skip new panels
+  // added to a partly-retrofitted file.
+  const allPanelCallsAlreadyNumbered =
+    src.includes('panel({') &&
+    Array.from(src.matchAll(/panel\(\{\s*([\s\S]*?)[,}]/g)).every((m) =>
+      /^\s*num\s*:/.test(m[1] ?? ''),
+    );
+  if (allPanelCallsAlreadyNumbered) {
     skipped++;
     continue;
   }

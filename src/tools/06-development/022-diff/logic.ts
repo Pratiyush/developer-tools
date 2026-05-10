@@ -36,8 +36,20 @@ export function diffLines(a: string, b: string): readonly DiffRow[] {
   return rows;
 }
 
+/** Hard cap on the LCS DP-matrix size. The matrix is `(m+1) × (n+1)` of
+ *  numbers — at ~8 bytes per cell, 4M cells ≈ 32 MB. Above that we'd risk
+ *  jank or OOM in the browser. When exceeded, the caller falls back to a
+ *  trivial "everything different" result instead of hanging the tab. */
+const LCS_CELL_CAP = 4_000_000;
+
 function computeLcs(A: readonly string[], B: readonly string[]): readonly string[] {
   const m = A.length, n = B.length;
+  if ((m + 1) * (n + 1) > LCS_CELL_CAP) {
+    // Pathological input — refuse to allocate. Returning an empty LCS
+    // makes every line/word an add or del, which is what the user gets
+    // for diffing two essentially-different blobs anyway.
+    return [];
+  }
   // dp[i][j] = LCS length of A[0..i] vs B[0..j]
   const dp: number[][] = Array.from({ length: m + 1 }, () => Array.from({ length: n + 1 }, () => 0));
   for (let i = 1; i <= m; i++) {

@@ -14,17 +14,24 @@ export type Algorithm = (typeof ALGORITHMS)[number];
 /** Hash `text` using `algo`. Returns lowercase hex. UTF-8 encoded input. */
 export async function hashText(text: string, algo: Algorithm): Promise<string> {
   const bytes = new TextEncoder().encode(text);
-  // Cast through ArrayBuffer — TextEncoder.encode() returns
-  // Uint8Array<ArrayBufferLike> in modern lib.dom; SubtleCrypto wants a
-  // strict ArrayBuffer view, and we know we're not using SharedArrayBuffer.
-  const buf = await crypto.subtle.digest(algo, bytes.buffer);
+  const buf = await crypto.subtle.digest(algo, cloneToArrayBuffer(bytes));
   return toHex(new Uint8Array(buf));
 }
 
 /** Hash a Uint8Array. Used by the file path. */
 export async function hashBytes(bytes: Uint8Array, algo: Algorithm): Promise<string> {
-  const buf = await crypto.subtle.digest(algo, bytes.buffer as ArrayBuffer);
+  const buf = await crypto.subtle.digest(algo, cloneToArrayBuffer(bytes));
   return toHex(new Uint8Array(buf));
+}
+
+/** Defensive copy: matches the project-wide idiom established in tools
+ *  027/030/035/JWT-verify. Returns a fresh Uint8Array so SubtleCrypto
+ *  cannot read past view bounds (e.g. on a `subarray`-derived view) and
+ *  so Node 20's stricter realm-aware ArrayBuffer check accepts the input. */
+function cloneToArrayBuffer(view: Uint8Array): Uint8Array<ArrayBuffer> {
+  const out = new Uint8Array(view.byteLength);
+  out.set(view);
+  return out;
 }
 
 /** Constant-time-ish comparison of two hex strings. */

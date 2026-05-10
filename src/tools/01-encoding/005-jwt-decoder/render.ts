@@ -277,7 +277,15 @@ export function render(
     status.classList.add('dt-jwt__verify-status');
     status.textContent = translate('tools.jwt.verify.idle');
 
+    // pendingId guards against stale completions when the user types
+    // faster than HMAC resolves. `disposed` guards against a parent dispose
+    // (route change) firing while a verify call is mid-flight — the .then
+    // would otherwise write to a detached DOM node.
     let pendingId = 0;
+    let disposed = false;
+    disposers.push(() => {
+      disposed = true;
+    });
     const secretEl = inputPrim({
       type: 'password',
       value: '',
@@ -293,7 +301,7 @@ export function render(
         status.dataset.status = 'pending';
         status.textContent = translate('tools.jwt.verify.checking');
         void verifyJwtHmac(token, v).then((r) => {
-          if (myId !== pendingId) return;
+          if (disposed || myId !== pendingId) return;
           if (!r.ok) {
             status.dataset.status = 'unsupported';
             status.textContent =

@@ -166,8 +166,10 @@ describe('verifyJwtHmac', () => {
     const payloadSeg = b64u(enc.encode(JSON.stringify(payload)));
     const signingInput = `${headerSeg}.${payloadSeg}`;
     const hashName = alg === 'HS256' ? 'SHA-256' : alg === 'HS384' ? 'SHA-384' : 'SHA-512';
-    const keyBuf = enc.encode(secret).slice().buffer;
-    const inputBuf = enc.encode(signingInput).slice().buffer;
+    // Pass Uint8Array views directly — Node 20's WebCrypto rejects bare
+    // ArrayBuffers across realms; TypedArrays work everywhere.
+    const keyBuf = enc.encode(secret);
+    const inputBuf = enc.encode(signingInput);
     const key = await crypto.subtle.importKey(
       'raw',
       keyBuf,
