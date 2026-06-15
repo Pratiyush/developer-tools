@@ -64,8 +64,8 @@ importers:
         specifier: ^0.5.17
         version: 0.5.17
       axe-core:
-        specifier: ^4.10.0
-        version: 4.11.4
+        specifier: ^4.12.1
+        version: 4.12.1
       consola:
         specifier: ^3.2.3
         version: 3.4.2
@@ -1135,6 +1135,10 @@ packages:
 
   axe-core@4.11.4:
     resolution: {integrity: sha512-KunSNx+TVpkAw/6ULfhnx+HWRecjqZGTOyquAoWHYLRSdK1tB5Ihce1ZW+UY3fj33bYAFWPu7W/GRSmmrCGuxA==}
+    engines: {node: '>=4'}
+
+  axe-core@4.12.1:
+    resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
     engines: {node: '>=4'}
 
   balanced-match@1.0.2:
@@ -3051,7 +3055,7 @@ snapshots:
       '@storybook/addon-highlight': 8.6.18(storybook@8.6.18(prettier@3.8.3))
       '@storybook/global': 5.0.0
       '@storybook/test': 8.6.18(storybook@8.6.18(prettier@3.8.3))
-      axe-core: 4.11.4
+      axe-core: 4.12.1
       storybook: 8.6.18(prettier@3.8.3)
 
   '@storybook/addon-docs@8.6.18(@types/react@19.2.14)(storybook@8.6.18(prettier@3.8.3))':
@@ -3476,6 +3480,8 @@ snapshots:
       possible-typed-array-names: 1.1.0
 
   axe-core@4.11.4: {}
+
+  axe-core@4.12.1: {}
 
   balanced-match@1.0.2: {}
 
